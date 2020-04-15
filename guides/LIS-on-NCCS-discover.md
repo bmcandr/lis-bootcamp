@@ -1,6 +1,6 @@
-# Getting set up on NCCS discover
+# Intro to LIS on NCCS discover
 
-## Logging onto discover SLES12 node:
+## Basic Setup
 
 1. First on your local computer, add this to your `$HOME/.ssh/config` file:
 ```
@@ -13,13 +13,11 @@
   Protocol 2
 ```
 
-2. From your local computer, log onto discover:
+  This configuration file makes it easier to connect to discover.
 
-    `$ ssh discover`
+2. From your local computer, ssh onto discover: `$ ssh discover`
 
-3. After you log onto discover, jump to one of the new SLES12 nodes:
-
-    `$ ssh -Y discover-sles12`
+    * To jump to one of the new SLES12 nodes: `$ ssh -Y discover-sles12`
 
 ## Setting up your environment on discover
 
