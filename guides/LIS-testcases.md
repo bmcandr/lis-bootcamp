@@ -2,7 +2,7 @@
 
 ***NOTE: RUNNING THE THIS TUTORIAL WITH THE LATEST MASTER BRANCH WILL FAIL!***
 
-The test cases are associated with an earlier commit and will fail if attempted with the master branch.  Go to the [LIS Test Cases page](https://lis.gsfc.nasa.gov/tests/lis) and look at the note at the bottom for the appropriate commit ID to checkout (440a319 as of 4/10/2020).
+The test cases are associated with an earlier commit and will fail if attempted with the master branch.  Go to the [LIS Test Cases page](https://lis.gsfc.nasa.gov/tests/lis) and check the note at the bottom for the appropriate commit ID to checkout (440a319 as of 4/10/2020).
 
 Example:
 1. Change directory into LISF repo with `cd $WORKING` where `$WORKING` is LISF/
@@ -27,14 +27,16 @@ Extract each .tgz file with the following command, replacing `<filename>` with t
 
 * `gzip -dc <filename> | tar xf -`
 
+<!-- include directions to store tgz files in separate directory, extract in $WORKING, and rm tgz from $WORKING?? -->
+
 ----
 
-# Notes/Questions from Running Test Cases
+# Issues/Questions Encountered While Running Test Cases
 
 * **(Step 1) LDT -- LSM parameter processing example**
   * instructions describe initial Soil texture spatial transform as `tile`, but it is actually `mode` -- change file or instructions?
 * **(Step 2) LIS -- LSM "open-loop" (OL) experiment example**
-  * Creation of .netrc file to hold Earthdata credentials not emphasized
+  * Creation of .netrc file to hold Earthdata credentials could be emphasized more strongly
 * **(Step 3) LDT -- Ensemble restart file generation example**
   * n/a
 * **(Step 4) LDT -- Generate LSM OL CDF-based files example**
