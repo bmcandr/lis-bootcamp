@@ -74,6 +74,7 @@
   * The Hierarchical Data Format version 5 (HDF5), is an open source file format that supports large, complex, heterogeneous data. HDF5 uses a "file directory" like structure that allows you to organize data within the file in many different structured ways, as you might do with files on your computer. The HDF5 format also allows for embedding of metadata making it self-describing.
   * Official website: https://www.hdfgroup.org/solutions/hdf5/
   * Overview: https://www.neonscience.org/about-hdf5
+  * Alt Overview: https://www.earthdatascience.org/courses/use-data-open-source-python/hierarchical-data-formats-hdf/
 * GRIB
   * GRIB (**GRI**dded **B**inary) is a general purpose, bit-oriented data exchange format. It is an efficient vehicle for transmitting large volumes of gridded data to automated centers over high-speed telecommunication lines using modern protocols. By packing information into the GRIB code, messages (or records - the terms are synonymous in this context) can be made more compact than character oriented bulletins, which will produce faster computer-to-computer transmissions. GRIB can equally well serve as a data storage format, generating the same efficiencies relative to information storage and retrieval devices.
 * Data compression (this has been a recent learning experience in the Air Force project)
