@@ -24,42 +24,59 @@
 #### \#485
 * Clone Sujay's repo --> checkout `feature/ERA5forc`
 * Configure and Compile LDT and LIS -- *SUCCESS*
-  * *If PR only touches one LIS component, only compile that?*
 * Run `./LDT ldt.config_noahmp` -- *SUCCESS*
-  * Run full suite of testcases? On both SLES11/12 and Intel/GNU??
+  * Warnings due to missing dataset: `../input/LS_PARAMETERS/topo_parms/SRTM/SRTM30/gt30w120s60.dem`
 * Run `./LIS lis.config` -- *SUCCESS*
   * Output in `$PR_TESTCASES/485/testcase/OUTPUT`
   * Initial comparison
     * `nccmp -dfms` reports differences in files, but values look identical?
     * `nccmp -dfmst 0.001` reports files are identical
+* Merge conflict in make/Filepath
+* **Actions:**
+  * Jim will request documentation and conflict resolution from Sujay
+    - [ ] Review Jim's suggested fixes
 
 #### \#494
 * Clone Sujay's repo --> checkout `feature/OzFluxLVT`
 * Configure and Compile LVT -- *SUCCESS*
-  * *If PR only touches one LIS component, only compile that?*
 * Run `./LVT lvt.config` -- *SUCCESS*
   * `nccmp -dsmf` has not finished running, but results appear consistent
+- [x] **PR MERGED!**
 
 #### \#498
 * Clone Sujay's repo --> checkout `feature/LVTmi`
 * Configure and Compile LVT -- *SUCCESS*
 * Run `./LVT lvt.config` -- *SUCCESS*
   * `[WARN] LIS file ./LIS_OUTPUT/SURFACEMODEL/200202/LIS_HIST_200202010000.d01.nc does not exist` caused by lvt.config specifying end date as 02/01/2002 instead of 01/31/2002 -- normal warning?
+    * Comment on PR to let Sujay know about error in lvt.config
   * Output (`LVT_ MI_FINAL.200202010000.do1.nc`) looks good compared to Sujay's file
     * `nccmp` reports identical output
-
+  * **Actions:**
+    - [x] Request Sujay fix `lvt.config`
+    - [ ] Review documentation?
 
 #### \#503
-* Clone Sujay's repo --> checkout `feature/ERA5forc`
+* Clone Sujay's repo --> checkout `feature/entropyLVT`
 * Configure and Compile LVT -- *SUCCESS*
-  * *If PR only touches one LIS component, only compile that?*
-* Run `./LVT lvt.config`
-  *
+* Run `./LVT lvt.config` -- *SUCCESS*
+  * `[WARN] LIS file ./LIS_OUTPUT/SURFACEMODEL/200202/LIS_HIST_200202010000.d01.nc does not exist` caused by lvt.config specifying end date as 02/01/2002 instead of 01/31/2002 -- normal warning?
+  * `nccmp -dmfs LVT_CE_FINAL.200202010000.d01.nc ../../from_svkumar/STATS.ALEXI/LVT_CE_FINAL.200202010000.d01.nc` results in differences:
+    *  ```
+      DIFFER : VARIABLE : SD_Qle_v_Qle : DOES NOT EXIST IN "../../from_svkumar/STATS.ALEXI/LVT_CE_FINAL.200202010000.d01.nc"
+      DIFFER : VARIABLE : COUNT_SD_Qle_v_Qle : DOES NOT EXIST IN "../../from_svkumar/STATS.ALEXI/LVT_CE_FINAL.200202010000.d01.nc"
+      ```
+####
+
+* **Actions:**
+  - [ ] Comment on PR to let Sujay know about error in lvt.config
+  - [ ] Review Jim's comments for Sujay on 485
+    - [ ] Read documentation guide?
 
 ----
 
 ### Questions/Issues
 
+* *If PR only touches one LIS component, only compile that?*
 * What are criteria for success? Compile? Run? Compare outputs?
 * What is the best process to compare with 'targets' provided by author of PR?
 * How do you stress test PR? Last meeting: "try to break it with different compilers/flags"
