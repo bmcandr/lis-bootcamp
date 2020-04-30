@@ -1,8 +1,26 @@
 # Intro to LIS on NCCS discover
 
-## Basic Setup
+This document provides information to get new users/contributors to LIS up and running on NASA's [Discover](https://www.nccs.nasa.gov/systems/discover) high-performance computing environment.
+
+* [Accessing Discover](#accessing-discover)
+* [LIS on Discover](#lis-on-discover)
+
+## LIS on Discover
+
+To access Discover, the following requirements must be met:
+
+* NASA identity
+* RSA Key
+    * Visit [NASA's NAMS]
+    * To obtain an RSA key you must follow the process outlined [here]()
+* NCCS account and Discover permissions
+* Familiarity with using the terminal or shell (e.g., bash)
+
+
+### Running LIS
 
 1. First on your local computer, add this to your `$HOME/.ssh/config` file:
+
 ```
   Host discover
   #LogLevel Quiet
@@ -79,3 +97,6 @@ The two solutions to this issue are:
 2) Create a `lisf_7_intel_19_1_0_166_mpiuni modulefile`.  Edit the definitions for `def_lis_modesmf` and `def_lis_libesmf` by changing `intelmpi` to `mpiuni`.  Then rerun `./configure` and `./compile`.
 
 I suspect that most of you want to run LIS in parallel, so you must be careful when using option 2.  When using option 2, you will load `lisf_7_intel_19_1_0_166_mpiuni` for LDT and LVT, and you will load `lisf_7_intel_19_1_0_166` for LIS.
+
+To compile LISF on SLES 11 with the GNU compilers:
+* Load the appropriate module: `module load lisf_7_gnu_4_9_2_mpi`
