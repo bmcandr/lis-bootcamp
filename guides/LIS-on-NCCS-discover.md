@@ -92,7 +92,7 @@ NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/ins
     cd $HOME
     ```
 
-2. We suggest that you start with a clean login environment. To do so, move your `.profile `and `.bashrc` files to another directory for safekeeping (assuming that you use bash). If your `.bashrc` file does not run any `module load` commands nor sets any critical environment variables like `$PATH` or `$LD_LIBRARY_PATH`, then you should be safe leaving your `.bashrc` file alone.
+2. We suggest that you start with a clean login environment. To do so, move your `.profile` and, assuming you are using bash, `.bashrc` files to another directory for safekeeping. If your `.bashrc` file does not run any `module load` commands nor sets any critical environment variables like `$PATH` or `$LD_LIBRARY_PATH`, then you should be safe leaving your `.bashrc` file alone.
 
     ```sh
     mkdir profile_temp
@@ -153,19 +153,19 @@ NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/ins
     module load lisf_7_intel_19_1_0_166
     ```
 
-7. You are now ready to clone [LISF](https://github.com/NASA-LIS/LISF.git) and practice compiling. We suggest that you work in `/discover/nobackup/<userid>`.  The quota for your `$HOME` directory is pretty small.
+7. You are now ready to clone [LISF](https://github.com/NASA-LIS/LISF.git) and practice compiling. The storage quota for your `$HOME` directory is pretty small so we suggest that you work in `$NOBACKUP` which is located at `/discover/nobackup/<userid>`.
 
     ```sh
     cd $NOBACKUP
     ```
 
-Follow the [Working with GitHub](https://github.com/NASA-LIS/LISF/blob/master/docs/working_with_github/working_with_github.adoc) documentation to clone the LIS sourcecode into the directory you created.
+    Follow the [Working with GitHub](https://github.com/NASA-LIS/LISF/blob/master/docs/working_with_github/working_with_github.adoc) documentation to clone the LIS sourcecode into the directory you created.
 
-*New to Git and GitHub? Need a refresher? Try these links:*
+    *New to Git and GitHub? Need a refresher? Try these links:*
 
-* *[Intro to Git](https://git-scm.com/book/en/v2)*
-* *[GitHub Guide (Text)](https://help.github.com/en/github)*
-* *[GitHub Guide (Videos)](https://www.youtube.com/playlist?list=PLg7s6cbtAD15G8lNyoaYDuKZSKyJrgwB-)*
+    * *[Intro to Git](https://git-scm.com/book/en/v2)*
+    * *[GitHub Guide (Text)](https://help.github.com/en/github)*
+    * *[GitHub Guide (Videos)](https://www.youtube.com/playlist?list=PLg7s6cbtAD15G8lNyoaYDuKZSKyJrgwB-)*
 
 -----
 
@@ -204,6 +204,7 @@ The two solutions to this issue are:
 I suspect that most of you want to run LIS in parallel, so you must be careful when using option 2.  When using option 2, you will load `lisf_7_intel_19_1_0_166_mpiuni` for LDT and LVT, and you will load `lisf_7_intel_19_1_0_166` for LIS.
 
 To compile LISF on SLES 11 with the GNU compilers:
+
 * Load the appropriate module: `module load lisf_7_gnu_4_9_2_mpi`
 
 -----
