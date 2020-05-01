@@ -2,6 +2,13 @@
 
 This repository contains a collection of information intended to rapidly orient new members of NASA's Land Information System (LIS) team. <!--just team members or new users altogether?-->
 
+## Contents
+
+* [Overview of LIS](#overview-of-nasas-land-information-system)
+* [Important Links](#important-links)
+* [Glossary of Terms and Concepts](LIS-glossary.md)
+* [Getting Started with LIS on NCCS Discover](guides/LIS-on-NCCS-discover.md)
+
 <img src='images/LIS_logo-FINAL.png' width='25%' align='right'>
 
 ## Overview of NASA's Land Information System
@@ -28,15 +35,6 @@ For more background on LIS, see the following articles:
 * [Kumar et al. (2006): Land Information System: An interoperable Framework for High Resolution Land Surface Modeling, Environmental Modeling and Software, Vol 21, pp 1402-1415.](http://prhouser.com/houser_files/Kumar2006.pdf)
 
 * [Peter-Lidard et al. (2007): High-performance earth system modeling with NASA/GSFC’s Land Information System, Innovations in Systems and Software Engineering, 3(3),157-165.](http://prhouser.com/houser_files/LIS2007.pdf)
-
------
-
-## LIS Bootcamp Documents
-
-<!-- add description of these documents? -->
-
-* [Glossary of Terms and Concepts](LIS-glossary.md)
-* [Getting Started with LIS on NCCS Discover](guides/LIS-on-NCCS-discover.md)
 
 -----
 
@@ -68,3 +66,11 @@ Please follow these style conventions for consistency:
 * Indentation = 4 spaces
 * Use asterisks (\*) to create list items
 * Limited in-line HTML is acceptable (e.g., for images, super/subscript)
+
+-----
+
+### Acknowledgements
+
+<!--Did you contribute? Don't forget to add your name below!-->
+
+Thanks to Sujay Kumar, Christa Peters-Lidard, Jim Geiger, Eric Kemp, Kristi Arsenault, Tim Lahmers, and Kimberly Slinski for their input!
