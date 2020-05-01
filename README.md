@@ -1,8 +1,9 @@
 # LIS Boot Camp
 
 This repository contains a collection of information intended to rapidly orient new members of NASA's Land Information System (LIS) team. <!--just team members or new users altogether?-->
-
-<img src='images/LIS_logo-FINAL.png' width='25%'>
+<p align='center'>
+    <img src='images/LIS_logo-FINAL.png' width='25%'>
+</p>
 
 ## Overview of NASA's Land Information System
 
@@ -18,7 +19,9 @@ The LIS framework is comprised of three components:
 * **Land Data Toolkit (LDT)** - supports the data preprocessing needs for LIS (e.g., parameter data processing, data assimilation support, forcing bias correction)
 * **Land Verification Toolkit (LVT)** - environment for model benchmarking and evaluation
 
-<img src='images/LIS-components.png'>
+<p align='center'>
+    <img src='images/LIS-components.png'>
+</p>
 
 <!--expand this section -->
 
@@ -61,3 +64,9 @@ For more background on LIS, see the following articles:
 This is a living document and we welcome your contributions! To contribute, please follow the workflow described in the [Working with GitHub](https://github.com/NASA-LIS/LISF/blob/master/docs/working_with_github/working_with_github.adoc) documentation to fork, clone, and initiate a pull request with your changes.
 
 This document is created using Markdown styling which is automatically rendered on GitHub and easily converted to PDF or other filetypes. Check out the [GitHub Guide to Markdown](https://guides.github.com/features/mastering-markdown/) and/or this [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) for more information.
+
+Please follow these style conventions for consistency:
+
+* Indentation = 4 spaces
+* Use asterisks (\*) to create list items
+* Limited in-line HTML is acceptable (e.g., for images, super/subscript)
