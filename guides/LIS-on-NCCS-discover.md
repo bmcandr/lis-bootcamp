@@ -171,7 +171,7 @@ Follow the [Working with GitHub](https://github.com/NASA-LIS/LISF/blob/master/do
 
 ### LIS Test Cases
 
-You are now ready to work through the LIS test cases. This process will verify that your working environment is set up properly and walk through the process to configure, compile, and run LIS. Instructions and files needed to run the test cases can be found [here](https://lis.gsfc.nasa.gov/tests/lis).* Be sure to follow each step in order as later steps require output from earlier steps.
+You are now ready to work through the LIS test cases. This process will verify that your working environment is set up properly and walk through the process to configure, compile, and run LIS. Instructions and files needed to run the test cases can be found [here](https://lis.gsfc.nasa.gov/tests/lis).* Additional tips are included [here](LIS-testcases.md). Be sure to follow each step in order as later steps require output from earlier steps.
 
 *Note: you **must** check out the specific commit indicated at the bottom of the test case webpage or the testcases may not run successfully.*
 
@@ -208,8 +208,7 @@ To compile LISF on SLES 11 with the GNU compilers:
 
 -----
 
-### Topics to add to this document:
+### Topics to add
 
 * Adding GrADs or other visualization software to your environment
-* Downloading files (e.g., test cases) to Discover?
-* Add others here?
+* Add proposed topics here
