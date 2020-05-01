@@ -20,6 +20,8 @@ The LIS framework is comprised of three components:
 
 <img src='images/LIS-components.png'>
 
+<!--expand this section -->
+
 For more background on LIS, see the following articles:
 
 <!-- add links -->
@@ -31,6 +33,8 @@ For more background on LIS, see the following articles:
 
 ## LIS Bootcamp Documents
 
+<!-- add description of these documents? -->
+
 * [Glossary of Terms and Concepts](LIS-glossary.md)
 * [Getting Started with LIS on NCCS Discover](LIS-on-NCCS-discover.md)
 
@@ -38,13 +42,22 @@ For more background on LIS, see the following articles:
 
 ## Important Links
 
-* [LIS Homepage](https://lis.gsfc.nasa.gov/)
+* [LIS Website](https://lis.gsfc.nasa.gov/)
+    * Documentation
+        * [LIS Documentation](https://lis.gsfc.nasa.gov/documentation/lis)
+            * Planning to contribute? Check out the LIS Developers' Guide before you get started.
+        * [LDT Documentation](https://lis.gsfc.nasa.gov/documentation/ldt)
+        * [LVT Documentation](https://lis.gsfc.nasa.gov/documentation/lvt)
+    * [Frequently Asked Questions](https://lis.gsfc.nasa.gov/faq-page)
 * [LIS GitHub Page](https://github.com/NASA-LIS)
-    * This is where the LIS source code lives
+    * This is where the LIS source code lives!
 * [NASA's Modeling Guru Forum](https://modelingguru.nasa.gov/community/atmospheric/lis)
     * Need help with LIS? Search the forum and ask for help!
-* LIS Documentation
-    * [LIS Documentation](https://lis.gsfc.nasa.gov/documentation/lis)
-    * [LDT Documentation](https://lis.gsfc.nasa.gov/documentation/ldt)
-    * [LVT Documentation](https://lis.gsfc.nasa.gov/documentation/lvt)
-    * [LIS Developers' Guide]()
+
+-----
+
+### Contributing to the LIS Boot Camp
+
+This is a living document and we welcome your contributions! To contribute, please follow the workflow described in the [Working with GitHub](https://github.com/NASA-LIS/LISF/blob/master/docs/working_with_github/working_with_github.adoc) documentation to fork, clone, and initiate a pull request with your changes.
+
+This document is created using Markdown styling which is automatically rendered on GitHub and easily converted to PDF or other filetypes. Check out the [GitHub Guide to Markdown](https://guides.github.com/features/mastering-markdown/) and/or this [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) for more information.

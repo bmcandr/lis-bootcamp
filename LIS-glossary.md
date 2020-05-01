@@ -1,21 +1,36 @@
 # Glossary of Terms/Concepts
 
+The following terms and concepts will likely be encountered as you work with LIS.
+
 * **Batch Script**
-    * a series of commands to be executed by the command-line interpreter, stored in a plain text file. A batch file may contain any command the interpreter accepts interactively and use constructs that enable conditional branching and looping within the batch file, such as IF, FOR, and GOTO labels. The term "batch" is from batch processing, meaning "non-interactive execution", though a batch file may not process a batch of multiple data.(https://en.wikipedia.org/wiki/Batch_file)
+    * a series of commands to be executed by the command-line interpreter, stored in a plain text file. A batch file may contain any command the interpreter accepts interactively and use constructs that enable conditional branching and looping within the batch file, such as IF, FOR, and GOTO labels. The term "batch" is from batch processing, meaning "non-interactive execution", though a batch file may not process a batch of multiple data.
+    * Source: https://en.wikipedia.org/wiki/Batch_file
 * **Bilinear vs. budget bilinear interpolation**
 * **Calibration**
 * **Cold start**
 * **Coupled**
 * **Data assimilation**
+    * a mathematical discipline that seeks to optimally combine theory (usually in the form of a numerical model) with observations
+        * https://en.wikipedia.org/wiki/Data_assimilation
+    * In the LIS framework, the Land Data Toolkit (LDT) provides data assimilation functionality
 * **Data compression**
     * (this has been a recent learning experience in the Air Force project)
     * Reducing file sizes?
 * **Debugging**
-    * TotalView/valgrind/old school print statements
+    * The process of finding and resolving defects or problems within a computer program that prevent correct operation of computer software or a system.
+        * Source: https://en.wikipedia.org/wiki/Debugging
+    * There are a variety of tools used in debugging, including:
+        * [TotalView](https://totalview.io/products/totalview) - debugging software that provides the specialized tools you need to quickly debug, analyze, and scale high-performance computing (HPC) applications. This includes highly dynamic, parallel, and multicore applications that run on diverse hardware — from desktops to supercomputers.
+        * [valgrind](https://valgrind.org/) - an instrumentation framework for building dynamic analysis tools. There are Valgrind tools that can automatically detect many memory management and threading bugs, and profile your programs in detail.
+        * "Old school" print statements - embed print statements in your code to output variables and status messages to the console
 * **Ensembles**
     * **Downscale**
     * **Upscale**
 * **ESMF**
+    >The **E**arth **S**ystem **M**odeling **F**ramework (ESMF) is high-performance, flexible software infrastructure for building and coupling weather, climate, and related Earth science applications. The ESMF defines an architecture for composing complex, coupled modeling systems and includes data structures and utilities for developing individual models.
+    >
+    >The basic idea behind ESMF is that complicated applications should be broken up into coherent pieces, or components, with standard calling interfaces. In ESMF, a component may be a physical domain, or a function such as a coupler or I/O system. ESMF also includes toolkits for building components and applications, such as regridding software, calendar management, logging and error handling, and parallel communications.
+    * Source: https://www.earthsystemcog.org/projects/esmf/
 * **Fluxes**
 * **Forcings**
     * what it means and list of requirements)
@@ -87,9 +102,7 @@
 * **MPI/layout**
 * **Model physics**
 * **netCDF**
-
     * NetCDF (Network Common Data Form) is a set of software libraries and machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data. It is also a community standard for sharing scientific data.
-
     * Official website: https://www.unidata.ucar.edu/software/netcdf/
 * **NU-WRF**
     * The **N**ASA-**U**nified **W**eather **R**esearch and **F**orecasting ([NU-WRF](https://nuwrf.gsfc.nasa.gov/)) model is an observation-driven regional earth system modeling and assimilation system at satellite-resolvable scale. NU-WRF is one of three major earth system modeling systems funded by NASA’s Modeling Analysis and Prediction (MAP) program.
@@ -115,15 +128,20 @@
     * (what it means and list of requirements)
 * **Perturbations**
 * **Private modules**
+    >The Linux modules package is used to manage users' environment variables to allow users to easily access different versions of commonly used software.
+    >
+    >Multiple versions of compilers from different vendors and other support applications are available for users on the Discover cluster. These applications are loaded into your environment through the use of modules.
+    * More information: https://www.nccs.nasa.gov/nccs-users/instructional/using-discover/miscellaneous/using-modules
+    * *Module files to set up an environment for LIS work are available from the LIS team!*
 * **Queue**
 * **Restart**
 * **Routing models**
 * **Scaling (computational)**
 * **Skill scores**
-    * How they matter for model performance(e.g., KGE, NSE, Bias, Correlation, etc.)
+    * How they matter for model performance (e.g., KGE, NSE, Bias, Correlation, etc.)
 * **Spin-up**
     * Definition: The time required for a given model to “forget” initial and boundary conditions and reach a state of statistical equilibrium.
-    * “Spin up time is simply the time taken for the computer model to approach its own climatology after being started from other initial conditions. If a model were perfectly accurate and the initial conditions from which it is started were also perfect, then there would be no spin up time. However, in practice, computer models of the atmosphere and ocean are imperfect and will drift from a given initial state towards their own preferred state.”
+    * >Spin up time is simply the time taken for the computer model to approach its own climatology after being started from other initial conditions. If a model were perfectly accurate and the initial conditions from which it is started were also perfect, then there would be no spin up time. However, in practice, computer models of the atmosphere and ocean are imperfect and will drift from a given initial state towards their own preferred state.
         * Additional answers: https://www.researchgate.net/post/What_does_one_mean_by_Model_Spin_Up_Time
 * **States**
 * **Tile**
