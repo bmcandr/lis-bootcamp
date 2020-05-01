@@ -1,10 +1,46 @@
 # Glossary of Terms/Concepts
 
-**From Christa:**
+* **Batch Script**
+    * a series of commands to be executed by the command-line interpreter, stored in a plain text file. A batch file may contain any command the interpreter accepts interactively and use constructs that enable conditional branching and looping within the batch file, such as IF, FOR, and GOTO labels. The term "batch" is from batch processing, meaning "non-interactive execution", though a batch file may not process a batch of multiple data.(https://en.wikipedia.org/wiki/Batch_file)
+* **Bilinear vs. budget bilinear interpolation**
+* **Calibration**
+* **Cold start**
+* **Coupled**
+* **Data assimilation**
+* **Data compression**
+    * (this has been a recent learning experience in the Air Force project)
+    * Reducing file sizes?
+* **Debugging**
+    * TotalView/valgrind/old school print statements
+* **Ensembles**
+    * **Downscale**
+    * **Upscale**
+* **ESMF**
+* **Fluxes**
+* **Forcings**
+    * what it means and list of requirements)
+    * From LIS 7.0 User Guide:
+        >The boundary conditions describing the (upper) atmospheric fluxes are known as "forcings". LIS makes use of model derived data as well as satellite and ground-based observational data as forcings. The land surface models are typically run using model derived data. The observational data are used to overwrite the model derived data, whenever they are available.
+* **Git/GitHub**
+    * **Git** is a free and open source distributed version-control system (VCS) for tracking changes in source code during software development (although it is not limited to source code/software development).
+        * Git runs *locally*
+        * [Official Website](https://git-scm.com/)
+    * **GitHub** is a commercial service that provides a *remote* hub for git repositories to enable collaboration and dissemination of code
+        * **Pull Request**
+* **GRIB**
+    * GRIB (**GRI**dded **B**inary) is a general purpose, bit-oriented data exchange format. It is an efficient vehicle for transmitting large volumes of gridded data to automated centers over high-speed telecommunication lines using modern protocols. By packing information into the GRIB code, messages (or records * the terms are synonymous in this context) can be made more compact than character oriented bulletins, which will produce faster computer-to-computer transmissions. GRIB can equally well serve as a data storage format, generating the same efficiencies relative to information storage and retrieval devices.
+* **Grid**
+    * **Resolution**
+        * impacts for hydrologic and atmospheric models
+* **HDF5**
+    * The Hierarchical Data Format version 5 (HDF5), is an open source file format that supports large, complex, heterogeneous data. HDF5 uses a "file directory" like structure that allows you to organize data within the file in many different structured ways, as you might do with files on your computer. The HDF5 format also allows for embedding of metadata making it self-describing.
+    * [Alt Overview](https://www.earthdatascience.org/courses/use-data-open-source-python/hierarchical-data-formats-hdf/) -- includes guide to working with HDF5 in Python
+    * [HDF Group Website](https://www.hdfgroup.org/solutions/hdf5/)
+    * [HDF5 Overview](https://www.neonscience.org/about-hdf5)
+* **Initial conditions**
+* **Land Surface Models (LSMs)**
 
-* Land Surface Models
-
-    * Land surface models (LSMs) simulate the exchange of water and energy fluxes
+    * LSMs simulate the exchange of water and energy fluxes <!--too vague-->
     * Land Surface Modeling - Science Background:
 
     > Global climate and the global carbon cycle are, in a direct sense, controlled by exchanges of water, carbon, and energy between the terrestrial biosphere and atmosphere. Thus models of these processes are essential for the purpose of developing predictive capability for the Earth's climate on all time scales, including seasonal climate prediction as well as natural climate fluctuations and human-induced climate change on decadal time scales.
@@ -38,75 +74,58 @@
         * Proper characterization of spatial and temporal variations in water and energy states (e.g., soil moisture and temperature) and fluxes (e.g., evaporation and runoff) and is critical to many scientific and practical applications, including weather prediction, agricultural forecasting, drought and flood risk assessments, and improving understanding of land-atmosphere interactions and climate change impacts.
         * Numerous ground and space based observations are relevant to the water and energy cycles, but often they include errors or spatial and temporal gaps, or they may not contain exactly the information we need (for example, snow cover observations do not tell us how much water the snow contains).
     * LSMs in LIS (and why):
+        * CABLE Land Surface Model
+        * Community Land Model (v2.0)
+        * Catchment Land Surface Model
+        * WRSI Model
+        * HySSIB Land Surface Model
+        * Mosaic Land Surface Model
+        * Noah Land Surface Model
+        * VIC Land Surface Model (v4.1.1 and v 4.1.2.l)
 
-* Forcings (what it means and list of requirements)
-    * From LIS 7.0 User Guide: >The boundary conditions describing the (upper) atmospheric fluxes are known as **"forcings"**. LIS makes use of model derived data as well as satellite and ground-based observational data as forcings. The land surface models are typically run using model derived data. The observational data are used to overwrite the
-    model derived data, whenever they are available.
-* Parameters (what it means and list of requirements)
-* Initial conditions
-* States
-* Fluxes
-* Cold start
-* Restart
-* Spin-up
+        *See the [LIS Reference Manual](https://lis.gsfc.nasa.gov/documentation/lis) for more information about included LSMs.*
+* **MPI/layout**
+* **Model physics**
+* **netCDF**
+
+    * NetCDF (Network Common Data Form) is a set of software libraries and machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data. It is also a community standard for sharing scientific data.
+
+    * Official website: https://www.unidata.ucar.edu/software/netcdf/
+* **NU-WRF**
+    * The **N**ASA-**U**nified **W**eather **R**esearch and **F**orecasting ([NU-WRF](https://nuwrf.gsfc.nasa.gov/)) model is an observation-driven regional earth system modeling and assimilation system at satellite-resolvable scale. NU-WRF is one of three major earth system modeling systems funded by NASA’s Modeling Analysis and Prediction (MAP) program.
+
+        NU-WRF is designed to study following areas:
+
+        * Impacts of land-surface initialization and hydrological data assimilation on mesoscale weather and regional climate.
+        * Feedbacks and coupling between the land surface and planetary boundary layer.
+        * High-impact phenomena, such as hurricane, squall line, blizzard, and drought/flood, dust storms, wildfire, heavy pollution events. 
+        Aerosol-cloud-precipitation interactions.
+        * Mesoscale processes controlling the variability of aerosols and trace gases.
+        * Effects of aerosols and trace gases on regional climate and air quality.
+        * Improve representation of regional water cycle through assimilating precipitation-affected microwave radiance from satellites.
+        * Semi-operational high-resolution weather forecasting to support NASA’s field campaigns.
+        * Downscaling NASA’s global modeling and reanalysis for regional climate.
+        * Supporting current and future satellite missions via satellite simulator.
+        * Improving CO2 flux and transport process representation via high-resolution simulation of the surface state and weather.
+* **Off-line**
+* **Open loop**
+* **OPT/UE**
+    * https://esto.nasa.gov/news/news_LIS_8_2012.html
+* **Parameters**
+    * (what it means and list of requirements)
+* **Perturbations**
+* **Private modules**
+* **Queue**
+* **Restart**
+* **Routing models**
+* **Scaling (computational)**
+* **Skill scores**
+    * How they matter for model performance(e.g., KGE, NSE, Bias, Correlation, etc.)
+* **Spin-up**
     * Definition: The time required for a given model to “forget” initial and boundary conditions and reach a state of statistical equilibrium.
     * “Spin up time is simply the time taken for the computer model to approach its own climatology after being started from other initial conditions. If a model were perfectly accurate and the initial conditions from which it is started were also perfect, then there would be no spin up time. However, in practice, computer models of the atmosphere and ocean are imperfect and will drift from a given initial state towards their own preferred state.”
-    * Additional answers:
-    * https://www.researchgate.net/post/What_does_one_mean_by_Model_Spin_Up_Time
-* Time averaged vs. instantaneous output
-* Bilinear vs. budget bilinear interpolation
-* Off-line
-* Coupled
-* Grid
-* Tile
-* MPI/layout
-* (computational) scaling
-* Queue
-* Routing models
-* Data assimilation
-* NU-WRF
-* OPT/UE
-
-**From Eric:**
-
-* Ensembles
-* Perturbations
-* ESMF
-* netCDF
-    * NetCDF (Network Common Data Form) is a set of software libraries and machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data. It is also a community standard for sharing scientific data.
-    * Official website: https://www.unidata.ucar.edu/software/netcdf/
-* HDF5
-    * The Hierarchical Data Format version 5 (HDF5), is an open source file format that supports large, complex, heterogeneous data. HDF5 uses a "file directory" like structure that allows you to organize data within the file in many different structured ways, as you might do with files on your computer. The HDF5 format also allows for embedding of metadata making it self-describing.
-    * Official website: https://www.hdfgroup.org/solutions/hdf5/
-    * Overview: https://www.neonscience.org/about-hdf5
-    * Alt Overview: https://www.earthdatascience.org/courses/use-data-open-source-python/hierarchical-data-formats-hdf/
-* GRIB
-    * GRIB (**GRI**dded **B**inary) is a general purpose, bit-oriented data exchange format. It is an efficient vehicle for transmitting large volumes of gridded data to automated centers over high-speed telecommunication lines using modern protocols. By packing information into the GRIB code, messages (or records * the terms are synonymous in this context) can be made more compact than character oriented bulletins, which will produce faster computer-to-computer transmissions. GRIB can equally well serve as a data storage format, generating the same efficiencies relative to information storage and retrieval devices.
-* Data compression (this has been a recent learning experience in the Air Force project)
-* Reducing filesizes?
-* Debugging (TotalView, valgrind, old school print statements)
-* Git/GitHub/pull requests
-* Git is a free and open source distributed version-control system (VCS) for tracking changes in source code during software development (although it is not limited to source code/software development).
-    * Official website: https://git-scm.com/
-    * GitHub a commercial service that provides a remote hub for git repositories to enable collaboration and dissemination of code
-* Pull Request
-* private modules
-* Batch script
-    * Batch Scripts consists of a series of commands to be executed by the command-line interpreter, stored in a plain text file. A batch file may contain any command the interpreter accepts interactively and use constructs that enable conditional branching and looping within the batch file, such as IF, FOR, and GOTO labels. The term "batch" is from batch processing, meaning "non-interactive execution", though a batch file may not process a batch of multiple data.(https://en.wikipedia.org/wiki/Batch_file)
-
-**From Tim Lahmers:**
-
-* Calibration
-* Grid resolution (impacts for hydrologic and atmospheric models)
-* Water balance
-* Skill scores and how they matter for model performance (e.g., KGE, NSE, Bias, Correlation, etc.)
-
-**From Kimberly Slinski:**
-
-* Open-loop
-
-**From Brendan:**
-
-* (Ensemble) Upscale
-* (Ensemble) Downscale
-* Model physics
+        * Additional answers: https://www.researchgate.net/post/What_does_one_mean_by_Model_Spin_Up_Time
+* **States**
+* **Tile**
+* **Time-averaged vs. Instantaneous Output**
+* **Water balance**
