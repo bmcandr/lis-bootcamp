@@ -36,7 +36,7 @@ For more background on LIS, see the following articles:
 <!-- add description of these documents? -->
 
 * [Glossary of Terms and Concepts](LIS-glossary.md)
-* [Getting Started with LIS on NCCS Discover](LIS-on-NCCS-discover.md)
+* [Getting Started with LIS on NCCS Discover](guides/LIS-on-NCCS-discover.md)
 
 -----
 
