@@ -1,4 +1,4 @@
-# Intro to LIS on NCCS discover
+# Getting Started with LIS on NCCS Discover
 
 This document provides information to get new users/contributors to LIS up and running on NASA's [Discover](https://www.nccs.nasa.gov/systems/discover) high-performance computing environment.
 
@@ -133,6 +133,7 @@ NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/ins
 
     * SLES11*:
 
+    <!-- update with correct filename -->
     ```sh
     cp /path/to/lisf_7_intel_18 privatemodules/
     ```
@@ -206,10 +207,3 @@ I suspect that most of you want to run LIS in parallel, so you must be careful w
 To compile LISF on SLES 11 with the GNU compilers:
 
 * Load the appropriate module: `module load lisf_7_gnu_4_9_2_mpi`
-
------
-
-### Topics to add
-
-* Adding GrADs or other visualization software to your environment
-* Add proposed topics here
