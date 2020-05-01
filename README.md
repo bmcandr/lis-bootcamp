@@ -1,9 +1,8 @@
 # LIS Boot Camp
 
 This repository contains a collection of information intended to rapidly orient new members of NASA's Land Information System (LIS) team. <!--just team members or new users altogether?-->
-<p align='center'>
-    <img src='images/LIS_logo-FINAL.png' width='25%'>
-</p>
+
+<img src='images/LIS_logo-FINAL.png' width='25%' align='right'>
 
 ## Overview of NASA's Land Information System
 
@@ -19,9 +18,7 @@ The LIS framework is comprised of three components:
 * **Land Data Toolkit (LDT)** - supports the data preprocessing needs for LIS (e.g., parameter data processing, data assimilation support, forcing bias correction)
 * **Land Verification Toolkit (LVT)** - environment for model benchmarking and evaluation
 
-<p align='center'>
-    <img src='images/LIS-components.png'>
-</p>
+<img src='images/LIS-components.png' align='center'>
 
 <!--expand this section -->
 
@@ -67,6 +64,7 @@ This document is created using Markdown styling which is automatically rendered 
 
 Please follow these style conventions for consistency:
 
+* Generally follow GitHub-flavored Markdown conventions
 * Indentation = 4 spaces
 * Use asterisks (\*) to create list items
 * Limited in-line HTML is acceptable (e.g., for images, super/subscript)
