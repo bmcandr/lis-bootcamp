@@ -4,7 +4,6 @@
 
 The following terms and concepts will likely be encountered as you work with LIS. *This document is still in the information collection phase, edits for clarity and brevity to come...*
 
-* **Analysis increments**
 * **Batch Script**
     * a series of commands to be executed by the command-line interpreter, stored in a plain text file. A batch file may contain any command the interpreter accepts interactively and use constructs that enable conditional branching and looping within the batch file, such as IF, FOR, and GOTO labels. The term "batch" is from batch processing, meaning "non-interactive execution", though a batch file may not process a batch of multiple data.
     * Source: <https://en.wikipedia.org/wiki/Batch_file>
@@ -12,8 +11,8 @@ The following terms and concepts will likely be encountered as you work with LIS
     * **Bias correction**
     * **Bias correction algorithm**
         * **Bias-blind**
-        * **Standard normal deviate-based scaling**
-        * **CDF matching**
+            * **Standard normal deviate-based scaling**
+            * **CDF matching**
         * **Bias-aware**
 
 * **Bilinear vs. budget bilinear interpolation**
@@ -35,6 +34,11 @@ The following terms and concepts will likely be encountered as you work with LIS
         * **EKF (Extended Kalman Filter)**
         * **EnKS (Ensemble Kalman Smoother)**
         * **DI (Direct insertion)**
+    * **Analysis increments**
+    * **Innovations**
+    * **Measurement model**
+    * **Forward model**
+    * **Measurement error standard deviation**
 
 * **Data compression**
     * (this has been a recent learning experience in the Air Force project)
@@ -63,7 +67,6 @@ The following terms and concepts will likely be encountered as you work with LIS
     * what it means and list of requirements)
     * From LIS 7.0 User Guide:
         >The boundary conditions describing the (upper) atmospheric fluxes are known as "forcings". LIS makes use of model derived data as well as satellite and ground-based observational data as forcings. The land surface models are typically run using model derived data. The observational data are used to overwrite the model derived data, whenever they are available.
-* **Forward Model**
 * **Git/GitHub**
     * **Git** is a free and open source distributed version-control system (VCS) for tracking changes in source code during software development (although it is not limited to source code/software development).
         * Git runs *locally*
@@ -81,7 +84,6 @@ The following terms and concepts will likely be encountered as you work with LIS
     * [HDF Group Website](https://www.hdfgroup.org/solutions/hdf5/)
     * [HDF5 Overview](https://www.neonscience.org/about-hdf5)
 * **Initial conditions**
-* **Innovations**
 * **Land Surface Models (LSMs)**
 
     * LSMs simulate the exchange of water and energy fluxes <!--too vague-->
@@ -128,8 +130,6 @@ The following terms and concepts will likely be encountered as you work with LIS
         * VIC Land Surface Model (v4.1.1 and v 4.1.2.l)
 
         *See the [LIS Reference Manual](https://lis.gsfc.nasa.gov/documentation/lis) for more information about included LSMs.*
-* **Measurement error standard deviation**
-* **Measurement model**
 * **MPI/layout**
 * **Model physics**
 * **netCDF**
