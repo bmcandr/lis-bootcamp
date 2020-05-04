@@ -73,4 +73,4 @@ Please follow these style conventions for consistency:
 
 <!--Did you contribute? Don't forget to add your name below!-->
 
-Thanks to Sujay Kumar, Christa Peters-Lidard, Jim Geiger, Eric Kemp, Kristi Arsenault, Tim Lahmers, and Kimberly Slinski for their input!
+Thanks to Sujay Kumar, Christa Peters-Lidard, Jim Geiger, Eric Kemp, Kristi Arsenault, Tim Lahmers, Kimberly Slinski, Mahdi Navari for their input!
