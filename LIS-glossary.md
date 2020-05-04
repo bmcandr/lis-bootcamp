@@ -14,8 +14,6 @@ The following terms and concepts will likely be encountered as you work with LIS
             * **Standard normal deviate-based scaling**
             * **CDF matching**
         * **Bias-aware**
-
-* **Bilinear vs. budget bilinear interpolation**
 * **Calibration**
     * Overview (highway traffic modeling): <http://www.dot.state.mn.us/trafficeng/modeling/workshop/C09-ModelCalibration.pdf>
 * **Cold start**
@@ -39,7 +37,6 @@ The following terms and concepts will likely be encountered as you work with LIS
     * **Measurement model**
     * **Forward model**
     * **Measurement error standard deviation**
-
 * **Data compression**
     * (this has been a recent learning experience in the Air Force project)
     * Reducing file sizes?
@@ -56,7 +53,6 @@ The following terms and concepts will likely be encountered as you work with LIS
     * **Number of ensembles**
     * **Ensemble mean**
     * **Ensemble spread**
-
 * **ESMF**
     >The **E**arth **S**ystem **M**odeling **F**ramework (ESMF) is high-performance, flexible software infrastructure for building and coupling weather, climate, and related Earth science applications. The ESMF defines an architecture for composing complex, coupled modeling systems and includes data structures and utilities for developing individual models.
     >
@@ -67,6 +63,7 @@ The following terms and concepts will likely be encountered as you work with LIS
     * what it means and list of requirements)
     * From LIS 7.0 User Guide:
         >The boundary conditions describing the (upper) atmospheric fluxes are known as "forcings". LIS makes use of model derived data as well as satellite and ground-based observational data as forcings. The land surface models are typically run using model derived data. The observational data are used to overwrite the model derived data, whenever they are available.
+    * **Upscaling/downscaling**
 * **Git/GitHub**
     * **Git** is a free and open source distributed version-control system (VCS) for tracking changes in source code during software development (although it is not limited to source code/software development).
         * Git runs *locally*
@@ -84,6 +81,9 @@ The following terms and concepts will likely be encountered as you work with LIS
     * [HDF Group Website](https://www.hdfgroup.org/solutions/hdf5/)
     * [HDF5 Overview](https://www.neonscience.org/about-hdf5)
 * **Initial conditions**
+* **Interpolation**
+    * **Bilinear vs. budget bilinear**
+    * **Nearest-neighbor**
 * **Land Surface Models (LSMs)**
 
     * LSMs simulate the exchange of water and energy fluxes <!--too vague-->
