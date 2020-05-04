@@ -57,15 +57,9 @@ Extract each .tgz file with the following command, replacing `<filename>` with t
   * Initial run failed because `lvt.config.ol.da` points to directory above `$WORKING` and cannot find files such as `lis_input.nldas.noah36.d01.nc`
     * *Solution*: edit config file to point to `$WORKING` (change `..` to `.`)
 
-* **Miscellaneous**
-  * How do I load GrADS and miniconda3 to my environment?
-    * More comfortable with python
-    * Module load? What about creating virtual environments, creating new packages, running jupyter notebooks?
-  * Added NASA email to GitHub, but using GH's hidden email feature...how to reconcile push/pull errors that arise in this case?
-    * I remember Jim mentioned that you can just add NASA email to account, but pushing with public email will be rejected. Can't seem to be able to restrict email address to certain accounts
+-----
 
-
-## Notes from Jim re: Troubleshooting
+## Notes re: Troubleshooting
 
 You will run into one problem.  The older SLES11 nodes allow you to run a single-process MPI run right on the login node like this: `./LIS`; SLES12 does not.  One option is to run interactively on a compute node.  The other is create a new modulefile and recompile LDT, LIS, and LVT without MPI support.
 
@@ -77,8 +71,9 @@ Finally rerun `./configure` and `./compile` for LDT, LIS, and LVT.  Select "seri
 
 You will be able to play along with the instructions in the overview slides right on the SLES12 login node.
 
-********
-UPDATE: configure failed because $LIS_JASPER was undefined in module; added line `setenv LIS_JASPER $def_lis_jasper` and configure worked.
+-----
+
+Configure failed because $LIS_JASPER was undefined in module; added line `setenv LIS_JASPER $def_lis_jasper` and configure worked.
 
 Compile failed: ld: cannot find -ljasper
 
@@ -88,7 +83,7 @@ make: *** [write_GCOMW_AMSR2L3SNDobs.o] Error 139
 
 [ERR] Compile failed
 
-********
+-----
 
 Solution:
 
