@@ -8,12 +8,37 @@ The following terms and concepts will likely be encountered as you work with LIS
     * a series of commands to be executed by the command-line interpreter, stored in a plain text file. A batch file may contain any command the interpreter accepts interactively and use constructs that enable conditional branching and looping within the batch file, such as IF, FOR, and GOTO labels. The term "batch" is from batch processing, meaning "non-interactive execution", though a batch file may not process a batch of multiple data.
     * Source: <https://en.wikipedia.org/wiki/Batch_file>
 * **Bias**
+    >We consider the term **bias** to broadly include any type of error that is systematic rather than random. In statistics, bias is a property of an estimator which, on average, under- or overestimates some quantity. For example, a model which is consistently cold at some location is biased. The bias may be spatially variable, seasonal, diurnal, or even situation-dependent. If we allow some ﬂexibility with respect to the notion of a model (or an observing system) as an estimator, and with the operative deﬁnition of averaging, then any component of error that is systematic in some well-deﬁned sense can be considered a bias. This is consistent with the usage of human forecasters, who describe, for example, the tendency of a particular model to generate excessive surface lows in certain recurring situations as a bias.
+        
+    * Dee, D. P. (2005). Bias and data assimilation. Quarterly Journal of the Royal Meteorological Society: A journal of the atmospheric sciences, applied meteorology and physical oceanography, 131(613), 3323-3343. <https://doi.org/10.1256/qj.05.137>
     * **Bias correction**
-    * **Bias correction algorithm**
-        * **Bias-blind**
+
+        >Climate models exhibit systematic errors (biases) in their output. These errors can be due, among others, to:
+        >
+        >* Limited spatial resolution (horizontal and vertical)
+        >* Simplified physics and thermodynamic processes
+        >* Numerical schemes
+        >* Incomplete knowledge of climate system processes
+        >
+        >Such errors can and generally should be corrected for, before using climate model data in impact studies. The main assumptions of bias correction methods are:
+        >
+        >* Quality of the observations database limits the quality of the correction.
+        >* It is assumed that the bias behaviour of the model does not change with time.
+        >* Limitation: Temporal errors of major circulation systems can not be corrected.
+
+        * Source: <https://climate4impact.eu/impactportal/documentation/guidanceandusecases.jsp?q=bias_correction>
+
+    * **Bias correction approaches and algorithms**
+        * **Bias-blind** *(from Dee 2005)*
+            >Data assimilation systems that are designed to correct random, zero-mean errors in a model-generated background estimate based on unbiased observations might be called **bias-blind**. Routine monitoring of observed-minus-background residuals (also knownas innovations, background residuals, or background departures) in bias-blind systems invariably shows evidence of biases in either the model, the observations, or both.
             * **Standard normal deviate-based scaling**
             * **CDF matching**
-        * **Bias-aware**
+        * **Bias-aware** *(from Dee 2005)*
+            >Similarly, the presence of persistent or repetitive patterns in the analysis increments produced during the assimilation indicates that there are systematic discrepancies between model and observations, and possibly among different components of the observing systemas well. To effectively remove those discrepancies during the data assimilation process requires **bias-aware** assimilation methods, which incorporate speciﬁc assumptions about the source and nature of (some of) the biases in the system, and are speciﬁcally designed to estimate and correct those biases.
+
+    For more information:
+
+    * Kumar, S. V., Reichle, R. H., Harrison, K. W., Peters‐Lidard, C. D., Yatheendradas, S., and Santanello, J. A. ( 2012), A comparison of methods for a priori bias correction in soil moisture data assimilation, Water Resour. Res., 48, W03515, [doi:10.1029/2010WR010261](https://doi.org/10.1029/2010WR010261).
 * **Calibration**
     * Overview (highway traffic modeling): <http://www.dot.state.mn.us/trafficeng/modeling/workshop/C09-ModelCalibration.pdf>
 * **Cold start**
