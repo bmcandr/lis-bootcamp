@@ -59,3 +59,5 @@ For more background on LIS, see the following articles:
 <!--Did you contribute? Don't forget to add your name below!-->
 
 Thanks to Sujay Kumar, Christa Peters-Lidard, Jim Geiger, Eric Kemp, Kristi Arsenault, Tim Lahmers, Kimberly Slinski, Mahdi Navari for their input!
+
+Want to contribute? Check out the [Contribution Guidelines](contribution-guidelines.md)!
