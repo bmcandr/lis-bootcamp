@@ -154,13 +154,21 @@ NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/ins
     module load lisf_7_intel_19_1_0_166
     ```
 
-7. You are now ready to clone [LISF](https://github.com/NASA-LIS/LISF.git) and practice compiling. The storage quota for your `$HOME` directory is pretty small so we suggest that you work in `$NOBACKUP` which is located at `/discover/nobackup/<userid>`.
+7. You are now ready to clone [LISF](https://github.com/NASA-LIS/LISF.git) and practice compiling. The storage quota for your `$HOME` directory is pretty small so we suggest that you work in `$NOBACKUP` which is located at `/discover/nobackup/<userid>`.*
 
     ```sh
     cd $NOBACKUP
     ```
 
-    Follow the [Working with GitHub](https://github.com/NASA-LIS/LISF/blob/master/docs/working_with_github/working_with_github.adoc) documentation to clone the LIS sourcecode into the directory you created.
+    Check the storage quota in your home and $NOBACKUP directories by entering the following command:
+
+    ```sh
+    /usr/local/bin/showquota
+    ```
+
+    Values will be shown in kilobytes (KB). Divide by 1000 to convert to megabytes or 10000 to convert to gigabytes.
+
+8. Follow the [Working with GitHub](https://github.com/NASA-LIS/LISF/blob/master/docs/working_with_github/working_with_github.adoc) documentation to clone the LIS source code into the directory you created.
 
     *New to Git and GitHub? Need a refresher? Try these links:*
 
