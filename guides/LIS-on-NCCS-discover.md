@@ -160,7 +160,7 @@ NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/ins
     cd $NOBACKUP
     ```
 
-    Check the storage quota in your home and $NOBACKUP directories by entering the following command:
+    Check the storage quota in your `$HOME` and `$NOBACKUP` directories by entering the following command:
 
     ```sh
     /usr/local/bin/showquota
