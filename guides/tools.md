@@ -4,6 +4,7 @@ This document provides an overview of programs, utilities, and commands that are
 
 * [diff](#diff---compare-files) - compare files
 * [nccmp](#nccmp---compare-netcdf-files) - compare NetCDF files
+* [slurm](#slurm---batch-queue-utility) - job scheduler
 * [vim](#vim---text-editor)
 
 
@@ -63,7 +64,7 @@ nccmp -dmsf -t 0.1 file1.nc file2.nc
 
 See [the `nccmp` documentation](https://gitlab.com/remikz/nccmp/-/blob/master/README.md) for more information.
 
-## `slurm` - Batch Queue Utility
+## `slurm` - Job Scheduler
 
 * [NCCS' Intro to `slurm`](https://www.nccs.nasa.gov/nccs-users/instructional/using-slurm)
 * [Official Documentation](https://slurm.schedmd.com/documentation.html)
