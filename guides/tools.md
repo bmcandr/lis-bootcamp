@@ -2,7 +2,7 @@
 
 This document provides an overview of programs, utilities, and commands that are useful when working on Discover:
 
-* [diff and cmp](#diff-and-cmp---compare-files) - compare files
+* [diff](#diff---compare-files) - compare files
 * [nccmp](#nccmp---compare-netcdf-files) - compare NetCDF files
 * [vim](#vim---text-editor)
 
