@@ -2,18 +2,28 @@
 
 This document provides an overview of programs, utilities, and commands that are useful when working on Discover:
 
-* [diff](#diff) - compare files
-* [nccmp](#nccmp-netcdf-compare) - compare NetCDF files
-* [vim](#vim-text-editor)
+* [diff and cmp](#diff-and-cmp---compare-files) - compare files
+* [nccmp](#nccmp---compare-netcdf-files) - compare NetCDF files
+* [vim](#vim---text-editor)
 
 
-## `diff`
+## `diff` - Compare Files
 
+The `diff` utility compares files line-by-line. This is useful to quickly compare configuration files, logs, or output containing descriptive statistics (e.g., SURFACEMODEL.d01.stats).
 
+Usage:
 
-## nccmp - NetCDF Compare
+```sh
+diff file1.txt file2.txt
+```
 
-From the [README](https://gitlab.com/remikz/nccmp/-/blob/master/README.md):
+*Note: If the input files are identical, no output will be printed to the terminal unless the `-s` flag is used.*
+
+Use the `--help` flag to learn more.
+
+## `nccmp` - Compare NetCDF Files
+
+From the official [README](https://gitlab.com/remikz/nccmp/-/blob/master/README.md):
 
 >`nccmp` compares two NetCDF files bitwise, semantically or with a user defined tolerance (absolute or relative percentage).  Parallel comparisons are done in local memory without requiring temporary files.  Highly recommended for regression testing scientific models or datasets in a test-driven development environment.
 >
@@ -34,11 +44,12 @@ Useful flags:
 |`-d`|Compare data|
 |`-m`|Compare metadata|
 |`-s`|Report identical files|
-|`-f`|Force comparison of all attributes (normal behavior is to exit on first difference encountered)
-|`-t <threshold>`|Compare if absolute difference is greater than tolerance threshold (e.g., 0.1)
+|`-f`|Forcefully compare, do not stop after first difference|
+|`-t <threshold>`|Compare if absolute difference is greater than tolerance threshold (e.g., 0.1)|
+|`-S` or `--statistics`|Reports statistics for any differences in data values|
+|`-F` or `--fortran`|Print position indices using Fortran style (1-based reverse order)
 
-*For a full list of flags and arguments use `nccmp help` or check [this page](https://gitlab.com/remikz/nccmp/-/blob/master/README.md#usage).*
-
+*For a full list of flags and arguments use `nccmp --help` or check [this page](https://gitlab.com/remikz/nccmp/-/blob/master/README.md#usage).*
 
 Usage:
 
@@ -51,6 +62,11 @@ nccmp -dmsf -t 0.1 file1.nc file2.nc
 ```
 
 See [the `nccmp` documentation](https://gitlab.com/remikz/nccmp/-/blob/master/README.md) for more information.
+
+## `slurm` - Batch Queue Utility
+
+* [NCCS' Intro to `slurm`](https://www.nccs.nasa.gov/nccs-users/instructional/using-slurm)
+* [Official Documentation](https://slurm.schedmd.com/documentation.html)
 
 ## `vim` - Text Editor
 
