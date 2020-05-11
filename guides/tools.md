@@ -5,8 +5,7 @@ This document provides an overview of programs, utilities, and commands that are
 * [diff](#diff---compare-files) - compare files
 * [nccmp](#nccmp---compare-netcdf-files) - compare NetCDF files
 * [slurm](#slurm---batch-queue-utility) - job scheduler
-* [vim](#vim---text-editor)
-
+* [vim](#vim---text-editor) - text editor
 
 ## `diff` - Compare Files
 
