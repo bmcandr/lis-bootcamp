@@ -6,8 +6,8 @@ This repository contains a collection of information intended to rapidly orient 
 
 * [Overview of LIS](#overview-of-nasas-land-information-system)
 * [Important Links](#important-links)
-* [Glossary of Terms and Concepts](LIS-glossary.md)
-* [Getting Started with LIS on NCCS Discover](guides/LIS-on-NCCS-discover.md)
+* [Glossary of Terms and Concepts](docs/LIS-glossary.md)
+* [Getting Started with LIS on NCCS Discover](docs/LIS-on-NCCS-discover.md)
 
 <img src='images/LIS_logo-FINAL.png' width='25%' align='right'>
 
