@@ -9,7 +9,7 @@ The following terms and concepts will likely be encountered as you work with LIS
     * Source: <https://en.wikipedia.org/wiki/Batch_file>
 * **Bias**
     >We consider the term **bias** to broadly include any type of error that is systematic rather than random. In statistics, bias is a property of an estimator which, on average, under- or overestimates some quantity. For example, a model which is consistently cold at some location is biased. The bias may be spatially variable, seasonal, diurnal, or even situation-dependent. If we allow some ﬂexibility with respect to the notion of a model (or an observing system) as an estimator, and with the operative deﬁnition of averaging, then any component of error that is systematic in some well-deﬁned sense can be considered a bias. This is consistent with the usage of human forecasters, who describe, for example, the tendency of a particular model to generate excessive surface lows in certain recurring situations as a bias.
-        
+
     * Dee, D. P. (2005). Bias and data assimilation. Quarterly Journal of the Royal Meteorological Society: A journal of the atmospheric sciences, applied meteorology and physical oceanography, 131(613), 3323-3343. <https://doi.org/10.1256/qj.05.137>
     * **Bias correction**
 
