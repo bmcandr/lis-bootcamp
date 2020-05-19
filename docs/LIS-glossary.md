@@ -204,6 +204,10 @@ The following terms and concepts will likely be encountered as you work with LIS
     * *Module files to set up an environment for LIS work are available from the LIS team!*
 * **Queue**
 * **Restart**
+    >An initial run starts the model from an initial conditions dataset. As the model executes, history datasets, restart datasets and initial condition datasets are written periodically.
+    >...
+    >In addition to initial simulations, there are two types of continuation runs: **restart** and branch. **A restart run is an exact continuation of a previous simulation from its point of termination.**
+    * <http://www.cgd.ucar.edu/cms/ccm3/ccm3lsm_doc/ccm3_doc/UG-18.html>
 * **Routing models**
 * **Scaling (computational)**
 * **Skill scores**
