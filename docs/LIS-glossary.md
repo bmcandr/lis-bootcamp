@@ -42,6 +42,9 @@ The following terms and concepts will likely be encountered as you work with LIS
 * **Calibration**
     * Overview (highway traffic modeling): <http://www.dot.state.mn.us/trafficeng/modeling/workshop/C09-ModelCalibration.pdf>
 * **Cold start**
+    >A cold start usually occurs when a model is first initialized and needs to be spun up. For example, if a regional model is configured in a new domain, it would need to be started in this manner. A cold start could be from climatology (commonly used to initialize global models), an analysis of data (such as MODAS), a forecast from a different model (like using NOGAPS to initialize (COAMPSTM), or a combination of the above. The model is then run until a statistical equilibrium is achieved.
+
+    * <https://www.oc.nps.edu/nom/modeling/initial.html>
 * **Coupled**
     * Overview: <https://www.star.nesdis.noaa.gov/ngmmf/documents/Coupled_Modeling_Tutorial.pdf>
         >In Earth-system models, the term "coupling" is often used in two ways. The first is "offline" coupling, where output from one model is passed to another model for computation of some variable. The second is "online" coupling, where the feedbacks are allowed to pass between the two models. Online coupling is synonymous with "fully coupled".
@@ -106,6 +109,8 @@ The following terms and concepts will likely be encountered as you work with LIS
     * [HDF Group Website](https://www.hdfgroup.org/solutions/hdf5/)
     * [HDF5 Overview](https://www.neonscience.org/about-hdf5)
 * **Initial conditions**
+    * <https://www.merriam-webster.com/dictionary/initial%20condition>
+    * <https://www.public.asu.edu/~kirkwood/sysdyn/SDIntro/ch-9.pdf>
 * **Interpolation**
     * **Bilinear vs. budget bilinear**
     * **Nearest-neighbor**
