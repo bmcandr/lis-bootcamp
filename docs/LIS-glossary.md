@@ -97,7 +97,9 @@ The following terms and concepts will likely be encountered as you work with LIS
         * Git runs *locally*
         * [Official Website](https://git-scm.com/)
     * **GitHub** is a commercial service that provides a *remote* hub for git repositories to enable collaboration and dissemination of code
-        * **Pull Request**
+        * **Pull Requests**
+            >Pull Requests let you tell others about changes you've pushed to a branch in a repository on GitHub. Once a pull request is opened, you can discuss and review the potential changes with collaborators and add follow-up commits before your changes are merged into the base branch.
+            * <https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests>
 * **GRIB**
     * GRIB (**GRI**dded **B**inary) is a general purpose, bit-oriented data exchange format. It is an efficient vehicle for transmitting large volumes of gridded data to automated centers over high-speed telecommunication lines using modern protocols. By packing information into the GRIB code, messages (or records * the terms are synonymous in this context) can be made more compact than character oriented bulletins, which will produce faster computer-to-computer transmissions. GRIB can equally well serve as a data storage format, generating the same efficiencies relative to information storage and retrieval devices.
 * **Grid**
