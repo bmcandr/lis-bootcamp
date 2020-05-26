@@ -1,4 +1,4 @@
-# Contributing to the LIS Bootcamp
+# Contributing to the LIS Boot Camp
 
 This is a living document and we welcome your contributions! To contribute, please follow the workflow described in the [Working with GitHub](https://github.com/NASA-LIS/LISF/blob/master/docs/working_with_github/working_with_github.adoc) documentation to fork, clone, and initiate a pull request with your changes.
 
