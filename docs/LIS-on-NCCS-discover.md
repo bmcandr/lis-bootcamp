@@ -99,9 +99,15 @@ NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/ins
     mv .profile .bashrc profile_temp/
     ```
 
-3. Create a new `.profile` in your `$HOME` directory and add the following to it:
+3. Create a new `.profile` file in your `$HOME` directory...
 
-    <!-- replace with David Mocko's autoloader for SLES11/12? -->
+    ```sh
+    vim .profile
+    ```
+
+    ...and add the following to it:
+
+    <!-- replace with David's autoloader for SLES11/12? -->
 
     ```sh
     # This file is read each time a login shell is started.
@@ -121,31 +127,49 @@ NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/ins
     fi
     ```
 
-4. Make a directory called `privatemodules/` in your `$HOME` directory:
+    This file will be executed every time you log onto Discover to ensure you're working in a clean environment.
+
+    Since you've just created your new `.profile`, you'll need to execute the following command to load your clean environment for this session:
 
     ```sh
-    mkdir privatemodules
+    source $HOME/.profile
     ```
 
-5. Using `curl`, download the modulefiles for SLES11 and SLES12 into `privatemodules/`:
+4. Now that you have a clean environment, environment variables that LIS needs to compile and run must be loaded. To do this we will make use of [modules](https://www.nccs.nasa.gov/nccs-users/instructional/using-discover/miscellaneous/using-modules). Module files created for use with LIS are available in the LISF GitHub repo in the [env/discover](https://github.com/NASA-LIS/LISF/tree/master/env/discover) directory. In this step we will download these module files to Discover.
 
-    * SLES12:
+    Make a directory called `privatemodules/` in your `$HOME` directory to store the module files:
+
+    ```sh
+    mkdir $HOME/privatemodules
+    ```
+
+    Then, change directories into `privatemodules/`:
+
+    ```sh
+    cd $HOME/privatemodules
+    ```
+
+    Using `curl`, download the modulefiles for SLES11 and SLES12 into `privatemodules/`:
+
+    * **SLES12:**
 
         ```sh
         curl -O https://raw.githubusercontent.com/NASA-LIS/LISF/master/env/discover/lisf_7_intel_19_1_0_166
         ```
 
-    * SLES11:
+    * **SLES11:**
 
         ```sh
         curl -O https://raw.githubusercontent.com/NASA-LIS/LISF/master/env/discover/lisf_7_intel_18_0_3_222
         ```
 
+    <!-- add GNU module file? add mpiuni files?-->
+
     *Check [here](https://github.com/NASA-LIS/LISF/tree/master/env/discover) periodically for updated module files.*
 
-6. Load the modulefile.  (*Note: you will have to do this step every time you log onto Discover*)
+5. Load the appropriate modulefile using the `module load` command.
 
-    * SLES12*:
+    * On **SLES12\*:**
 
         ```sh
         module load lisf_7_intel_19_1_0_166
@@ -153,13 +177,19 @@ NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/ins
 
         \**You may encounter issues compiling and running LIS on SLES12. Please see [the SLES12 Issues section](#sles12-issues) for potential solutions.*
 
-    * SLES11:
+    * On **SLES11:**
 
         ```sh
         module load lisf_7_intel_18_0_3_222
         ```
 
-7. The storage quota for your `$HOME` directory is pretty small so we suggest that you work in your `$NOBACKUP` directory which is located at `/discover/nobackup/<userid>`.
+    -----
+
+    ***Note: you will have to load the appropriate module every time you log onto Discover!***
+
+    -----
+
+6. The storage quota for your `$HOME` directory is pretty small so we suggest that you work in your `$NOBACKUP` directory which is located at `/discover/nobackup/<userid>`.
 
     ```sh
     cd $NOBACKUP
@@ -173,7 +203,7 @@ NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/ins
     # Note: Values will be shown in kilobytes (KB). Divide by 1000 to convert to megabytes or 10000 to convert to gigabytes
     ```
 
-8. You are now ready to clone the [LISF](https://github.com/NASA-LIS/LISF.git) repository and practice compiling. Follow the [Working with GitHub](https://github.com/NASA-LIS/LISF/blob/master/docs/working_with_github/working_with_github.adoc) documentation to clone the LIS source code.
+7. You are now ready to clone the [LISF](https://github.com/NASA-LIS/LISF.git) repository and practice compiling. Follow the [Working with GitHub](https://github.com/NASA-LIS/LISF/blob/master/docs/working_with_github/working_with_github.adoc) documentation to clone the LIS source code onto Discover.
 
     *New to Git and GitHub? Need a refresher? Try these links:*
 
@@ -185,7 +215,9 @@ NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/ins
 
 ### LIS Test Cases
 
-You are now ready to work through the LIS test cases. This process will verify that your working environment is set up properly and walk through the process to configure, compile, and run LIS. Instructions and files needed to run the test cases can be found [here](https://lis.gsfc.nasa.gov/tests/lis). Additional tips are included [here](LIS-testcases.md). Be sure to follow each step in order as later steps require output from earlier steps.
+You are now ready to work through the LIS test cases. This process will verify that your working environment is set up properly and walk through the process to configure, compile, and run LDT, LIS, and LVT. Instructions and files needed to run the test cases can be found [here](https://lis.gsfc.nasa.gov/tests/lis). Additional tips are included [here](LIS-testcases.md).
+
+*Be sure to complete each step of the test cases in order because later steps take output from earlier steps as input.*
 
 -----
 
