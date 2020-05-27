@@ -39,8 +39,10 @@ The following terms and concepts will likely be encountered as you work with LIS
     For more information:
 
     * Kumar, S. V., Reichle, R. H., Harrison, K. W., Peters‐Lidard, C. D., Yatheendradas, S., and Santanello, J. A. ( 2012), A comparison of methods for a priori bias correction in soil moisture data assimilation, Water Resour. Res., 48, W03515, [doi:10.1029/2010WR010261](https://doi.org/10.1029/2010WR010261).
-* **Calibration**
-    * Overview (highway traffic modeling): <http://www.dot.state.mn.us/trafficeng/modeling/workshop/C09-ModelCalibration.pdf>
+* **Calibration and Validation**
+    * >**Calibration** the iterative process of comparing the model with real system, revising the model if necessary, comparing again, until a model is accepted (validated).
+    * >**Validation** is a process of comparing the model and its behavior to the real system and its behavior.
+        * <https://www.eg.bucknell.edu/~xmeng/Course/CS6337/Note/master/node70.html>
 * **Cold start**
     >A cold start usually occurs when a model is first initialized and needs to be spun up. For example, if a regional model is configured in a new domain, it would need to be started in this manner. A cold start could be from climatology (commonly used to initialize global models), an analysis of data (such as MODAS), a forecast from a different model (like using NOGAPS to initialize (COAMPSTM), or a combination of the above. The model is then run until a statistical equilibrium is achieved.
 
