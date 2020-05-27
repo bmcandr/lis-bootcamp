@@ -60,4 +60,4 @@ For more background on LIS, see the following articles:
 
 Thanks to Sujay Kumar, Christa Peters-Lidard, Jim Geiger, Eric Kemp, Kristi Arsenault, Tim Lahmers, Kimberly Slinski, Mahdi Navari for their input!
 
-Want to contribute? Check out the [Contribution Guidelines](../CONTRIBUTING.md)!
+Want to contribute? Check out the [Contribution Guidelines](https://github.com/bmcandr/lis-bootcamp/blob/master/CONTRIBUTING.md)!
