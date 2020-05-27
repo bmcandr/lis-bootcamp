@@ -6,10 +6,11 @@ This repository contains a collection of information intended to rapidly orient 
 
 * [Overview of LIS](#overview-of-nasas-land-information-system)
 * [Important Links](#important-links)
-* [Glossary of Terms and Concepts](docs/LIS-glossary.md)
-* [Getting Started with LIS on NCCS Discover](docs/LIS-on-NCCS-discover.md)
+* [Glossary of Terms and Concepts](LIS-glossary.md)
+* [Getting Started with LIS on NCCS Discover](LIS-on-NCCS-discover.md)
 
-<img src='images/LIS_logo-FINAL.png' width='25%' align='right'>
+<img src='../images/LIS_logo-FINAL.png' width='25%' align='right'>
+
 ## Overview of NASA's Land Information System
 
 NASA's Land Information System (LIS) is a software framework for high performance terrestrial hydrology modeling and data assimilation developed with the goal of integrating satellite and ground-based observational data products and advanced modeling techniques to produce optimal fields of land surface states and fluxes. LIS is used to study land surface processes and land-atmosphere interactions, using "best available observations" to force and constrain the models. The LIS framework also enables a number of applications including:
@@ -24,7 +25,7 @@ The LIS framework is comprised of three components:
 * **Land Data Toolkit (LDT)** - supports the data preprocessing needs for LIS (e.g., parameter data processing, data assimilation support, forcing bias correction)
 * **Land Verification Toolkit (LVT)** - environment for model benchmarking and evaluation
 
-<img src='images/LIS-components.png' align='center'>
+<img src='../images/LIS-components.png' align='center'>
 
 <!--expand this section -->
 
@@ -59,4 +60,4 @@ For more background on LIS, see the following articles:
 
 Thanks to Sujay Kumar, Christa Peters-Lidard, Jim Geiger, Eric Kemp, Kristi Arsenault, Tim Lahmers, Kimberly Slinski, Mahdi Navari for their input!
 
-Want to contribute? Check out the [Contribution Guidelines](CONTRIBUTING.md)!
+Want to contribute? Check out the [Contribution Guidelines](../CONTRIBUTING.md)!
