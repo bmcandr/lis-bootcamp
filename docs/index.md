@@ -9,7 +9,7 @@ This repository contains a collection of information intended to rapidly orient 
 * [Glossary of Terms and Concepts](LIS-glossary.md)
 * [Getting Started with LIS on NCCS Discover](LIS-on-NCCS-discover.md)
 
-<img src='../images/LIS_logo-FINAL.png' width='25%' align='right'>
+<img src='images/LIS_logo-FINAL.png' width='25%' align='right'>
 
 ## Overview of NASA's Land Information System
 
@@ -25,7 +25,7 @@ The LIS framework is comprised of three components:
 * **Land Data Toolkit (LDT)** - supports the data preprocessing needs for LIS (e.g., parameter data processing, data assimilation support, forcing bias correction)
 * **Land Verification Toolkit (LVT)** - environment for model benchmarking and evaluation
 
-<img src='../images/LIS-components.png' align='center'>
+<img src='images/LIS-components.png' align='center'>
 
 <!--expand this section -->
 
