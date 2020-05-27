@@ -2,6 +2,8 @@
 
 This repository contains a collection of information intended to rapidly orient new members of NASA's Land Information System (LIS) team. <!--just team members or new users altogether?-->
 
+View the LIS Bootcamp as a rendered website here: <https://bmcandr.github.io/lis-bootcamp>
+
 ## Contents
 
 * [Overview of LIS](#overview-of-nasas-land-information-system)
@@ -10,6 +12,7 @@ This repository contains a collection of information intended to rapidly orient 
 * [Getting Started with LIS on NCCS Discover](docs/LIS-on-NCCS-discover.md)
 
 <img src='docs/images/LIS_logo-FINAL.png' width='25%' align='right'>
+
 ## Overview of NASA's Land Information System
 
 NASA's Land Information System (LIS) is a software framework for high performance terrestrial hydrology modeling and data assimilation developed with the goal of integrating satellite and ground-based observational data products and advanced modeling techniques to produce optimal fields of land surface states and fluxes. LIS is used to study land surface processes and land-atmosphere interactions, using "best available observations" to force and constrain the models. The LIS framework also enables a number of applications including:
@@ -63,4 +66,3 @@ Want to contribute? Check out the [Contribution Guidelines](CONTRIBUTING.md)!
 
 -----
 
-View the LIS Bootcamp as a rendered website here: <https://bmcandr.github.io/lis-bootcamp>
