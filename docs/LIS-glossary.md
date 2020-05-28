@@ -39,8 +39,10 @@ The following terms and concepts will likely be encountered as you work with LIS
     For more information:
 
     * Kumar, S. V., Reichle, R. H., Harrison, K. W., Peters‐Lidard, C. D., Yatheendradas, S., and Santanello, J. A. ( 2012), A comparison of methods for a priori bias correction in soil moisture data assimilation, Water Resour. Res., 48, W03515, [doi:10.1029/2010WR010261](https://doi.org/10.1029/2010WR010261).
-* **Calibration**
-    * Overview (highway traffic modeling): <http://www.dot.state.mn.us/trafficeng/modeling/workshop/C09-ModelCalibration.pdf>
+* **Calibration and Validation**
+    * >**Calibration** the iterative process of comparing the model with real system, revising the model if necessary, comparing again, until a model is accepted (validated).
+    * >**Validation** is a process of comparing the model and its behavior to the real system and its behavior.
+        * <https://www.eg.bucknell.edu/~xmeng/Course/CS6337/Note/master/node70.html>
 * **Cold start**
     >A cold start usually occurs when a model is first initialized and needs to be spun up. For example, if a regional model is configured in a new domain, it would need to be started in this manner. A cold start could be from climatology (commonly used to initialize global models), an analysis of data (such as MODAS), a forecast from a different model (like using NOGAPS to initialize (COAMPSTM), or a combination of the above. The model is then run until a statistical equilibrium is achieved.
 
@@ -52,14 +54,24 @@ The following terms and concepts will likely be encountered as you work with LIS
         >A good example is when wildfires are modeled with coupled meteorology-chemistry models. Historically, the aerosol emissions from the fire would be modeled by a separate chemistry model that only used the meteorology model as an input (e.g. offline coupling). However, now you can fully couple (e.g. online coupling) the chemistry with the weather such that the heat and aerosol released from the fire perturbs the meteorological/radiation calculations in the next iterated time step.
         * Source: <https://earthscience.stackexchange.com/questions/4792/meaning-of-coupling-in-modelling>
 * **Data assimilation**
-    * a mathematical discipline that seeks to optimally combine theory (usually in the form of a numerical model) with observations
+    * >a mathematical discipline that seeks to optimally combine theory (usually in the form of a numerical model) with observations
         * <https://en.wikipedia.org/wiki/Data_assimilation>
-    * In the LIS framework, the Land Data Toolkit (LDT) provides data assimilation functionality
-    * **Assimilation algorithms**
+    * Update above quote with info from <http://robinson.seas.harvard.edu/PAPERS/red_report_62.html>?
+    * **Algorithms**
+        * [Understanding Kalman Filters](https://www.youtube.com/watch?v=mwn8xhgNpFY) video series from Matlab
         * **EnKF (Ensemble Kalman Filter)**
+            * >The ensemble Kalman flter (EnKF) is an approximate fltering method introduced in the geophysics literature by [Evensen (1994)](https://doi.org/10.1029/94JC00572). In contrast to the standard Kalman flter ([Kalman 1960](https://www.cs.unc.edu/~welch/kalman/media/pdf/Kalman1960.pdf)), which works with the entire distribution of the state explicitly, the EnKF stores, propagates, and updates an ensemble of vectors that approximates the state distribution. This ensemble representation is a form of dimension reduction, in that only a small ensemble is propagated instead of the joint distribution including the full covariance matrix. When new observations become available, the ensemble is updated by a linear “shift” based on the assumption of a linear Gaussian state-space model. Hence, additional approximations are introduced when non-Gaussianity or nonlinearity is involved. However, the EnKF has been highly successful in many extremely high-dimensional, nonlinear, and non-Gaussian data-assimilation applications. It is an embodiment of the principle that an approximate solution to the right problem is worth more than a precise solution to the wrong problem (Tukey 1962). For many realistic, highly complex systems, the EnKF is essentially the only way to do (approximate) inference, while alternative exact inference techniques can only be applied to highly simplifed versions of the problem.
+            * Source: [Understanding the Ensemble Kalman Filter](https://www.math.umd.edu/~slud/RITF17/enkf-tutorial.pdf)
         * **EKF (Extended Kalman Filter)**
+            * >In estimation theory, the extended Kalman filter (EKF) is the nonlinear version of the Kalman filter which linearizes about an estimate of the current mean and covariance.
+            * Source <https://en.wikipedia.org/wiki/Extended_Kalman_filter>
         * **EnKS (Ensemble Kalman Smoother)**
+            * >A Kalman smoother is a direct generalization of the Kalman filter which incorporates observations both before and after the analysis time.
+            * Source: <https://ams.confex.com/ams/pdfpapers/28864.pdf>
         * **DI (Direct insertion)**
+            * >Direct Insertion consists of replacing the forecast values by the observed ones, at all data points.
+            * Source: <http://robinson.seas.harvard.edu/PAPERS/red_report_62.html>
+        * The above algorithms are discussed in the context of LIS in [Kumar et al. 2008](https://pubag.nal.usda.gov/download/23495/PDF)
     * **Analysis increments**
     * **Innovations**
     * **Measurement model**
