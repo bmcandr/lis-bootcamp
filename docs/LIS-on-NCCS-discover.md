@@ -203,13 +203,120 @@ NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/ins
     # Note: Values will be shown in kilobytes (KB). Divide by 1000 to convert to megabytes or 10000 to convert to gigabytes
     ```
 
-7. You are now ready to clone the [LISF](https://github.com/NASA-LIS/LISF.git) repository and practice compiling. Follow the [Working with GitHub](https://github.com/NASA-LIS/LISF/blob/master/docs/working_with_github/working_with_github.adoc) documentation to clone the LIS source code onto Discover.
+-----
 
-    *New to Git and GitHub? Need a refresher? Try these links:*
+### Cloning the LIS Source Code
 
-    * *[Intro to Git](https://git-scm.com/book/en/v2)*
-    * *[GitHub Guide (Text)](https://help.github.com/en/github)*
-    * *[GitHub Guide (Videos)](https://www.youtube.com/playlist?list=PLg7s6cbtAD15G8lNyoaYDuKZSKyJrgwB-)*
+You are now ready to clone the [LISF](https://github.com/NASA-LIS/LISF.git) source code repository and practice compiling. More information about how the LIS team collaborates can be found in the [Working with GitHub](https://github.com/NASA-LIS/LISF/blob/master/docs/working_with_github/working_with_github.adoc) documentation.
+
+*New to Git and GitHub? Need a refresher? Try these links:* *[Intro to Git](https://git-scm.com/book/en/v2)* / *[GitHub Guide (Text)](https://help.github.com/en/github)* / *[GitHub Guide (Videos)](https://www.youtube.com/playlist?list=PLg7s6cbtAD15G8lNyoaYDuKZSKyJrgwB-)*
+
+1. In your `$NOBACKUP` directory, create a new directory to work in:
+
+    ```sh
+    cd $NOBACKUP
+    mkdir temp
+    cd temp/
+    ```
+
+2. Load Git using `module`:
+
+    ```sh
+    module load git         # SLES 12
+    # OR
+    module load other/git   # SLES 11
+    ```
+
+    *[Click here](https://www.nccs.nasa.gov/nccs-users/instructional/using-discover/miscellaneous/using-modules) more information on using modules.*
+
+3. Clone the LISF source code:
+
+    ```sh
+    git clone https://github.com/NASA-LIS/LISF.git
+    Cloning into 'LISF'...
+    remote: Enumerating objects: 23, done.
+    remote: Counting objects: 100% (23/23), done.
+    remote: Compressing objects: 100% (23/23), done.
+    remote: Total 11963 (delta 8), reused 4 (delta 0), pack-reused 11940
+    Receiving objects: 100% (11963/11963), 12.98 MiB | 0 bytes/s, done.
+    Resolving deltas: 100% (7547/7547), done.
+    Checking out files: 100% (5615/5615), done.
+    ```
+
+    This will download the [Git repository](https://github.com/NASA-LIS/LISF.git) containing the LIS source code into a directory named `LISF/`.
+
+4. Change directories into `LISF/` and check the status of the repository:
+
+    ```sh
+    cd LISF
+    git status
+    On branch master
+    Your branch is up-to-date with 'origin/master'.
+    nothing to commit, working tree clean
+    ```
+
+You are now ready to practice compiling.
+
+-----
+
+### Quick Compile Guide
+
+This section will provide a brief overview of the process to build the LIS executable from the source code (i.e., compiling). More information can be found in the [LIS Users' Guide](https://modelingguru.nasa.gov/docs/DOC-2634) (See *Section 5.4. Build Instructions*).
+
+1. From the `LISF/` directory, run the configure script inside the `lis/` directory:
+    
+    ```sh
+    cd lis
+    ./configure
+    ```
+
+    You will then be asked to select your configuration options. Note that for some settings, the default option is sufficient and you can simply press *Enter*. For others, you may want to select another option (e.g., NetCDF settings). Again, more details about these settings may be found in the LIS documentation.
+
+    ```sh 
+    Choose the following configure options:
+    Parallelism (0-serial, 1-dmpar, default=1):
+    Optimization level (-3=strict checks with warnings, -2=strict checks, -1=debug, 0,1,2,3, default=2):
+    Assume little/big_endian data format (1-little, 2-big, default=2):
+    Use GRIBAPI/ECCODES? (0-neither, 1-gribapi, 2-eccodes, default=1): 2
+    Enable AFWA-specific grib configuration settings? (1-yes, 0-no, default=0):
+    Use NETCDF? (1-yes, 0-no, default=1):
+    NETCDF version (3 or 4, default=4):
+    # the following netcdf compression flags are turned off to speed up writing netcdf files
+    NETCDF use shuffle filter? (1-yes, 0-no, default = 1): 0
+    NETCDF use deflate filter? (1-yes, 0-no, default = 1): 0
+    NETCDF use deflate level? (1 to 9-yes, 0-no, default = 9): 0
+    Use HDF4? (1-yes, 0-no, default=1):
+    Use HDF5? (1-yes, 0-no, default=1):
+    Use HDFEOS? (1-yes, 0-no, default=1):
+    Use MINPACK? (1-yes, 0-no, default=0):
+    Use LIS-CRTM? (1-yes, 0-no, default=0):
+    Use LIS-CMEM? (1-yes, 0-no, default=0):
+    Use LIS-LAPACK? (1-yes, 0-no, default=0):
+    ```
+
+2. Compile LIS:
+
+    ```sh
+    ./compile
+    ```
+
+    After entering this command you will see a lot of text scrolling by your screen as LIS compiles. This process may take 15-20 minutes and, barring any errors, will result in a file named `LIS`. If you encounter an error, check the LIS documentation and search ModelingGuru for solutions.
+
+    Once you are comfortable with this process, you can speed up the compilation process by modifying the above command to utilize more jobs:
+
+    ```sh
+    ./compile -j 16
+    ```
+
+    *Note that recently folks have been encountering “random” compilation failures.  Rerunning this step clears the error. See the [SLES 12 Issues](#sles12-issues) section below for more information.*
+
+3. Move the `LIS` executable into your working directory:
+
+    ```sh
+    mv LIS ../../   # moves the exectuable up two directories (out of the LISF repo)
+    ```
+
+You have now compiled the LIS source code to create an exectuable file. The same process is used to build executables for LDT and LVT.
 
 -----
 
