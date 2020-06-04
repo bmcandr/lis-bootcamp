@@ -44,7 +44,7 @@ This document provides information to get new users/contributors to LIS up and r
 2. Open the terminal* and connect to Discover using ssh:
 
     ```sh
-    ssh discover
+    % ssh discover
     ```
 
     You will be connected to a login node running the SLES12 operating system.
@@ -52,7 +52,7 @@ This document provides information to get new users/contributors to LIS up and r
     * To jump to one of the older SLES11 login nodes enter the following command while connected to Discover:
 
         ```sh
-        ssh -Y discover-sles11
+        % ssh -Y discover-sles11
         ```
 
     \**Windows users will have to install a terminal emulator such as [PuTTY](https://www.putty.org/) or [MobaXterm](https://mobaxterm.mobatek.net/download.html)*.
@@ -66,18 +66,18 @@ This document provides information to get new users/contributors to LIS up and r
 If the connection was successful you will see something like this:
 
 ```sh
-Your password will expire in X day(s).
-Last login: 1 Jan 1 12:00:00 1970 from login1.nccs.nasa.gov
-
-*******************************************************************************
-
-Please see the NCCS website for current status:
-
-http://www.nccs.nasa.gov/sys.status/motd.html
-
-*******************************************************************************
-
-<userid>@discoverNN:~>
+> Your password will expire in X day(s).
+> Last login: 1 Jan 1 12:00:00 1970 from login1.nccs.nasa.gov
+>
+> *******************************************************************************
+>
+> Please see the NCCS website for current status:
+>
+> http://www.nccs.nasa.gov/sys.status/motd.html
+>
+> *******************************************************************************
+>
+> <userid>@discoverNN:~>
 ```
 
 NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/instructional/logging-in/bastion-host) for connecting to their systems.
@@ -89,20 +89,20 @@ NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/ins
 1. Change directories to your `$HOME` directory:
 
     ```sh
-    cd $HOME
+    % cd $HOME
     ```
 
 2. We suggest that you start with a clean login environment. To do so, move your `.profile` and, assuming you are using bash, `.bashrc` files to another directory for safekeeping. If your `.bashrc` file does not run any `module load` commands nor sets any critical environment variables like `$PATH` or `$LD_LIBRARY_PATH`, then you should be safe leaving your `.bashrc` file alone.
 
     ```sh
-    mkdir profile_temp
-    mv .profile .bashrc profile_temp/
+    % mkdir profile_temp
+    % mv .profile .bashrc profile_temp/
     ```
 
 3. Create a new `.profile` file in your `$HOME` directory...
 
     ```sh
-    vim .profile
+    % vim .profile
     ```
 
     ...and add the following to it:
@@ -132,7 +132,7 @@ NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/ins
     Since you've just created your new `.profile`, you'll need to execute the following command to load your clean environment for this session:
 
     ```sh
-    source $HOME/.profile
+    % source $HOME/.profile
     ```
 
 4. Now that you have a clean environment, environment variables that LIS needs to compile and run must be loaded. To do this we will make use of [modules](https://www.nccs.nasa.gov/nccs-users/instructional/using-discover/miscellaneous/using-modules). Module files created for use with LIS are available in the LISF GitHub repo in the [env/discover](https://github.com/NASA-LIS/LISF/tree/master/env/discover) directory. In this step we will download these module files to Discover.
@@ -140,13 +140,13 @@ NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/ins
     Make a directory called `privatemodules/` in your `$HOME` directory to store the module files:
 
     ```sh
-    mkdir $HOME/privatemodules
+    % mkdir $HOME/privatemodules
     ```
 
     Then, change directories into `privatemodules/`:
 
     ```sh
-    cd $HOME/privatemodules
+    % cd $HOME/privatemodules
     ```
 
     Using `curl`, download the modulefiles for SLES11 and SLES12 into `privatemodules/`:
@@ -154,13 +154,13 @@ NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/ins
     * **SLES12:**
 
         ```sh
-        curl -O https://raw.githubusercontent.com/NASA-LIS/LISF/master/env/discover/lisf_7_intel_19_1_0_166
+        % curl -O https://raw.githubusercontent.com/NASA-LIS/LISF/master/env/discover/lisf_7_intel_19_1_0_166
         ```
 
     * **SLES11:**
 
         ```sh
-        curl -O https://raw.githubusercontent.com/NASA-LIS/LISF/master/env/discover/lisf_7_intel_18_0_3_222
+        % curl -O https://raw.githubusercontent.com/NASA-LIS/LISF/master/env/discover/lisf_7_intel_18_0_3_222
         ```
 
     <!-- add GNU module file? add mpiuni files?-->
@@ -172,7 +172,7 @@ NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/ins
     * On **SLES12\*:**
 
         ```sh
-        module load lisf_7_intel_19_1_0_166
+        % module load lisf_7_intel_19_1_0_166
         ```
 
         \**You may encounter issues compiling and running LIS on SLES12. Please see [the SLES12 Issues section](#sles12-issues) for potential solutions.*
@@ -180,7 +180,7 @@ NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/ins
     * On **SLES11:**
 
         ```sh
-        module load lisf_7_intel_18_0_3_222
+        % module load lisf_7_intel_18_0_3_222
         ```
 
     -----
@@ -192,13 +192,13 @@ NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/ins
 6. The storage quota for your `$HOME` directory is pretty small so we suggest that you work in your `$NOBACKUP` directory which is located at `/discover/nobackup/<userid>`.
 
     ```sh
-    cd $NOBACKUP
+    % cd $NOBACKUP
     ```
 
     You can check the storage quota in your `$HOME` and `$NOBACKUP` directories by entering the following command:
 
     ```sh
-    /usr/local/bin/showquota
+    % /usr/local/bin/showquota
 
     # Note: Values will be shown in kilobytes (KB). Divide by 1000 to convert to megabytes or 10000 to convert to gigabytes
     ```
@@ -214,17 +214,17 @@ You are now ready to clone the [LISF](https://github.com/NASA-LIS/LISF.git) sour
 1. In your `$NOBACKUP` directory, create a new directory to work in:
 
     ```sh
-    cd $NOBACKUP
-    mkdir temp
-    cd temp/
+    % cd $NOBACKUP
+    % mkdir temp
+    % cd temp/
     ```
 
 2. Load Git using `module`:
 
     ```sh
-    module load git         # SLES 12
+    % module load git         # SLES 12
     # OR
-    module load other/git   # SLES 11
+    % module load other/git   # SLES 11
     ```
 
     *[Click here](https://www.nccs.nasa.gov/nccs-users/instructional/using-discover/miscellaneous/using-modules) more information on using modules.*
@@ -232,15 +232,15 @@ You are now ready to clone the [LISF](https://github.com/NASA-LIS/LISF.git) sour
 3. Clone the LISF source code:
 
     ```sh
-    git clone https://github.com/NASA-LIS/LISF.git
-    Cloning into 'LISF'...
-    remote: Enumerating objects: 23, done.
-    remote: Counting objects: 100% (23/23), done.
-    remote: Compressing objects: 100% (23/23), done.
-    remote: Total 11963 (delta 8), reused 4 (delta 0), pack-reused 11940
-    Receiving objects: 100% (11963/11963), 12.98 MiB | 0 bytes/s, done.
-    Resolving deltas: 100% (7547/7547), done.
-    Checking out files: 100% (5615/5615), done.
+    % git clone https://github.com/NASA-LIS/LISF.git
+    > Cloning into 'LISF'...
+    > remote: Enumerating objects: 23, done.
+    > remote: Counting objects: 100% (23/23), done.
+    > remote: Compressing objects: 100% (23/23), done.
+    > remote: Total 11963 (delta 8), reused 4 (delta 0), pack-reused 11940
+    > Receiving objects: 100% (11963/11963), 12.98 MiB | 0 bytes/s, done.
+    > Resolving deltas: 100% (7547/7547), done.
+    > Checking out files: 100% (5615/5615), done.
     ```
 
     This will download the [Git repository](https://github.com/NASA-LIS/LISF.git) containing the LIS source code into a directory named `LISF/`.
@@ -248,11 +248,11 @@ You are now ready to clone the [LISF](https://github.com/NASA-LIS/LISF.git) sour
 4. Change directories into `LISF/` and check the status of the repository:
 
     ```sh
-    cd LISF
-    git status
-    On branch master
-    Your branch is up-to-date with 'origin/master'.
-    nothing to commit, working tree clean
+    % cd LISF
+    % git status
+    > On branch master
+    > Your branch is up-to-date with 'origin/master'.
+    > nothing to commit, working tree clean
     ```
 
 You are now ready to practice compiling.
@@ -266,38 +266,40 @@ This section will provide a brief overview of the process to build the LIS execu
 1. From the `LISF/` directory, run the configure script inside the `lis/` directory:
     
     ```sh
-    cd lis
-    ./configure
+    % cd lis
+    % ./configure
     ```
 
     You will then be asked to select your configuration options. Note that for some settings, the default option is sufficient and you can simply press *Enter*. For others, you may want to select another option (e.g., NetCDF settings). Again, more details about these settings may be found in the LIS documentation.
 
-    ```sh 
-    Choose the following configure options:
-    Parallelism (0-serial, 1-dmpar, default=1):
-    Optimization level (-3=strict checks with warnings, -2=strict checks, -1=debug, 0,1,2,3, default=2):
-    Assume little/big_endian data format (1-little, 2-big, default=2):
-    Use GRIBAPI/ECCODES? (0-neither, 1-gribapi, 2-eccodes, default=1): 2
-    Enable AFWA-specific grib configuration settings? (1-yes, 0-no, default=0):
-    Use NETCDF? (1-yes, 0-no, default=1):
-    NETCDF version (3 or 4, default=4):
+    ```sh
+    > Choose the following configure options:
+    > Parallelism (0-serial, 1-dmpar, default=1):
+    > Optimization level (-3=strict checks with warnings, -2=strict checks, -1=debug, 0,1,2,3, default=2):
+    > Assume little/big_endian data format (1-little, 2-big, default=2):
+    > Use GRIBAPI/ECCODES? (0-neither, 1-gribapi, 2-eccodes, default=1): 2
+    > Enable AFWA-specific grib configuration settings? (1-yes, 0-no, default=0):
+    > Use NETCDF? (1-yes, 0-no, default=1):
+    > NETCDF version (3 or 4, default=4):
     # the following netcdf compression flags are turned off to speed up writing netcdf files
-    NETCDF use shuffle filter? (1-yes, 0-no, default = 1): 0
-    NETCDF use deflate filter? (1-yes, 0-no, default = 1): 0
-    NETCDF use deflate level? (1 to 9-yes, 0-no, default = 9): 0
-    Use HDF4? (1-yes, 0-no, default=1):
-    Use HDF5? (1-yes, 0-no, default=1):
-    Use HDFEOS? (1-yes, 0-no, default=1):
-    Use MINPACK? (1-yes, 0-no, default=0):
-    Use LIS-CRTM? (1-yes, 0-no, default=0):
-    Use LIS-CMEM? (1-yes, 0-no, default=0):
-    Use LIS-LAPACK? (1-yes, 0-no, default=0):
+    > NETCDF use shuffle filter? (1-yes, 0-no, default = 1): 0
+    > NETCDF use deflate filter? (1-yes, 0-no, default = 1): 0
+    > NETCDF use deflate level? (1 to 9-yes, 0-no, default = 9): 0
+    > Use HDF4? (1-yes, 0-no, default=1):
+    > Use HDF5? (1-yes, 0-no, default=1):
+    > Use HDFEOS? (1-yes, 0-no, default=1):
+    > Use MINPACK? (1-yes, 0-no, default=0):
+    > Use LIS-CRTM? (1-yes, 0-no, default=0):
+    > Use LIS-CMEM? (1-yes, 0-no, default=0):
+    > Use LIS-LAPACK? (1-yes, 0-no, default=0):
     ```
+
+    *Note that the configurations settings you select may differ based on the module you have loaded.*
 
 2. Compile LIS:
 
     ```sh
-    ./compile
+    % ./compile
     ```
 
     After entering this command you will see a lot of text scrolling by your screen as LIS compiles. This process may take 15-20 minutes and, barring any errors, will result in a file named `LIS`. If you encounter an error, check the LIS documentation and search ModelingGuru for solutions.
@@ -305,7 +307,7 @@ This section will provide a brief overview of the process to build the LIS execu
     Once you are comfortable with this process, you can speed up the compilation process by modifying the above command to utilize more jobs:
 
     ```sh
-    ./compile -j 16
+    % ./compile -j 16
     ```
 
     *Note that recently folks have been encountering “random” compilation failures.  Rerunning this step clears the error. See the [SLES 12 Issues](#sles12-issues) section below for more information.*
@@ -313,7 +315,7 @@ This section will provide a brief overview of the process to build the LIS execu
 3. Move the `LIS` executable into your working directory:
 
     ```sh
-    mv LIS ../../   # moves the exectuable up two directories (out of the LISF repo)
+    % mv LIS ../../   # moves the exectuable up two directories (out of the LISF repo)
     ```
 
 You have now compiled the LIS source code to create an exectuable file. The same process is used to build executables for LDT and LVT.
