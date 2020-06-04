@@ -41,6 +41,12 @@ This document provides information to get new users/contributors to LIS up and r
 
     \**Forgot your AUID? Visit [NAMS](https://nams.nasa.gov) and select Your Identity from the Identities dropdown menu.*
 
+-----
+
+*NOTE: In code examples that follow, the `%` symbol at the beginning of the line represents the command-line prompt. You do not type that when entering any of the commands. Text following a `>` represent sample output returned after running a given command.*
+
+-----
+
 2. Open the terminal* and connect to Discover using ssh:
 
     ```sh
@@ -264,7 +270,7 @@ You are now ready to practice compiling.
 This section will provide a brief overview of the process to build the LIS executable from the source code (i.e., compiling). More information can be found in the [LIS Users' Guide](https://modelingguru.nasa.gov/docs/DOC-2634) (See *Section 5.4. Build Instructions*).
 
 1. From the `LISF/` directory, run the configure script inside the `lis/` directory:
-    
+
     ```sh
     % cd lis
     % ./configure
