@@ -2,11 +2,13 @@
 
 This document provides information to get new users/contributors to LIS up and running on NASA's [Discover](https://www.nccs.nasa.gov/systems/discover) high-performance computing environment. We recommend reviewing the [user information](https://www.nccs.nasa.gov/nccs-users/) and [instructional videos](https://www.nccs.nasa.gov/nccs-users/instructional/instructional-videos) available on the NCCS website before continuing with this guide.
 
-## Table of Contents
+## Contents
 
 * [Accessing Discover](#accessing-discover)
 * [Setting up your Environment](#setting-up-your-environment-on-discover)
-* [LIS Test Cases](#lis-test-cases)
+* [Cloning the LIS Source Code](#Cloning-the-LIS-Source-Code)
+* [Compiling LIS Components](#Compiling-LIS-Components)
+* [Useful Programs, Utilities, and Commands](#Useful-Programs,-Utilities,-and-Commands)
 
 -----
 
@@ -14,16 +16,19 @@ This document provides information to get new users/contributors to LIS up and r
 
 ### Prerequisites
 
+What do you need to access Discover?
+
 * NASA IdMax identity
 * RSA Key
     * Submit [NAMS](https://idmax.nasa.gov/) request *Agency RSA SecurID Token* and follow included instructions
 * An account with [NASA Center for Climate Simulation](https://www.nccs.nasa.gov/nccs-users/instructional/account-set-up) (NCCS)
-* Discover permissions
-    * Ask your PI
+* Discover permissions (ask your PI)
 * Familiarity with using the terminal or shell (e.g., bash)
     * Need a refresher? [Try this!](http://swcarpentry.github.io/shell-novice/)
 
 ### Connecting to Discover
+
+In the examples that follow, the `%` symbol at the beginning of the line represents the command-line prompt. You do not type that when entering any of the commands. Text following a `>` represents example output that should be returned after running a given command. When copy-pasting into or out of the terminal, you may find that the familiar `Ctrl+C`/`Ctrl+V` keyboard shortcuts do not work. Instead, copy or paste by right clicking on the terminal and selecting the action you'd like to take from the context menu that appears.
 
 1. On your local computer, add the following to your `$HOME/.ssh/config` file:
 
@@ -40,12 +45,6 @@ This document provides information to get new users/contributors to LIS up and r
     Where `<userid>` is your NASA AUID*. This configuration file makes it easier to connect to Discover.
 
     \**Forgot your AUID? Visit [NAMS](https://nams.nasa.gov) and select Your Identity from the Identities dropdown menu.*
-
------
-
-*NOTE: In code examples that follow, the `%` symbol at the beginning of the line represents the command-line prompt. You do not type that when entering any of the commands. Text following a `>` represent sample output returned after running a given command.*
-
------
 
 2. Open the terminal* and connect to Discover using ssh:
 
@@ -211,7 +210,7 @@ NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/ins
 
 -----
 
-### Cloning the LIS Source Code
+## Cloning the LIS Source Code
 
 You are now ready to clone the [LISF](https://github.com/NASA-LIS/LISF.git) source code repository and practice compiling. More information about how the LIS team collaborates can be found in the [Working with GitHub](https://github.com/NASA-LIS/LISF/blob/master/docs/working_with_github/working_with_github.adoc) documentation.
 
@@ -265,7 +264,7 @@ You are now ready to practice compiling.
 
 -----
 
-### Quick Compile Guide
+## Compiling LIS Components
 
 This section will provide a brief overview of the process to build the LIS executable from the source code (i.e., compiling). More information can be found in the [LIS Users' Guide](https://modelingguru.nasa.gov/docs/DOC-2634) (See *Section 5.4. Build Instructions*).
 
@@ -333,6 +332,89 @@ You have now compiled the LIS source code to create an exectuable file. The same
 You are now ready to work through the LIS test cases. This process will verify that your working environment is set up properly and walk through the process to configure, compile, and run LDT, LIS, and LVT. Instructions and files needed to run the test cases can be found [here](https://lis.gsfc.nasa.gov/tests/lis). Additional tips are included [here](LIS-testcases.md).
 
 *Be sure to complete each step of the test cases in order because later steps take output from earlier steps as input.*
+
+-----
+
+## Useful Programs, Utilities, and Commands
+
+This document provides an overview of programs, utilities, and commands that are useful when working on Discover:
+
+* [diff](#diff---compare-files) - compare files
+* [nccmp](#nccmp---compare-netcdf-files) - compare NetCDF files
+* [slurm](#slurm---batch-queue-utility) - job scheduler
+* [vim](#vim---text-editor) - text editor
+
+## `diff` - Compare Files
+
+The `diff` utility compares files line-by-line. This is useful to quickly compare configuration files, logs, or output containing descriptive statistics (e.g., SURFACEMODEL.d01.stats).
+
+Usage:
+
+```sh
+diff file1.txt file2.txt
+```
+
+*Note: If the input files are identical, no output will be printed to the terminal unless the `-s` flag is used.*
+
+Use the `--help` flag to learn more.
+
+## `nccmp` - Compare NetCDF Files
+
+From the official [README](https://gitlab.com/remikz/nccmp/-/blob/master/README.md):
+
+>`nccmp` compares two NetCDF files bitwise, semantically or with a user defined tolerance (absolute or relative percentage).  Parallel comparisons are done in local memory without requiring temporary files.  Highly recommended for regression testing scientific models or datasets in a test-driven development environment.
+>
+>Here's an incomplete list of reasons why you may want to check your data:
+>
+>* Change in architecture (hardware, bare-metal, virtualization, platform, operating system).
+>* Change in compiler, compiler options or dependent libraries.
+>* Code refactoring, language migration, algorithm evolution, replacement or optimization.
+>* Data type promotion or demotion, compression, shuffling, alignment, ordering, encoding, metadata, or schema change.
+>* Process model change (framework, order of execution, partitioning).
+>* Tuning model parameters.
+>* Up/down-sampling fitness.
+
+Useful flags:
+
+|Flag|Functionality|
+|----|-------------|
+|`-d`|Compare data|
+|`-m`|Compare metadata|
+|`-s`|Report identical files|
+|`-f`|Forcefully compare, do not stop after first difference|
+|`-t <threshold>`|Compare if absolute difference is greater than tolerance threshold (e.g., 0.1)|
+|`-S` or `--statistics`|Reports statistics for any differences in data values|
+|`-F` or `--fortran`|Print position indices using Fortran style (1-based reverse order)
+
+*For a full list of flags and arguments use `nccmp --help` or [click here](https://gitlab.com/remikz/nccmp/-/blob/master/README.md#usage).*
+
+Usage:
+
+```sh
+# no tolerance (i.e., check for exact match)
+nccmp -dmsf file1.nc file2.nc
+
+# with tolerance of 0.1
+nccmp -dmsf -t 0.1 file1.nc file2.nc
+```
+
+See [the `nccmp` documentation](https://gitlab.com/remikz/nccmp/-/blob/master/README.md) for more information.
+
+## `slurm` - Job Scheduler
+
+* [NCCS' Intro to `slurm`](https://www.nccs.nasa.gov/nccs-users/instructional/using-slurm)
+* [Official Documentation](https://slurm.schedmd.com/documentation.html)
+
+## `vim` - Text Editor
+
+`vim` is a powerful command-line based text editor, but it has a steep learning curve. Here are some resources to get you started:
+
+* Cheatsheets - keyboard commands at a glance
+    * [`vim` Cheatsheet 1](https://devhints.io/vim)
+    * [`vim` Cheatsheet 2](https://vim.rtorr.com/)
+* Interactive `vim` tutorials:
+    * [OpenVim](https://www.openvim.com/) - short and sweet introduction
+    * [`vim` Adventures](https://vim-adventures.com/) - learn `vim` while playing a game
 
 -----
 
