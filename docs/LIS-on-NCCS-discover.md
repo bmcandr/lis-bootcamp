@@ -6,9 +6,9 @@ This document provides information to get new users/contributors to LIS up and r
 
 * [Accessing Discover](#accessing-discover)
 * [Setting up your Environment](#setting-up-your-environment-on-discover)
-* [Cloning the LIS Source Code](#Cloning-the-LIS-Source-Code)
-* [Compiling LIS Components](#Compiling-LIS-Components)
-* [Useful Programs, Utilities, and Commands](#Useful-Programs,-Utilities,-and-Commands)
+* [Cloning the LIS Source Code](#cloning-the-lis-source-code)
+* [Compiling LIS Components](#compiling-lis-components)
+* [Useful Programs, Utilities, and Commands](#useful-programs,-utilities,-and-commands)
 
 -----
 
