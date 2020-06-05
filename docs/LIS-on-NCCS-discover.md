@@ -344,7 +344,9 @@ This document provides an overview of programs, utilities, and commands that are
 * [slurm](#slurm---batch-queue-utility) - job scheduler
 * [vim](#vim---text-editor) - text editor
 
-## `diff` - Compare Files
+-----
+
+### `diff` - Compare Files
 
 The `diff` utility compares files line-by-line. This is useful to quickly compare configuration files, logs, or output containing descriptive statistics (e.g., SURFACEMODEL.d01.stats).
 
@@ -358,7 +360,9 @@ diff file1.txt file2.txt
 
 Use the `--help` flag to learn more.
 
-## `nccmp` - Compare NetCDF Files
+-----
+
+### `nccmp` - Compare NetCDF Files
 
 From the official [README](https://gitlab.com/remikz/nccmp/-/blob/master/README.md):
 
@@ -400,12 +404,16 @@ nccmp -dmsf -t 0.1 file1.nc file2.nc
 
 See [the `nccmp` documentation](https://gitlab.com/remikz/nccmp/-/blob/master/README.md) for more information.
 
-## `slurm` - Job Scheduler
+-----
+
+### `slurm` - Job Scheduler
 
 * [NCCS' Intro to `slurm`](https://www.nccs.nasa.gov/nccs-users/instructional/using-slurm)
 * [Official Documentation](https://slurm.schedmd.com/documentation.html)
 
-## `vim` - Text Editor
+-----
+
+### `vim` - Text Editor
 
 `vim` is a powerful command-line based text editor, but it has a steep learning curve. Here are some resources to get you started:
 
