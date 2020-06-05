@@ -28,7 +28,7 @@ What do you need to access Discover?
 
 ### Connecting to Discover
 
-In the examples that follow, the `%` symbol at the beginning of the line represents the command-line prompt. You do not type that when entering any of the commands. Text following a `>` represents example output that should be returned after running a given command. When copy-pasting into or out of the terminal, you may find that the familiar `Ctrl+C`/`Ctrl+V` keyboard shortcuts do not work. Instead, copy or paste by right clicking on the terminal and selecting the action you'd like to take from the context menu that appears.
+In the examples that follow, the `%` symbol at the beginning of the line represents the command-line prompt. You do not type that when entering any of the commands. Text following a `>` represents example output that should be returned after running a given command. When cop-pasting into or out of the terminal, you may find that the familiar `Ctrl+C`/`Ctrl+V` keyboard shortcuts do not work. Instead, copy or paste by right clicking on the terminal and selecting the action you'd like to take from the context menu that appears.
 
 1. On your local computer, add the following to your `$HOME/.ssh/config` file:
 
