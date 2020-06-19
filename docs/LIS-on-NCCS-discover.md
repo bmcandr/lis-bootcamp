@@ -8,6 +8,7 @@ This document provides information to get new users/contributors to LIS up and r
 * [Setting up your Environment](#setting-up-your-environment-on-discover)
 * [Cloning the LIS Source Code](#cloning-the-lis-source-code)
 * [Compiling LIS Components](#compiling-lis-components)
+* [Login Nodes vs. Compute Nodes](#login-nodes-vs-compute-nodes)
 * [Useful Programs, Utilities, and Commands](#useful-programs-utilities-and-commands)
 
 -----
@@ -62,15 +63,15 @@ In the examples that follow, the `%` symbol at the beginning of the line represe
 
     \**Windows users will have to install a terminal emulator such as [PuTTY](https://www.putty.org/) or [MobaXterm](https://mobaxterm.mobatek.net/download.html)*.
 
-3. At the `PASSCODE` prompt, enter the randomly generated 8-digit RSA key that is displayed after entering your PIN in the RSA app.
+3. At the `PASSCODE:` prompt, enter the randomly generated 8-digit RSA key that is displayed after entering your PIN in the RSA app.
 
 4. At the `Host:` prompt, enter `discover`.
 
-5. At the `Password` prompt, enter your NCCS LDAP password.
+5. At the `Password:` prompt, enter your NCCS LDAP password.
 
-If the connection was successful you will see something like this:
+If the connection was successful a welcome message will be printed to the terminal:
 
-```sh
+```
 > Your password will expire in X day(s).
 > Last login: 1 Jan 1 12:00:00 1970 from login1.nccs.nasa.gov
 >
