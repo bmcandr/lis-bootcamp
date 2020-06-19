@@ -315,12 +315,12 @@ This section will provide a brief overview of the process to build the LIS execu
     % ./compile -j 16
     ```
 
-    *Note that recently folks have been encountering “random” compilation failures.  Rerunning this step clears the error. See the [SLES 12 Issues](#sles12-issues) section below for more information.*
+    *Note: users have been encountering seemingly random compilation failures caused by a `Segmentation Fault` on SLES12.  Rerunning the `./compile` step typically clears the error. See the [SLES 12 Issues](#sles12-issues) section below for more information.*
 
 3. Move the `LIS` executable into your working directory:
 
     ```sh
-    % mv LIS ../../   # moves the exectuable up two directories (out of the LISF repo)
+    % mv LIS ../../   # moves the exectuable up two directories (out of the LISF/ repo)
     ```
 
 You have now compiled the LIS source code to create an exectuable file. The same process is used to build executables for LDT and LVT.
