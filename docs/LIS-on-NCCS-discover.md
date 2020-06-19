@@ -87,6 +87,8 @@ If the connection was successful you will see something like this:
 
 NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/instructional/logging-in/bastion-host) for connecting to their systems.
 
+At this stage, you are connected to a *login node*. See [Login Nodes vs. Compute Nodes](#login-nodes-vs-compute-nodes) for more information.
+
 -----
 
 ## Setting up your environment on Discover
@@ -332,6 +334,14 @@ You have now compiled the LIS source code to create an exectuable file. The same
 You are now ready to work through the LIS test cases. This process will verify that your working environment is set up properly and walk through the process to configure, compile, and run LDT, LIS, and LVT. Instructions and files needed to run the test cases can be found [here](https://lis.gsfc.nasa.gov/tests/lis). Additional tips are included [here](LIS-testcases.md).
 
 *Be sure to complete each step of the test cases in order because later steps take output from earlier steps as input.*
+
+-----
+
+## Login Nodes vs. Compute Nodes
+
+When you first connect to Discover using `ssh` you are placed on a *login node*. **Login nodes** are shared among users and ["intended for basic tasks such as uploading data, managing files, compiling software, editing scripts, and checking on or managing your jobs."](https://wiki.uiowa.edu/display/hpcdocs/Login+Node+Usage#:~:text=The%20login%20nodes%20are%20limited,your%20jobs%20should%20run%20on.) Computationally intensive processes and programs *should not be run on login nodes* because it may affect other users sharing your node. Instead, processes that consume large amounts of memory and/or processing power should be run on a **compute node.**
+
+**Compute nodes** can be accessed interactively, similar to working on a login node, or jobs can be submitted to run on compute nodes in the background using `slurm`. To learn more about using compute nodes visit the NCCS instructional page for [using slurm](https://www.nccs.nasa.gov/nccs-users/instructional/using-slurm).
 
 -----
 
