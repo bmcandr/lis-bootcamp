@@ -10,6 +10,7 @@ This document provides information to get new users/contributors to LIS up and r
 * [Compiling LIS Components](#compiling-lis-components)
 * [Login Nodes vs. Compute Nodes](#login-nodes-vs-compute-nodes)
 * [Useful Programs, Utilities, and Commands](#useful-programs-utilities-and-commands)
+* [Visualizing Data](visualizing-data.md)
 
 -----
 
