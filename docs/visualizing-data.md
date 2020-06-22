@@ -70,11 +70,14 @@ DSET entry contains no substitution templates.
 
 ## R
 
-1. Load R module:
+1. Load the appropriate LISF module for your node (e.g., SLES11 or SLES12) and then load the R module:
 
     ```sh
+    module load lisf_7_intel_19_1_0_166
     module load R       # loads default R version
     ```
+
+    Loading the `lisf_7...` module will set environmental variables needed by R to install additional packages.
 
     *Note: multiple versions of R are available. Use `module avail` to view all available versions.*
 
@@ -160,19 +163,19 @@ This section describes how to install [Miniconda](https://docs.conda.io/en/lates
     % touch ~/.conda_profile
     ```
 
-    Use `vim` to add the following to this file (e.g., `vim ~/.conda_profile`), replacing `<user_id>` with your NASA AUID:
+    Use `vim` to add the following to this file (e.g., `vim ~/.conda_profile`):
 
     ```
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('$NOBACKUP/<user_id>/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    __conda_setup="$('$NOBACKUP/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
     else
-        if [ -f "$NOBACKUP/<user_id>/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "$NOBACKUP/<user_id>/miniconda3/etc/profile.d/conda.sh"
+        if [ -f "$NOBACKUP/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "$NOBACKUP/miniconda3/etc/profile.d/conda.sh"
         else
-            export PATH="$NOBACKUP/<user_id>/miniconda3/bin:$PATH"
+            export PATH="$NOBACKUP/miniconda3/bin:$PATH"
         fi
     fi
     unset __conda_setup
