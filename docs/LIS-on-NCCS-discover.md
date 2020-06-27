@@ -355,6 +355,7 @@ This document provides an overview of programs, utilities, and commands that are
 * [nccmp](#nccmp---compare-netcdf-files) - compare NetCDF files
 * [slurm](#slurm---batch-queue-utility) - job scheduler
 * [vim](#vim---text-editor) - text editor
+* [emacs](#emacs---text-editor) - text editor
 
     -----
 
@@ -435,6 +436,10 @@ This document provides an overview of programs, utilities, and commands that are
     * Interactive `vim` tutorials:
         * [OpenVim](https://www.openvim.com/) - short and sweet introduction
         * [`vim` Adventures](https://vim-adventures.com/) - learn `vim` while playing a game
+
+    ### `emacs` - Text Editor
+
+    `emacs` is another text editor available from the command-line. It has a built-in tutorial that can be accessed by opening `emacs` and typing `Ctrl+h` followed by `t`.
 
 -----
 
