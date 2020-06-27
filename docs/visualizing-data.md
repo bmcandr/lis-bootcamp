@@ -116,7 +116,9 @@ DSET entry contains no substitution templates.
 
 ## Python
 
-### Installing Miniconda
+Python installation instructions: <https://modelingguru.nasa.gov/docs/DOC-2693>
+
+<!-- ### Installing Miniconda
 
 This section describes how to install [Miniconda](https://docs.conda.io/en/latest/miniconda.html), a minimal installation of the [Anaconda](https://www.anaconda.com/) package manager, on NCCS Discover.
 
@@ -210,8 +212,8 @@ This section describes how to install [Miniconda](https://docs.conda.io/en/lates
     ```sh
     % which python
     > /discover/nobackup/<userid>/miniconda3/bin/python
-    ```
-
+    ``` -->
+<!-- 
 ### Visualizing Data with Python
 
-This section is under construction...
+This section is under construction... -->
