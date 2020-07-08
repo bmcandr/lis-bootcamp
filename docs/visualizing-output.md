@@ -1,4 +1,4 @@
-# Visualizing Data on Discover
+# Visualizing LIS Output on Discover
 
 This guide will demonstrate several approaches to visualizing output from LIS framework components. There are many different visualization tools available on NCCS Discover, but we will focus our attention on the following tools:
 
