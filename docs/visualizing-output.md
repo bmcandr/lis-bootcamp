@@ -1,4 +1,4 @@
-# Visualizing Data on Discover
+# Visualizing LIS Output on Discover
 
 This guide will demonstrate several approaches to visualizing output from LIS framework components. There are many different visualization tools available on NCCS Discover, but we will focus our attention on the following tools:
 
@@ -116,51 +116,37 @@ DSET entry contains no substitution templates.
 
 ## Python
 
-Python installation instructions: <https://modelingguru.nasa.gov/docs/DOC-2693>
+### Loading an Anaconda distribution of Python
 
-<!-- ### Installing Miniconda
+The NCCS Discover environment provides access to several versions of Python through the [Anaconda](https://www.anaconda.com/) distribution/package manager. These can be viewed and loaded using the `module` program. To view a list of available Anaconda distributions, use the `module avail` command. As of July 2020, the following modules are available:
 
-This section describes how to install [Miniconda](https://docs.conda.io/en/latest/miniconda.html), a minimal installation of the [Anaconda](https://www.anaconda.com/) package manager, on NCCS Discover.
+* `python/GEOSpyD/Ana2018.12_py2.7`
+* `python/GEOSpyD/Ana2018.12_py3.7`
+* `python/GEOSpyD/Ana2019.03_py2.7`
+* `python/GEOSpyD/Ana2019.03_py3.7`
+* `python/GEOSpyD/Ana2019.10_py2.7`
+* `python/GEOSpyD/Ana2019.10_py3.7 (D)`
 
-1. Connect to Discover.
+To load one of the above distributions and add the associated Python installation to your `$PATH`, use the `module load` command. For example, to load the latest version enter the following command:
 
-2. Change directories into your `$NOBACKUP` directory:
+```sh
+% module load python/GEOSpyD/Ana2019.10_py3.7
+```
 
-    ```sh
-    % cd $NOBACKUP
-    ```
+To verify that your `$PATH` has been modified to point to the loaded Python installation enter the command `which python`:
 
-3. Use `curl` to download the install script to Discover.
+```sh
+% which python
+> /usr/local/other/python/GEOSpyD/2019.10_py3.7/2020-01-15/bin/conda
+```
 
-    * Python 3.7:
+Additional usage information can be found here: <https://modelingguru.nasa.gov/docs/DOC-2693>
 
-        ```sh
-        % curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-        ```
+### Enabling Miniconda
 
-    * Python 2.7:
+Another option is to utilize an installation of `miniconda`, a minimal/lightweight installation of the Anaconda distribution. This section describes how to enable [Miniconda](https://docs.conda.io/en/latest/miniconda.html), a minimal installation of the [Anaconda](https://www.anaconda.com/) package manager, in the Discover environment.
 
-        ```sh
-        % curl -O https://repo.anaconda.com/miniconda/Miniconda2-latest-Linux-x86_64.sh
-        ```
-
-    *Note: visit the Miniconda website for links to other installers.*
-
-4. Run the install script:
-
-    ```sh
-    % bash Miniconda-install-script.sh    # change filename to name of script downloaded
-    ```
-
-    At the prompt asking where to install, enter:
-
-    ```sh
-    $NOBACKUP/miniconda3        #use $NOBACKUP/miniconda2 if installing Python 2.7 version
-    ```
-
-5. After the installer runs the terminal will ask if you would like to initialize `conda` for your shell. Select *No*.
-
-6. Create a file in your `$HOME` directory called `.conda_profile`:
+1. On Discover, create a file in your `$HOME` directory called `.conda_profile`:
 
     ```sh
     % touch ~/.conda_profile
@@ -168,32 +154,32 @@ This section describes how to install [Miniconda](https://docs.conda.io/en/lates
 
     Use `vim` to add the following to this file (e.g., `vim ~/.conda_profile`):
 
-    ```
+    ```sh
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('$NOBACKUP/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    __conda_setup="$('/usr/local/other/miniconda/4.7.12/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
     else
-        if [ -f "$NOBACKUP/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "$NOBACKUP/miniconda3/etc/profile.d/conda.sh"
+        if [ -f "/usr/local/other/miniconda/4.7.12/etc/profile.d/conda.sh" ]; then
+            . "/usr/local/other/miniconda/4.7.12/etc/profile.d/conda.sh"
         else
-            export PATH="$NOBACKUP/miniconda3/bin:$PATH"
+            export PATH="/usr/local/other/miniconda/4.7.12/bin:$PATH"
         fi
     fi
     unset __conda_setup
     # <<< conda initialize <<<
     ```
 
-7. Miniconda is now installed. To initialize, source the `.conda_profile` file created in the previous step:
+2. To add Miniconda to your path so you can run it from the command line, source the `.conda_profile` file created in the previous step:
 
     ```sh
-    % bash ~/.conda_profile
+    % source ~/.conda_profile
     ```
 
-    **NOTE: this intialization step must be run every time you log onto Discover, jump to a SLES11 node, or start an interactive session on a compute node (e.g., `salloc` or `xalloc`). To initialize `conda` automatically on login, you can add the command above to your `.profile` file however this may have unintended affects as it modifies your $PATH variable.**
+    *NOTE: this intialization step must be run every time you log onto Discover, jump to a SLES11 node, or start an interactive session on a compute node (e.g., `salloc` or `xalloc`). To initialize `conda` automatically on login, you can add the command above to your `.profile` file however this may have unintended affects as it modifies your $PATH variable.*
 
-8. Activate `conda`:
+3. Activate `conda`:
 
     ```sh
     % conda activate
@@ -202,17 +188,20 @@ This section describes how to install [Miniconda](https://docs.conda.io/en/lates
     If successful, `(base)` will appear at the start of your terminal prompt. For example:
 
     ```sh
-    (base) <userid>@discoverNN:/discover/nobackup/userid>
+    (base) <userid>@discoverNN:~>
     ```
 
     This indicates that the base environment of `conda` is activated. See the [Anaconda Documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) to learn about Anaconda virtual environments.
 
-    You can check your Python path to verify that the it is pointing to the one installed with Miniconda:
+    Use `which python` to check that your Python path now points to the Miniconda installation:
 
     ```sh
     % which python
-    > /discover/nobackup/<userid>/miniconda3/bin/python
-    ``` -->
+    > /usr/local/other/miniconda/4.7.12/bin/python
+    ```
+
+It is *strongly* recommended that users employ virtual environments to manage their Python environments. Python versions 3.3+ include virtual environment functionality as described [here](https://docs.python.org/3/library/venv.html), while Anaconda/Miniconda provide their own virtual environment functionality described [here](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html). Both do the same thing, but in slightly different ways.
+
 <!-- 
 ### Visualizing Data with Python
 
