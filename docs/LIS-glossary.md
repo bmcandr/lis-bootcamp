@@ -56,7 +56,8 @@ The following terms and concepts will likely be encountered as you work with LIS
 * **Data assimilation**
     * >a mathematical discipline that seeks to optimally combine theory (usually in the form of a numerical model) with observations
         * <https://en.wikipedia.org/wiki/Data_assimilation>
-    * Update above quote with info from <http://robinson.seas.harvard.edu/PAPERS/red_report_62.html>?
+        * Update above quote with info from <http://robinson.seas.harvard.edu/PAPERS/red_report_62.html>?
+        * Additional information (presentation): <https://earth.esa.int/documents/973910/1641786/AO1.pdf>
     * **Algorithms**
         * [Understanding Kalman Filters](https://www.youtube.com/watch?v=mwn8xhgNpFY) video series from Matlab
         * **EnKF (Ensemble Kalman Filter)**
@@ -73,16 +74,24 @@ The following terms and concepts will likely be encountered as you work with LIS
             * Source: <http://robinson.seas.harvard.edu/PAPERS/red_report_62.html>
         * The above algorithms are discussed in the context of LIS in [Kumar et al. 2008](https://pubag.nal.usda.gov/download/23495/PDF)
     * **Analysis increments**
+        >Reanalysis data are an important source of information for hydrometeorology applications, which use data assimilation to combine an imperfect atmospheric model with uncertain observations. However, uncertainty estimates are not normally provided with reanalyses. The model “first guess” (6-h forecast) is sometimes saved along with reanalysis estimates, which allows the calculation of the **analysis increment (AI)**, *defined as the analysis minus the model first guess.* Analysis increment statistics could provide a quantitative index for comparing models in regions with sufficient observations.
+        * Source: https://journals.ametsoc.org/jhm/article/9/6/1535/5877/Comparing-Reanalyses-Using-Analysis-Increment>
     * **Innovations**
+        >The difference between the forecast and the observations...(as it provides new information to the data assimilation process).
+        * Source: <https://en.wikipedia.org/wiki/Data_assimilation>
     * **Measurement model**
-    * **Forward model**
+        >Some metrologists and philosophers of science argue that virtually all scientific measurement involves inference: we infer measurement outcomes from instrument indications, with the help of a measurement model that is very often informed by theory (see Mari 2005; Boumans 2006; Tal 2012). *A **measurement model** is a conceptualization of i) the physical interactions that take place during a measuring process—both desired interactions and interfering ones—as well as ii) how the results of those interactions relate to values of the parameter(s) that we seek to measure.* Such a model guides the inference from the rain gauge’s indication to the final estimate of rainfall depth and from the thermometer and barometer indications to the final estimate of relative humidity. In some cases, the inference from instrument indication(s) to measurement outcome is rather trivial—we might have good reason to take a particular thermometer’s indication at face value, for example—but in many other cases it is more complex, involving calculations informed by theory.
+        * Source <https://journals.ametsoc.org/bams/article/97/9/1565/69542>
+    * **Forward model:** Prediction of system state based on given initial conditions and a model
+        * Adapted from: <https://www.quora.com/What-is-the-difference-between-forward-and-inversion-modeling-in-geophysics>
+        * Additional information: <https://open.oregonstate.education/climatechange/chapter/models/>
     * **Measurement error standard deviation**
 * **Data compression**
     * (this has been a recent learning experience in the Air Force project)
     * Reducing file sizes?
 * **Debugging**
-    * The process of finding and resolving defects or problems within a computer program that prevent correct operation of computer software or a system.
-        * Source: <https://en.wikipedia.org/wiki/Debugging>
+    >The process of finding and resolving defects or problems within a computer program that prevent correct operation of computer software or a system.
+    * Source: <https://en.wikipedia.org/wiki/Debugging>
     * There are a variety of tools used in debugging, including:
         * [TotalView](https://totalview.io/products/totalview) - debugging software that provides the specialized tools you need to quickly debug, analyze, and scale high-performance computing (HPC) applications. This includes highly dynamic, parallel, and multicore applications that run on diverse hardware — from desktops to supercomputers.
         * [valgrind](https://valgrind.org/) - an instrumentation framework for building dynamic analysis tools. There are Valgrind tools that can automatically detect many memory management and threading bugs, and profile your programs in detail.
@@ -98,9 +107,9 @@ The following terms and concepts will likely be encountered as you work with LIS
     >
     >The basic idea behind ESMF is that complicated applications should be broken up into coherent pieces, or components, with standard calling interfaces. In ESMF, a component may be a physical domain, or a function such as a coupler or I/O system. ESMF also includes toolkits for building components and applications, such as regridding software, calendar management, logging and error handling, and parallel communications.
     * Source: <https://www.earthsystemcog.org/projects/esmf/>
-* **Fluxes**
+* **Fluxes**: inflows and outflows (e.g., the exchange of water between land and atmosphere)
 * **Forcings**
-    * what it means and list of requirements)
+    * What it means and list of requirements
     * From LIS 7.0 User Guide:
         >The boundary conditions describing the (upper) atmospheric fluxes are known as "forcings". LIS makes use of model derived data as well as satellite and ground-based observational data as forcings. The land surface models are typically run using model derived data. The observational data are used to overwrite the model derived data, whenever they are available.
     * **Upscaling/downscaling**
@@ -130,7 +139,6 @@ The following terms and concepts will likely be encountered as you work with LIS
     * **Nearest-neighbor**
 * **Land Surface Models (LSMs)**
 
-    * LSMs simulate the exchange of water and energy fluxes <!--too vague-->
     * Land Surface Modeling - Science Background:
 
     > Global climate and the global carbon cycle are, in a direct sense, controlled by exchanges of water, carbon, and energy between the terrestrial biosphere and atmosphere. Thus models of these processes are essential for the purpose of developing predictive capability for the Earth's climate on all time scales, including seasonal climate prediction as well as natural climate fluctuations and human-induced climate change on decadal time scales.
@@ -160,10 +168,12 @@ The following terms and concepts will likely be encountered as you work with LIS
     * Source: <https://www.giss.nasa.gov/meetings/landsurface1998/section3.html>
 
     * [LDAS](https://ldas.gsfc.nasa.gov/) Motivations:
-        * The land-surface component of the water cycle affects atmospheric and climatic processes while also controlling the distribution of freshwater, which is vital to life on land.
-        * Proper characterization of spatial and temporal variations in water and energy states (e.g., soil moisture and temperature) and fluxes (e.g., evaporation and runoff) and is critical to many scientific and practical applications, including weather prediction, agricultural forecasting, drought and flood risk assessments, and improving understanding of land-atmosphere interactions and climate change impacts.
-        * Numerous ground and space based observations are relevant to the water and energy cycles, but often they include errors or spatial and temporal gaps, or they may not contain exactly the information we need (for example, snow cover observations do not tell us how much water the snow contains).
-    * LSMs in LIS (and why):
+
+        >* The land-surface component of the water cycle affects atmospheric and climatic processes while also controlling the distribution of freshwater, which is vital to life on land.
+        >* Proper characterization of spatial and temporal variations in water and energy states (e.g., soil moisture and temperature) and fluxes (e.g., evaporation and runoff) and is critical to many scientific and practical applications, including weather prediction, agricultural forecasting, drought and flood risk assessments, and improving understanding of land-atmosphere interactions and climate change impacts.
+        >* Numerous ground and space based observations are relevant to the water and energy cycles, but often they include errors or spatial and temporal gaps, or they may not contain exactly the information we need (for example, snow cover observations do not tell us how much water the snow contains).
+
+    * LSMs in LIS (and why): <!--update list-->
         * CABLE Land Surface Model
         * Community Land Model (v2.0)
         * Catchment Land Surface Model
@@ -195,8 +205,8 @@ The following terms and concepts will likely be encountered as you work with LIS
         * Downscaling NASA’s global modeling and reanalysis for regional climate.
         * Supporting current and future satellite missions via satellite simulator.
         * Improving CO2 flux and transport process representation via high-resolution simulation of the surface state and weather.
-* **Off-line**
-* **Open loop**
+* **Off-line**: see *Coupled* definition above
+* **Open loop**: models run without data assimilation
 * **OPT/UE**
     * <https://esto.nasa.gov/news/news_LIS_8_2012.html>
 * **Parameters**
@@ -232,4 +242,4 @@ The following terms and concepts will likely be encountered as you work with LIS
 * **Tile**
 * **Time-averaged vs. Instantaneous Output**
 * **Water balance**
-    * <https://www.ipcc.ch/site/assets/uploads/2018/03/ipcc_far_wg_II_chapter_04.pdf> investigate further...
+    * <https://www.ipcc.ch/site/assets/uploads/2018/03/ipcc_far_wg_II_chapter_04.pdf> <!--investigate further...-->
