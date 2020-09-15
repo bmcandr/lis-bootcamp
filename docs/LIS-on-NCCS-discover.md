@@ -56,12 +56,6 @@ In the examples that follow, the `%` symbol at the beginning of the line represe
 
     You will be connected to a login node running the SLES12 operating system.
 
-    * To jump to one of the older SLES11 login nodes enter the following command while connected to Discover:
-
-        ```sh
-        % ssh -Y discover-sles11
-        ```
-
     \**Windows users will have to install a terminal emulator such as [PuTTY](https://www.putty.org/) or [MobaXterm](https://mobaxterm.mobatek.net/download.html)*.
 
 3. At the `PASSCODE:` prompt, enter the randomly generated 8-digit RSA key that is displayed after entering your PIN in the RSA app.
@@ -116,8 +110,6 @@ At this stage, you are connected to a *login node*. See [Login Nodes vs. Compute
 
     ...and add the following to it:
 
-    <!-- replace with David's autoloader for SLES11/12? -->
-
     ```sh
     # This file is read each time a login shell is started.
     if [ -n "$PS1" ]; then
@@ -158,43 +150,23 @@ At this stage, you are connected to a *login node*. See [Login Nodes vs. Compute
     % cd $HOME/privatemodules
     ```
 
-    Using `curl`, download the modulefiles for SLES11 and SLES12 into `privatemodules/`:
+    Using `curl`, download the modulefile for SLES12 into `privatemodules/`:
 
-    * **SLES12:**
-
-        ```sh
-        % curl -O https://raw.githubusercontent.com/NASA-LIS/LISF/master/env/discover/lisf_7_intel_19_1_0_166
-        ```
-
-    * **SLES11:**
-
-        ```sh
-        % curl -O https://raw.githubusercontent.com/NASA-LIS/LISF/master/env/discover/lisf_7_intel_18_0_3_222
-        ```
-
-    <!-- add GNU module file? add mpiuni files?-->
+    ```sh
+    % curl -O https://raw.githubusercontent.com/NASA-LIS/LISF/master/env/discover/lisf_7_intel_19_1_0_166
+    ```
 
     *Check [here](https://github.com/NASA-LIS/LISF/tree/master/env/discover) periodically for updated module files.*
 
-5. Load the appropriate modulefile using the `module load` command.
+5. Load the modulefile using the `module load` command.
 
-    * On **SLES12\*:**
-
-        ```sh
-        % module load lisf_7_intel_19_1_0_166
-        ```
-
-        \**You may encounter issues compiling and running LIS on SLES12. Please see [the SLES12 Issues section](#sles12-issues) for potential solutions.*
-
-    * On **SLES11:**
-
-        ```sh
-        % module load lisf_7_intel_18_0_3_222
-        ```
+    ```sh
+    % module load lisf_7_intel_19_1_0_166
+    ```
 
     -----
 
-    ***Note: you will have to load the appropriate module every time you log onto Discover!***
+    ***Note: you will have to load the appropriate modulefile every time you log onto Discover.***
 
     -----
 
@@ -232,8 +204,6 @@ You are now ready to clone the [LISF](https://github.com/NASA-LIS/LISF.git) sour
 
     ```sh
     % module load git         # SLES 12
-    # OR
-    % module load other/git   # SLES 11
     ```
 
     *[Click here](https://www.nccs.nasa.gov/nccs-users/instructional/using-discover/miscellaneous/using-modules) more information on using modules.*
@@ -264,13 +234,13 @@ You are now ready to clone the [LISF](https://github.com/NASA-LIS/LISF.git) sour
     > nothing to commit, working tree clean
     ```
 
-You are now ready to practice compiling.
+You are now ready to compile.
 
 -----
 
 ## Compiling LIS Components
 
-This section will provide a brief overview of the process to build the LIS executable from the source code (i.e., compiling). More information can be found in the [LIS Users' Guide](https://modelingguru.nasa.gov/docs/DOC-2634) (See *Section 5.4. Build Instructions*).
+This section will provide a brief overview of the process to build the LIS executable from the source code (i.e., compiling). More information can be found in the [LIS Users' Guide](https://modelingguru.nasa.gov/docs/DOC-2634) (see *Section 5.4. Build Instructions*).
 
 1. From the `LISF/` directory, run the configure script inside the `lis/` directory:
 
@@ -319,7 +289,7 @@ This section will provide a brief overview of the process to build the LIS execu
     % ./compile -j 16
     ```
 
-    *Note: users have been encountering seemingly random compilation failures caused by a `Segmentation Fault` on SLES12.  Rerunning the `./compile` step typically clears the error. See the [SLES 12 Issues](#sles12-issues) section below for more information.*
+    *Note: users have been encountering seemingly random compilation failures caused by a `Segmentation Fault` on SLES12 nodes.  Rerunning the `./compile` step typically clears the error. See the [SLES12 Issues](#sles12-issues) section below for more information.*
 
 3. Move the `LIS` executable into your working directory:
 
@@ -357,116 +327,136 @@ This document provides an overview of programs, utilities, and commands that are
 * [vim](#vim---text-editor) - text editor
 * [emacs](#emacs---text-editor) - text editor
 
-    -----
+-----
 
-    ### `diff` - Compare Files
+### `diff` - Compare Files
 
-    The `diff` utility compares files line-by-line. This is useful to quickly compare configuration files, logs, or output containing descriptive statistics (e.g., SURFACEMODEL.d01.stats).
+The `diff` utility compares files line-by-line. This is useful to quickly compare configuration files, logs, or output containing descriptive statistics (e.g., SURFACEMODEL.d01.stats).
 
-    Usage:
+Usage:
 
-    ```sh
-    diff file1.txt file2.txt
-    ```
+```sh
+diff file1.txt file2.txt
+```
 
-    *Note: If the input files are identical, no output will be printed to the terminal unless the `-s` flag is used.*
+*Note: If the input files are identical, no output will be printed to the terminal unless the `-s` flag is used.*
 
-    Use the `--help` flag to learn more.
+Use the `--help` flag to learn more.
 
-    -----
+-----
 
-    ### `nccmp` - Compare NetCDF Files
+### `nccmp` - Compare NetCDF Files
 
-    From the official [README](https://gitlab.com/remikz/nccmp/-/blob/master/README.md):
+From the official [README](https://gitlab.com/remikz/nccmp/-/blob/master/README.md):
 
-    >`nccmp` compares two NetCDF files bitwise, semantically or with a user defined tolerance (absolute or relative percentage).  Parallel comparisons are done in local memory without requiring temporary files.  Highly recommended for regression testing scientific models or datasets in a test-driven development environment.
-    >
-    >Here's an incomplete list of reasons why you may want to check your data:
-    >
-    >* Change in architecture (hardware, bare-metal, virtualization, platform, operating system).
-    >* Change in compiler, compiler options or dependent libraries.
-    >* Code refactoring, language migration, algorithm evolution, replacement or optimization.
-    >* Data type promotion or demotion, compression, shuffling, alignment, ordering, encoding, metadata, or schema change.
-    >* Process model change (framework, order of execution, partitioning).
-    >* Tuning model parameters.
-    >* Up/down-sampling fitness.
+>`nccmp` compares two NetCDF files bitwise, semantically or with a user defined tolerance (absolute or relative percentage).  Parallel comparisons are done in local memory without requiring temporary files.  Highly recommended for regression testing scientific models or datasets in a test-driven development environment.
+>
+>Here's an incomplete list of reasons why you may want to check your data:
+>
+>* Change in architecture (hardware, bare-metal, virtualization, platform, operating system).
+>* Change in compiler, compiler options or dependent libraries.
+>* Code refactoring, language migration, algorithm evolution, replacement or optimization.
+>* Data type promotion or demotion, compression, shuffling, alignment, ordering, encoding, metadata, or schema change.
+>* Process model change (framework, order of execution, partitioning).
+>* Tuning model parameters.
+>* Up/down-sampling fitness.
 
-    Useful flags:
+Useful flags:
 
-    |Flag|Functionality|
-    |----|-------------|
-    |`-d`|Compare data|
-    |`-m`|Compare metadata|
-    |`-s`|Report identical files|
-    |`-f`|Forcefully compare, do not stop after first difference|
-    |`-t <threshold>`|Compare if absolute difference is greater than tolerance threshold (e.g., 0.1)|
-    |`-S` or `--statistics`|Reports statistics for any differences in data values|
-    |`-F` or `--fortran`|Print position indices using Fortran style (1-based reverse order)
+|Flag|Functionality|
+|----|-------------|
+|`-d`|Compare data|
+|`-m`|Compare metadata|
+|`-s`|Report identical files|
+|`-f`|Forcefully compare, do not stop after first difference|
+|`-t <threshold>`|Compare if absolute difference is greater than tolerance threshold (e.g., 0.1)|
+|`-S` or `--statistics`|Reports statistics for any differences in data values|
+|`-F` or `--fortran`|Print position indices using Fortran style (1-based reverse order)
 
-    *For a full list of flags and arguments use `nccmp --help` or [click here](https://gitlab.com/remikz/nccmp/-/blob/master/README.md#usage).*
+*For a full list of flags and arguments use `nccmp --help` or [click here](https://gitlab.com/remikz/nccmp/-/blob/master/README.md#usage).*
 
-    Usage:
+Usage:
 
-    ```sh
-    # no tolerance (i.e., check for exact match)
-    nccmp -dmsf file1.nc file2.nc
+```sh
+# no tolerance (i.e., check for exact match)
+nccmp -dmsf file1.nc file2.nc
 
-    # with tolerance of 0.1
-    nccmp -dmsf -t 0.1 file1.nc file2.nc
-    ```
+# with tolerance of 0.1
+nccmp -dmsf -t 0.1 file1.nc file2.nc
+```
 
-    See [the `nccmp` documentation](https://gitlab.com/remikz/nccmp/-/blob/master/README.md) for more information.
+See [the `nccmp` documentation](https://gitlab.com/remikz/nccmp/-/blob/master/README.md) for more information.
 
-    -----
+-----
 
-    ### `slurm` - Job Scheduler
+### `slurm` - Job Scheduler
 
-    * [NCCS' Intro to `slurm`](https://www.nccs.nasa.gov/nccs-users/instructional/using-slurm)
-    * [Official Documentation](https://slurm.schedmd.com/documentation.html)
+* [NCCS' Intro to `slurm`](https://www.nccs.nasa.gov/nccs-users/instructional/using-slurm)
+* [Official Documentation](https://slurm.schedmd.com/documentation.html)
 
-    -----
+-----
 
-    ### `vim` - Text Editor
+### `vim` - Text Editor
 
-    `vim` is a powerful command-line based text editor, but it has a steep learning curve. Here are some resources to get you started:
+`vim` is a powerful command-line based text editor, but it has a steep learning curve. Here are some resources to get you started:
 
-    * Cheatsheets - keyboard commands at a glance
-        * [`vim` Cheatsheet 1](https://devhints.io/vim)
-        * [`vim` Cheatsheet 2](https://vim.rtorr.com/)
-    * Interactive `vim` tutorials:
-        * [OpenVim](https://www.openvim.com/) - short and sweet introduction
-        * [`vim` Adventures](https://vim-adventures.com/) - learn `vim` while playing a game
+* Cheatsheets - keyboard commands at a glance
+    * [`vim` Cheatsheet 1](https://devhints.io/vim)
+    * [`vim` Cheatsheet 2](https://vim.rtorr.com/)
+* Interactive `vim` tutorials:
+    * [OpenVim](https://www.openvim.com/) - short and sweet introduction
+    * [`vim` Adventures](https://vim-adventures.com/) - learn `vim` while playing a game
 
-    ### `emacs` - Text Editor
+### `emacs` - Text Editor
 
-    `emacs` is another text editor available from the command-line. It has a built-in tutorial that can be accessed by opening `emacs` and typing `Ctrl+h` followed by `t`.
+`emacs` is another text editor available from the command-line. It has a built-in tutorial that can be accessed by opening `emacs` and typing `Ctrl+h` followed by `t`.
 
 -----
 
 ### SLES12 Issues
 
-***NOTE: This section is under construction***
+This section describes a few known issues you may encounter when working with LISF on SLES12 nodes.
 
-We have been having issues running on SLES12; in particular:
+1. Segmentation fault during compilation
 
-```sh
-$ ./LDT ldt.config
-Abort(2140047) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init_thread: Other MPI error, error stack:
-MPIR_Init_thread(703)........:
-MPID_Init(958)...............:
-MPIDI_OFI_mpi_init_hook(1334):
-MPIDU_bc_table_create(444)...:
-```
+    Users are encountering seemingly random segmentation fault errors during the compilation step. The error message will look similar to this:
 
-Unlike SLES11, you cannot run MPI-based executables on the SLES12 login nodes, even if you are just using a single process.  You must run MPI-based executables on a compute node, either interactively or via batch.  The `lisf_7_intel_19_1_0_166` modulefile uses `/discover/nobackup/projects/lis/libs/esmf/7.1.0r_intel-19.1.0.166_impi-20.0.0.166_sles12.3/mod/modO/Linux.intel.64.intelmpi.default` and `/discover/nobackup/projects/lis/libs/esmf/7.1.0r_intel-19.1.0.166_impi-20.0.0.166_sles12.3/lib/libO/Linux.intel.64.intelmpi.default`.  So even if you select "serial" at the parallelization prompt, ESMF will bring in MPI, which leads to the error above.
+    ```sh
+    /usr/local/intel/2020/compilers_and_libraries_2020.0.166/linux/mpi/intel64/bin/mpiicc: line 558:  6248 Segmentation fault      (core dumped) /usr/local/intel/2020/compilers_and_libraries_2020.0.166/linux/bin/intel64/icc -c -g '-traceback' '-DIFC' '-DLINUX' '-DLIS_JULES' '-I./' '-I../core/' '-I../params/gfrac/SPORTDaily/' '-I../params/gfrac/VIIRSDaily/' '-I../surfacemodels/land/vic.4.1.1/' '-I../surfacemodels/land/vic.4.1.1/physics/' '-I../surfacemodels/land/vic.4.1.2.l/' '-I../surfacemodels/land/vic.4.1.2.l/physics/' '-I../surfacemodels/land/rdhm.3.5.6/' '-I../surfacemodels/land/rdhm.3.5.6/sac/' '-I../surfacemodels/land/rdhm.3.5.6/frz/' '-I../surfacemodels/land/rdhm.3.5.6/snow17/' '-I../surfacemodels/land/rdhm.3.5.6/sachtet/' '../surfacemodels/land/rdhm.3.5.6/sac/days_of_month.c' -I/usr/local/intel/2020/compilers_and_libraries_2020.0.166/linux/mpi/intel64/include
+    Makefile:145: recipe for target 'days_of_month.o' failed
+    make[1]: *** [days_of_month.o] Error 139
+    make[1]: Leaving directory '/gpfsm/dnb31/dcrosen/src/lishydro_dev/src/LISF/lis/make'
 
-The two solutions to this issue are:
+    [ERR] Compile failed
+    ```
 
-1) Use the `lisf_7_intel_19_1_0_166 modulefile` and always run on a compute node
-2) Create a `lisf_7_intel_19_1_0_166_mpiuni modulefile`.  Edit the definitions for `def_lis_modesmf` and `def_lis_libesmf` by changing `intelmpi` to `mpiuni`.  Then rerun `./configure` and `./compile`.
+    We are currently working with NCCS to resolve this issue. For now, we recommend that you re-run the compile step (i.e., `./compile`). This will usually allow compilation to finish.
 
-I suspect that most of you want to run LIS in parallel, so you must be careful when using option 2.  When using option 2, you will load `lisf_7_intel_19_1_0_166_mpiuni` for LDT and LVT, and you will load `lisf_7_intel_19_1_0_166` for LIS.
+2. Running LDT and LVT on SLES12 login nodes
 
-To compile LISF on SLES 11 with the GNU compilers:
+    You cannot run MPI-based executables on the SLES12 *login* nodes, even if you are just using a single process. On SLES12, you must run MPI-based executables on a *compute* node, either interactively (i.e., `xalloc`) or via batch (i.e., `sbatch`).
 
-* Load the appropriate module: `module load lisf_7_gnu_4_9_2_mpi`
+    This is because the `lisf_7_intel_19_1_0_166` modulefile sets environment variables that point to MPI-based compilations of ESMF. So even if you select "serial" at the parallelization prompt, ESMF will bring in MPI which leads to the error below:
+
+    ```sh
+    $ ./LDT ldt.config
+    Abort(2140047) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init_thread: Other MPI error, error stack:
+    MPIR_Init_thread(703)........:
+    MPID_Init(958)...............:
+    MPIDI_OFI_mpi_init_hook(1334):
+    MPIDU_bc_table_create(444)...:
+    ```
+
+    There are two options for compiling and running LDT and LVT:
+
+    1. Compile the executables with the `lisf_7_intel_19_1_0_166` modulefile and *always* run on a compute node (see the [NCCS Slurm guidance](https://www.nccs.nasa.gov/nccs-users/instructional/using-slurm)). *This is the recommended approach.*
+    2. Copy the contents of the `lisf_7_intel_19_1_0_166` modulefile into new modulefile named `lisf_7_intel_19_1_0_166_mpiuni`. Then, edit the definitions (i.e., path) for `def_lis_modesmf` and `def_lis_libesmf` to change `intelmpi` to `mpiuni` as shown here:
+
+        ```sh
+        set   def_lis_modesmf     /discover/nobackup/projects/lis/libs/esmf/7.1.0r_intel-19.1.0.166_impi-20.0.0.166_sles12.3/mod/modO/Linux.intel.64.mpiuni.default
+        set   def_lis_libesmf     /discover/nobackup/projects/lis/libs/esmf/7.1.0r_intel-19.1.0.166_impi-20.0.0.166_sles12.3/lib/libO/Linux.intel.64.mpiuni.default
+        ```
+
+        Load the `lisf_7_intel_19_1_0_166_mpiuni` modulefile whenever compiling and running LDT and LVT on a login node.
+
+    *Be careful when using option 2.* When using option 2, you must remember to load `lisf_7_intel_19_1_0_166_mpiuni` when compiling LDT and LVT, but you must unload this modulefile and load `lisf_7_intel_19_1_0_166` to compile and run LIS. Use `module list` to check which module files are currently loaded and `module unload <modulefile name>` or `module purge` to unload one or all currently loaded modules.
