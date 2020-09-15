@@ -130,12 +130,6 @@ At this stage, you are connected to a *login node*. See [Login Nodes vs. Compute
 
     This file will be executed every time you log onto Discover to ensure you're working in a clean environment.
 
-    Since you've just created your new `.profile`, you'll need to execute the following command to load your clean environment for this session:
-
-    ```sh
-    % source $HOME/.profile
-    ```
-
 4. Now that you have a clean environment, environment variables that LIS needs to compile and run must be loaded. To do this we will make use of [modules](https://www.nccs.nasa.gov/nccs-users/instructional/using-discover/miscellaneous/using-modules). Module files created for use with LIS are available in the LISF GitHub repo in the [env/discover](https://github.com/NASA-LIS/LISF/tree/master/env/discover) directory. In this step we will download these module files to Discover.
 
     Make a directory called `privatemodules/` in your `$HOME` directory to store the module files:
@@ -158,7 +152,13 @@ At this stage, you are connected to a *login node*. See [Login Nodes vs. Compute
 
     *Check [here](https://github.com/NASA-LIS/LISF/tree/master/env/discover) periodically for updated module files.*
 
-5. Load the modulefile using the `module load` command.
+5. Execute your new `.profile` to load your clean environment for this session and tell `module` to look in the `privatemodules` directory you just created:
+
+    ```sh
+    % source $HOME/.profile
+    ```
+
+6. Load the modulefile using the `module load` command.
 
     ```sh
     % module load lisf_7_intel_19_1_0_166
@@ -170,7 +170,7 @@ At this stage, you are connected to a *login node*. See [Login Nodes vs. Compute
 
     -----
 
-6. The storage quota for your `$HOME` directory is pretty small so we suggest that you work in your `$NOBACKUP` directory which is located at `/discover/nobackup/<userid>`.
+7. The storage quota for your `$HOME` directory is pretty small so we suggest that you work in your `$NOBACKUP` directory which is located at `/discover/nobackup/<userid>`.
 
     ```sh
     % cd $NOBACKUP
