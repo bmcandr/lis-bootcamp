@@ -387,6 +387,12 @@ nccmp -dmsf -t 0.1 file1.nc file2.nc
 
 See [the `nccmp` documentation](https://gitlab.com/remikz/nccmp/-/blob/master/README.md) for more information.
 
+**Discover users** on can access `nccmp` on *SLES12* nodes by loading the appropriate module:
+
+```sh
+module load nccmp
+```
+
 -----
 
 ### `slurm` - Job Scheduler
