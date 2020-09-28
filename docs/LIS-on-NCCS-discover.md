@@ -402,20 +402,22 @@ module load nccmp
 
 -----
 
-### `vim` - Text Editor
+### Text Editors
 
-`vim` is a powerful command-line based text editor, but it has a steep learning curve. Here are some resources to get you started:
+* `vim`
 
-* Cheatsheets - keyboard commands at a glance
-    * [`vim` Cheatsheet 1](https://devhints.io/vim)
-    * [`vim` Cheatsheet 2](https://vim.rtorr.com/)
-* Interactive `vim` tutorials:
-    * [OpenVim](https://www.openvim.com/) - short and sweet introduction
-    * [`vim` Adventures](https://vim-adventures.com/) - learn `vim` while playing a game
+    `vim` is a powerful command-line based text editor, but it has a steep learning curve. Here are some resources to get started:
 
-### `emacs` - Text Editor
+    * Cheatsheets - keyboard commands at a glance
+        * [`vim` Cheatsheet 1](https://devhints.io/vim)
+        * [`vim` Cheatsheet 2](https://vim.rtorr.com/)
+    * Interactive `vim` tutorials:
+        * [OpenVim](https://www.openvim.com/) - short and sweet introduction
+        * [`vim` Adventures](https://vim-adventures.com/) - learn `vim` while playing a game
 
-`emacs` is another text editor available from the command-line. It has a built-in tutorial that can be accessed by opening `emacs` and typing `Ctrl+h` followed by `t`.
+* `emacs`
+
+    `emacs` is another powerful text editor available from the command-line that is known for its customizability. A built-in tutorial can be accessed by starting `emacs` and typing `Ctrl+h` followed by `t`.
 
 -----
 
