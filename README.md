@@ -9,7 +9,7 @@ View the LIS Bootcamp as a rendered website here: <https://bmcandr.github.io/lis
 * [Overview of LIS](#overview-of-nasas-land-information-system)
 * [Important Links](#important-links)
 * [Glossary of Terms and Concepts](docs/LIS-glossary.md)
-* [Getting Started with LIS on NCCS Discover](docs/LIS-on-NCCS-discover.md)
+* [LISF on NCCS Discover - Quick Start Guide](docs/LIS-on-NCCS-discover.md)
 
 <img src='docs/images/LIS_logo-FINAL.png' width='25%' align='right'>
 
