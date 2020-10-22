@@ -8,11 +8,54 @@ This guide will demonstrate several approaches to visualizing output from LIS fr
 
 ## GrADS
 
-Several of us in the lab like using GrADS because it is quick and handles binary, NetCDF, and GRIB data relatively easy.  It is good for both interactively viewing data as well as scripting for batch processing. Others find GrADS awkward to use or find the output to be ugly. They use other tools like Matlab, Python/matplotlib, or NCL, for visualizing data. We suggest starting with GrADS because all our existing testcases have GrADS descriptor files (*.ctl) to help with plotting the data.
+Several of us in the lab like using [GrADS](http://cola.gmu.edu/grads/) because it is quick and handles binary, NetCDF, and GRIB data relatively easy.  It is good for both interactively viewing data as well as scripting for batch processing. Others find GrADS awkward to use or find the output to be ugly. They use other tools like Matlab, Python/matplotlib, or NCL for visualizing data. We suggest starting with GrADS because all our existing testcases have GrADS descriptor files (*.ctl) to help with plotting the data.
 
-*Note: This section will help you get GrADS running on Discover, but should not be considered a comprehensive reference. Please see the [GrADS Documentation](http://cola.gmu.edu/grads/gadoc/gadoc.php) for detailed descriptions of GrADS functionality and usage.*
+*Note: This section will help you get GrADS running on Discover, but should not be considered a comprehensive reference. Please see the [GrADS Documentation](http://cola.gmu.edu/grads/gadoc/gadoc.php) for detailed descriptions of GrADS functionality and usage. Use a search engine to troubleshoot issues.*
 
-First you must set two environment variables so GrADS can find its fonts and supplemental scripts. This should work, and it is safe to put into your `.profile` in your `$HOME`:
+On SLES12, the current default environment on login to Discover, simply add GrADS to your environment path as follows:
+
+```sh
+% export PATH=$PATH:/discover/nobackup/projects/gmao/share/dasilva/opengrads/Contents
+```
+
+Or, to automatically add GrADS to your path on login, add the following to your `~/.profile` file:
+
+```sh
+PATH=$PATH:/discover/nobackup/projects/gmao/share/dasilva/opengrads/Contents
+```
+
+GrADS uses descriptor files with the extension .ctl and .xdf to create plots. To generate a plot from these files enter a command such as:
+
+```sh
+% grads -lc "open <filename>.ctl"
+```
+
+Where the `l` flag sets GrADS to plot in landscape layout and the `c` flag tells GrADS to run the command in quotes on execution.
+
+GrADS will then start and your prompt will be replaced with `ga->`. You can then enter GrADS commands, for example:
+
+```sh
+ga-> set gxout grfill   # change plot style from contour to fill
+ga-> q file             # query file contents (i.e., list variables available for display)
+ga-> d mask             # display a variable called 'mask'
+```
+
+If no visualization appears, one of two things are happening.
+
+1. Your X11 forwarding is not working.  Try running `xclock`.  If clock pops up on your local computer, the X11 forwarding is working.
+2. You did not actually tell GrADS to plot anything.
+
+You may see the following *warning*, but it is safe to ignore:
+
+```sh
+Warning: OPTIONS keyword "template" is used, but the
+DSET entry contains no substitution templates.
+```
+
+-----
+**Legacy Instructions for the SLES11 Environment:**
+
+To use GrADS on SLES11 nodes, you must set two environment variables so GrADS can find its fonts and supplemental scripts. The following commands should work and are safe to add to your `~/.profile`:
 
 ```sh
 # place after existing entries
@@ -30,41 +73,10 @@ There are two versions of GrADS available and they are located at:
 |2.0.1|`$NOBACKUP/../projects/lis/libs/grads/2.0.1/bin/grads`
 |2.1.a2|`$NOBACKUP/../projects/lis/libs/grads/2.1.a2/bin/grads`
 
-To run GrADS by simply entering `grads` in the terminal, create an alias in your `.profile` to point to your preferred version. For example:
+To run GrADS by simply entering `grads` in the terminal, create an alias in your `~/.profile` to point to your preferred version. For example:
 
 ```sh
-...
 alias grads=$NOBACKUP/../projects/lis/libs/grads/2.1.a2/bin/grads
-...
-```
-
-GrADS uses descriptor files with the extension .ctl and .xdf to create plots. To generate a plot from these files enter a command such as:
-
-```sh
-grads -lc "open <filename>.ctl
-```
-
-Where the `l` flag sets GrADS to plot in landscape layout and the `c` flag tells GrADS to run the command in quotes on execution.
-
-If no visualization appears, one of two things are happening.
-
-1. Your X11 forwarding is not working.  Try running `xclock`.  If clock pops up on your local computer, the X11 forwarding is working.
-2. You did not actually tell GrADS to plot anything.
-
-....
-grads -lc "open test_out.ctl"
-set gxout grfill
-q file
-d mask
-....
-
-`set gxout grfill` tells GrADS to draw full color plot instead of contour lines.  `q file` lists all the fields in the file and should only list "mask." `d mask` tells GrADS to display the mask field.
-
-You may see the following *warning*, but it is safe to ignore:
-
-```sh
-Warning: OPTIONS keyword "template" is used, but the
-DSET entry contains no substitution templates.
 ```
 
 -----
