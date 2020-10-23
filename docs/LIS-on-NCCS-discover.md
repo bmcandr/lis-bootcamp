@@ -2,7 +2,7 @@
 
 This document provides information to get new users/contributors to LISF up and running on NASA's [Discover](https://www.nccs.nasa.gov/systems/discover) high-performance computing environment.
 
-If you are new to Discover, there  the [user information](https://www.nccs.nasa.gov/nccs-users/), [instructional videos](https://www.nccs.nasa.gov/nccs-users/instructional/instructional-videos), and [brown bag presentations](https://www.nccs.nasa.gov/nccs-users/user-events/brown-bag-sessions) available on the NCCS website.
+If you are new to Discover, explore the [user information pages](https://www.nccs.nasa.gov/nccs-users/), [instructional videos](https://www.nccs.nasa.gov/nccs-users/instructional/instructional-videos), and [brown bag presentations](https://www.nccs.nasa.gov/nccs-users/user-events/brown-bag-sessions) available on the NCCS website.
 
 ## Contents
 
