@@ -8,37 +8,127 @@ This guide will demonstrate several approaches to visualizing output from LIS fr
 
 ## GrADS
 
-Several of us in the lab like using [GrADS](http://cola.gmu.edu/grads/) because it is quick and handles binary, NetCDF, and GRIB data relatively easy.  It is good for both interactively viewing data as well as scripting for batch processing. Others find GrADS awkward to use or find the output to be ugly. They use other tools like Matlab, Python/matplotlib, or NCL for visualizing data. We suggest starting with GrADS because all our existing testcases have GrADS descriptor files (*.ctl) to help with plotting the data.
+Several of us in the lab like using [GrADS](http://cola.gmu.edu/grads/) because it is quick and handles binary, NetCDF, and GRIB data relatively easy. It is good for both interactively viewing data as well as scripting for batch processing. Others find GrADS awkward to use or find the output to be ugly. They use other tools like Matlab, Python/matplotlib, or NCL for visualizing data. We suggest starting with GrADS because all our existing testcases have GrADS descriptor files (*.ctl) to help with plotting the data.
 
-*Note: This section will help you get GrADS running on Discover, but should not be considered a comprehensive reference. Please see the [GrADS Documentation](http://cola.gmu.edu/grads/gadoc/gadoc.php) for detailed descriptions of GrADS functionality and usage. Use a search engine to troubleshoot issues.*
+This section will help you get GrADS running on Discover, but should not be considered a comprehensive reference. Please visit the GrADS website for [Official Documentation](http://cola.gmu.edu/grads/gadoc/gadoc.php) and an [introductory tutorial](http://cola.gmu.edu/grads/gadoc/tutorial.html).
 
-On SLES12, the current default environment on login to Discover, simply add GrADS to your environment path as follows:
+### Setting up GrADS
+
+On SLES12, the default environment on login to Discover, simply add GrADS to your environment path as follows:
 
 ```sh
 % export PATH=$PATH:/discover/nobackup/projects/gmao/share/dasilva/opengrads/Contents
 ```
 
-Or, to automatically add GrADS to your path on login, add the following to your `~/.profile` file:
+You will have to re-run the above command each time you log onto Discover. To automatically add GrADS to your path on login, add the following line to your `~/.profile` file:
 
 ```sh
 PATH=$PATH:/discover/nobackup/projects/gmao/share/dasilva/opengrads/Contents
 ```
 
-GrADS uses descriptor files with the extension .ctl and .xdf to create plots. To generate a plot from these files enter a command such as:
+Run the command `grads` to start the program. If successful a welcome message will print to the terminal and an X11 window will open.
 
 ```sh
-% grads -lc "open <filename>.ctl"
+% grads -l
+>
+>              Welcome to the OpenGrADS Bundle Distribution
+>              --------------------------------------------
+>
+>For additional information enter "grads --manual".
+...
 ```
 
-Where the `l` flag sets GrADS to plot in landscape layout and the `c` flag tells GrADS to run the command in quotes on execution.
+*Note: In the snippet above, the `-l` flag tells GrADS to plot in landscape layout. If you do not pass this flag, GrADS will ask you to specify portrait or landscape mode on startup (use `y` or `n` to answer).*
 
-GrADS will then start and your prompt will be replaced with `ga->`. You can then enter GrADS commands, for example:
+Your terminal prompt will now be prefixed with `ga->`, signifying that GrADS is running. This is where you will enter commands to GrADS.
+
+To exit and return to the shell prompt, simply enter `quit` at the GrADS prompt.
+
+### Intro to Plotting LIS Input/Output
+
+*The examples below use files associated with Step 2 of the [LISF Public Testcase](https://github.com/bmcandr/lis-public-tc-walkthrough). Download the files [here](https://portal.nccs.nasa.gov/lisdata_pub/Tutorials/Web_Version/testcase2_lis_ol.tgz)*
+
+GrADS uses text-based "descriptor files" with the extension `.ctl` and `.xdf` to create plots. To open a descriptor file named `output.ctl` for example, enter the `open` command followed by the filename:
 
 ```sh
-ga-> set gxout grfill   # change plot style from contour to fill
-ga-> q file             # query file contents (i.e., list variables available for display)
-ga-> d mask             # display a variable called 'mask'
+ga-> open output.ctl
 ```
+
+For `.xdf` files, such as `target_da.xdf` included with the Step 6 files, use the command `xdfopen`:
+
+```sh
+ga-> xdfopen target_da.xdf
+```
+
+This file can now be referenced in GrADS as `file`. Query the contents using the `q` command:
+
+```sh
+ga-> q file
+File 1 : LIS land surface model output
+  Descriptor: target_ol.xdf
+  Binary: ./target_OL_OUTPUT/SURFACEMODEL/2017%m2/LIS_HIST_2017%m2%d2%h200.d01.nc
+  Type = Gridded
+  Xsize = 28  Ysize = 22  Zsize = 4  Tsize = 1460  Esize = 1
+  Number of Variables = 20
+     lat  0  y,x  latitude
+     lon  0  y,x  longitude
+     swnet_tavg  0  y,x  net downward shortwave radiation
+     lwnet_tavg  0  y,x  net downward longwave radiation
+     qle_tavg  0  y,x  latent heat flux
+     qh_tavg  0  y,x  sensible heat flux
+     qg_tavg  0  y,x  soil heat flux
+     snowf_tavg  0  y,x  snowfall rate
+     rainf_tavg  0  y,x  precipitation rate
+     evap_tavg  0  y,x  total evapotranspiration
+     qs_tavg  0  y,x  surface runoff
+     qsb_tavg  0  y,x  subsurface runoff amount
+     albedo_tavg  0  y,x  surface albedo
+     swe_tavg  0  y,x  snow water equivalent
+     snowdepth_tavg  0  y,x  snow depth
+     soilmoist_tavg  4  z,y,x  soil moisture content
+     rainf_f_tavg  0  y,x  rainfall flux
+     tair_f_tavg  0  y,x  air temperature
+     swdown_f_tavg  0  y,x  surface downward shortwave radiation
+     lwdown_f_tavg  0  y,x  surface downward longwave radiation
+```
+
+The variables listed in the output can be plotted using the `display`, or `d`, command followed by the variable name:
+
+```sh
+ga-> set gxout grfill   # change plot style from contour to fill (grfill)
+ga-> d soilmoist_tavg  # plot the soilmoist_tavg1 for the first timestep
+```
+
+<img src='images/grads-soilmoist-no-cbar-example-plot.png' width=75% align='center'>
+
+Add a colorbar with `cbar`:
+
+```sh
+ga-> cbar
+```
+
+<img src='images/grads-soilmoist-example-plot.png' width=75% align='center'>
+
+Clear the output using the `clear` or `c` command:
+
+```sh
+ga-> c
+```
+
+To view the file at the 20th timestep (timesteps are defined in the descriptor file) use the `set` command followed by the `d` command:
+
+```sh
+ga-> set t 20
+ga-> d soilmoist_tavg
+```
+
+<img src='images/grads-soilmoist-T20-example-plot.png' width=75% align='center'>
+
+For more examples, check out the [GrADS Official Tutorial](http://cola.gmu.edu/grads/gadoc/tutorial.html).
+
+-----
+
+### Troubleshooting
 
 If no visualization appears, one of two things are happening.
 
@@ -53,7 +143,8 @@ DSET entry contains no substitution templates.
 ```
 
 -----
-**Legacy Instructions for the SLES11 Environment:**
+
+### Legacy Instructions for the SLES11 Environment
 
 To use GrADS on SLES11 nodes, you must set two environment variables so GrADS can find its fonts and supplemental scripts. The following commands should work and are safe to add to your `~/.profile`:
 
@@ -127,6 +218,10 @@ alias grads=$NOBACKUP/../projects/lis/libs/grads/2.1.a2/bin/grads
 -----
 
 ## Python
+
+Check this document: <https://modelingguru.nasa.gov/docs/DOC-2693>
+
+**The information below is inaccurate and will be updated eventually.**
 
 ### Loading an Anaconda distribution of Python
 
