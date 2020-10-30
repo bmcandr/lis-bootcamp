@@ -99,7 +99,7 @@ ga-> set gxout grfill   # change plot style from contour to fill (grfill)
 ga-> d soilmoist_tavg  # plot the soilmoist_tavg1 for the first timestep
 ```
 
-<img src='images/grads-soilmoist-no-cbar-example-plot.png' width=75% align='center'>
+<img src='images/grads-soilmoist-no-cbar-example-plot.png' width=75%>
 
 Add a colorbar with `cbar`:
 
@@ -107,7 +107,7 @@ Add a colorbar with `cbar`:
 ga-> cbar
 ```
 
-<img src='images/grads-soilmoist-example-plot.png' width=75% align='center'>
+<img src='images/grads-soilmoist-example-plot.png' width=75%>
 
 Clear the output using the `clear` or `c` command:
 
@@ -122,7 +122,7 @@ ga-> set t 20
 ga-> d soilmoist_tavg
 ```
 
-<img src='images/grads-soilmoist-T20-example-plot.png' width=75% align='center'>
+<img src='images/grads-soilmoist-T20-example-plot.png' width=75%>
 
 For more examples, check out the [GrADS Official Tutorial](http://cola.gmu.edu/grads/gadoc/tutorial.html).
 
