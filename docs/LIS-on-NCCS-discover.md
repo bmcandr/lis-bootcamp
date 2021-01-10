@@ -1,8 +1,10 @@
 # LISF on NCCS Discover - Quick Start Guide
 
-This document provides information to get new users/contributors to LISF up and running on NASA's [Discover](https://www.nccs.nasa.gov/systems/discover) high-performance computing environment.
+This document provides information to help new LIS team members and contributors up and running on NASA's [Discover](https://www.nccs.nasa.gov/systems/discover) high-performance computing environment. If you do not have an NCCS account, follow the [account set up instructions](https://www.nccs.nasa.gov/nccs-users/instructional/account-set-up) before continuing.
 
-If you are new to Discover, explore the [user information pages](https://www.nccs.nasa.gov/nccs-users/), [instructional videos](https://www.nccs.nasa.gov/nccs-users/instructional/instructional-videos), and [brown bag presentations](https://www.nccs.nasa.gov/nccs-users/user-events/brown-bag-sessions) available on the NCCS website.
+*New to high-performance computing (HPC)? [Try this quick intro!](https://hpc-carpentry.github.io/hpc-intro/)*
+
+For more information about using Discover, explore the [user information pages](https://www.nccs.nasa.gov/nccs-users/), [instructional videos](https://www.nccs.nasa.gov/nccs-users/instructional/instructional-videos), and [brown bag presentations](https://www.nccs.nasa.gov/nccs-users/user-events/brown-bag-sessions) available on the NCCS website.
 
 ## Contents
 
@@ -18,32 +20,24 @@ If you are new to Discover, explore the [user information pages](https://www.ncc
 
 ## Accessing Discover
 
-### Prerequisites - What do you need to access Discover?
-
-**Account Prerequisites**
-
-* NASA IdMax identity
-* RSA Key
-    * Submit [NAMS](https://idmax.nasa.gov/) request *Agency RSA SecurID Token* and follow included instructions
-* An account with [NASA Center for Climate Simulation](https://www.nccs.nasa.gov/nccs-users/instructional/account-set-up) (NCCS)
-* Discover access permissions (ask your PI)
-
-**Required Software**
+### Required Software
 
 Discover is accessed using a [terminal](https://en.wikipedia.org/wiki/Terminal_emulator) application:
 
-* **Mac users:** use *Terminal.app* found in your Applications directory
-* **Windows users:** install a terminal emulator such as [PuTTY](https://www.putty.org/) or [MobaXterm](https://mobaxterm.mobatek.net/download.html)
+* **Mac users:** *Terminal* (located in Applications > Utilities) or [*iTerm2*](https://iterm2.com/)
+* **Windows users:** [*PuTTY*](https://www.putty.org/) or [*MobaXterm*](https://mobaxterm.mobatek.net/download.html)
 
 *Need a refresher on terminal/shell basics? [Try this!](http://swcarpentry.github.io/shell-novice/)*
 
 ### Connecting to Discover
 
-In the examples that follow, the `%` symbol at the beginning of the line represents the command-line prompt in your terminal. You do not type that when entering any of the example commands. Text following a `>` represents example output that should be returned after running a given command. When copy-pasting into or out of the terminal, you may find that the familiar `Ctrl+C`/`Ctrl+V` keyboard shortcuts do not work. Instead, copy or paste by right clicking on the terminal and selecting the action you'd like to take from the context menu that appears.
+Now that you have an account and the required software you are ready to connect to Discover.
 
-1. On your local computer, add the following to your `$HOME/.ssh/config` file:
+In the examples that follow, the `%` symbol at the beginning of the line represents the command-line prompt in your terminal. You do not type that when entering any of the example commands. Text following a `>` represents example output that should be returned after running a given command. When copy-pasting into or out of the terminal, you may find that the familiar `Ctrl+C`/`Ctrl+V` keyboard shortcuts do not work. Instead, copy or paste by right-clicking on the terminal and selecting the action you'd like to take from the context menu.
 
-    ```sh
+1. Open your terminal application and use a text editor to add the following to your `~/.ssh/config` file:
+
+    ```text
     Host discover
     #LogLevel Quiet
     User <userid>
@@ -57,20 +51,21 @@ In the examples that follow, the `%` symbol at the beginning of the line represe
 
     \**Forgot your AUID? Visit [NAMS](https://nams.nasa.gov) and select Your Identity from the Identities dropdown menu.*
 
-2. Open the terminal* and connect to Discover using ssh:
+2. Connect, or "SSH", to Discover:
 
     ```sh
     % ssh discover
     ```
 
-3. At the `PASSCODE:` prompt, enter the randomly generated 8-digit RSA key that is displayed after entering your PIN in the RSA app.
-    * If using an RSA hard token (e.g., key-fob), enter your PIN + 8-digit RSA key at this prompt.
+    This command will use the information you added to `~/.ssh/config`.
+
+3. At the `PASSCODE:` prompt, enter the 8-digit RSA key. If using the RSA app for mobile devices, the key is displayed after entering your PIN. If you are using a RSA hard token (e.g., key-fob), enter your PIN + 8-digit RSA key at this prompt.
 
 4. At the `Host:` prompt, enter `discover`.
 
 5. At the `Password:` prompt, enter your NCCS LDAP password.
 
-If the connection was successful a welcome message will be printed to the terminal:
+If the connection is successful a welcome message will be printed to the terminal:
 
 ```sh
 > Your password will expire in X day(s).
@@ -87,9 +82,9 @@ If the connection was successful a welcome message will be printed to the termin
 > <userid>@discoverNN:~>
 ```
 
-At this stage, you are connected to a *login node*. See [Login Nodes vs. Compute Nodes](#login-nodes-vs-compute-nodes) for more information.
+You are now connected to a *login node*. See [Login Nodes vs. Compute Nodes](#login-nodes-vs-compute-nodes) for more information.
 
-NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/instructional/logging-in/bastion-host) for connecting to their systems.
+If you encounter any issues, NCCS also provides [these instructions](https://www.nccs.nasa.gov/nccs-users/instructional/logging-in/bastion-host) for connecting to their systems.
 
 -----
 
@@ -103,20 +98,16 @@ You are now connected to Discover. In this section, you will set up your environ
     % cd $HOME
     ```
 
-2. We suggest that you start with a clean login environment. To do so, move your `.profile` and, assuming you are using bash, `.bashrc` files to another directory for safekeeping. (If your `.bashrc` file does not run any `module load` commands nor sets any critical environment variables like `$PATH` or `$LD_LIBRARY_PATH`, then you should be safe leaving your `.bashrc` file alone.)
+2. We suggest that you start with a clean login environment. First, move your `.profile` and, assuming you are using bash, `.bashrc` files to a backup directory for safekeeping.
 
     ```sh
-    % mkdir profile_temp
-    % mv .profile .bashrc profile_temp/
+    % mkdir profile_backup
+    % mv .profile .bashrc profile_backup/
     ```
 
-3. Create a new `.profile` file in your `$HOME` directory...
+    If your `.bashrc` file does not run any `module load` commands or set any critical environment variables like `$PATH` or `$LD_LIBRARY_PATH` then you should be safe leaving your `.bashrc` file alone.
 
-    ```sh
-    % vim .profile
-    ```
-
-    ...and add the following to it:
+3. Using a text editor, create a new `.profile` file in your `$HOME` directory that contains:
 
     ```sh
     # This file is read each time a login shell is started.
@@ -138,7 +129,9 @@ You are now connected to Discover. In this section, you will set up your environ
 
     This file will be executed every time you log onto Discover.
 
-4. Next we need a convenient way to load environment variables that LISF components require to compile and run. To do this we make use of [modules](https://www.nccs.nasa.gov/nccs-users/instructional/using-discover/miscellaneous/using-modules). LISF-specific module files for use on Discover are included alongside the LISF source code in the [`env/discover` directory](https://github.com/NASA-LIS/LISF/tree/master/env/discover) of the GitHub repository. In this step we will download the LISF modulefile for the SLES12 environment to Discover.
+4. Next, you'll need a convenient way to load environment variables that LISF components require to compile and run. Discover provides this functionality through the program [modules](https://www.nccs.nasa.gov/nccs-users/instructional/using-discover/miscellaneous/using-modules).
+
+    LISF-specific module files for use on Discover are included alongside the LISF source code in the [`env/discover` directory](https://github.com/NASA-LIS/LISF/tree/master/env/discover) of the GitHub repository. In this step we will download the LISF modulefile for the SLES12 environment to Discover.
 
     First, make a directory called `privatemodules/` in your `$HOME` directory to store the module files and change into it:
 
@@ -147,26 +140,24 @@ You are now connected to Discover. In this section, you will set up your environ
     % cd $HOME/privatemodules
     ```
 
-    Using `curl`, download the modulefile for SLES12 into `privatemodules/`:
+    Using `curl`, download the latest LISF modulefile into `privatemodules/`:
 
     ```sh
-    % curl -O https://raw.githubusercontent.com/NASA-LIS/LISF/master/env/discover/lisf_7_intel_19_1_0_166
+    % curl -O https://raw.githubusercontent.com/NASA-LIS/LISF/master/env/discover/lisf_7_intel_19_1_3_304
     ```
 
     *LISF module files are periodically updated as the development environment evolves, check [here](https://github.com/NASA-LIS/LISF/tree/master/env/discover) periodically to ensure you have the latest version.*
 
-    *To learn how to create a custom module file, see [this blog post on ModelingGuru](https://modelingguru.nasa.gov/community/atmospheric/lis/blog/2015/08/26/creating-a-custom-modulefile).*
-
-5. Source your new `.profile` to load your clean environment for this session. This will occur automatically when you login from now on.
+5. Source your new `.profile` to load the clean environment for the current session. The clean profile will be loaded automatically on connection to Discover in future.
 
     ```sh
     % source $HOME/.profile
     ```
 
-6. Load the LISF modulefile for SLES12 using the `module load` command.
+6. Load the LISF modulefile you just downloaded:
 
     ```sh
-    % module load lisf_7_intel_19_1_0_166
+    % module load lisf_7_intel_19_1_3_304
     ```
 
     The `module` program knows where to find this file no matter where we are in the filesystem because we tell it to look in `$HOME/privatemodules` in the profile created in step 3 (see the line beginning `module use --append`).
@@ -227,7 +218,7 @@ You are now ready to clone the [LISF](https://github.com/NASA-LIS/LISF.git) sour
     > Checking out files: 100% (5615/5615), done.
     ```
 
-    This will download the repository containing the LISF source code into a directory named `LISF/`.
+    This will download the repository containing the LISF source code into a directory named `LISF/`. You can download the sourcecode into a custom directory by passing the desired name after the URL.
 
 3. Change directories into `LISF/` and use `git status` to check the status of the repository:
 
@@ -293,9 +284,9 @@ This section will provide a brief overview of the process to build the LIS execu
     % salloc --ntasks=16 --time=02:00:00
     # Output will appear as resources are allocated and you are connected
     % source ~/.profile  # Source your profile after connecting to an interactive compute node
-    % module load lisf_7_intel_19_1_0_166 # Load the LISF module file again
-    % cd $NOBACKUP/lis-test/LISF/lis     # Navigate back to the lis directory in the LISF repository
-    % ./compile -j 16                   # Compile!
+    % module load lisf_7_intel_19_1_3_304 # Load the LISF module file again
+    % cd $NOBACKUP/lis-test/LISF/lis      # Navigate back to the lis directory in the LISF repository
+    % ./compile -j 16                     # Compile!
     ```
 
     *Note: users have been encountering seemingly random compilation failures on SLES12 nodes caused by a `Segmentation Fault`.  Rerunning the `./compile` step typically clears the error. See the [SLES12 Issues](#sles12-issues) section below for more information.*
@@ -357,6 +348,12 @@ Use the `--help` flag to learn more.
 
 ### `nccmp` - Compare NetCDF Files
 
+Discover users on can access `nccmp` on *SLES12* nodes by loading the appropriate module:
+
+```sh
+module load nccmp
+```
+
 From the official [README](https://gitlab.com/remikz/nccmp/-/blob/master/README.md):
 
 >`nccmp` compares two NetCDF files bitwise, semantically or with a user defined tolerance (absolute or relative percentage).  Parallel comparisons are done in local memory without requiring temporary files.  Highly recommended for regression testing scientific models or datasets in a test-driven development environment.
@@ -397,12 +394,6 @@ nccmp -dmsf -t 0.1 file1.nc file2.nc
 
 See [the `nccmp` documentation](https://gitlab.com/remikz/nccmp/-/blob/master/README.md) for more information.
 
-**Discover users** on can access `nccmp` on *SLES12* nodes by loading the appropriate module:
-
-```sh
-module load nccmp
-```
-
 -----
 
 ### `slurm` - Job Scheduler
@@ -414,20 +405,16 @@ module load nccmp
 
 ### Text Editors
 
-* `vim`
+`vim` is a powerful command-line based text editor, but it has a steep learning curve. Here are some resources to get started:
 
-    `vim` is a powerful command-line based text editor, but it has a steep learning curve. Here are some resources to get started:
+* Command cheatsheets:
+    * [`vim` Cheatsheet 1](https://devhints.io/vim)
+    * [`vim` Cheatsheet 2](https://vim.rtorr.com/)
+* Interactive `vim` tutorials:
+    * [OpenVim](https://www.openvim.com/) - short and sweet introduction
+    * [`vim` Adventures](https://vim-adventures.com/) - learn `vim` while playing a game
 
-    * Cheatsheets - keyboard commands at a glance
-        * [`vim` Cheatsheet 1](https://devhints.io/vim)
-        * [`vim` Cheatsheet 2](https://vim.rtorr.com/)
-    * Interactive `vim` tutorials:
-        * [OpenVim](https://www.openvim.com/) - short and sweet introduction
-        * [`vim` Adventures](https://vim-adventures.com/) - learn `vim` while playing a game
-
-* `emacs`
-
-    `emacs` is another powerful text editor available from the command-line that is known for its customizability. A built-in tutorial can be accessed by starting `emacs` and typing `Ctrl+h` followed by `t`.
+`emacs` is another powerful text editor available from the command-line that is known for its customizability. A built-in tutorial can be accessed by starting `emacs` and typing `Ctrl+h` followed by `t`.
 
 -----
 
@@ -435,7 +422,38 @@ module load nccmp
 
 This section describes a few known issues you may encounter when working with LISF on SLES12 nodes.
 
-1. Segmentation fault during compilation
+1. Running LDT and LVT on SLES12 login nodes
+
+    You cannot run MPI-based executables on the SLES12 *login* nodes, even if you are just using a single process. On SLES12, you must run MPI-based executables on a *compute* node, either interactively (i.e., `xalloc`) or via batch (i.e., `sbatch`).
+
+    This is because the `lisf_7_intel_19_1_3_304` modulefile sets environment variables that point to MPI-based compilations of ESMF. So even if you select "serial" at the parallelization prompt, ESMF will bring in MPI which leads to the error below:
+
+    ```sh
+    $ ./LDT ldt.config
+    Abort(2140047) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init_thread: Other MPI error, error stack:
+    MPIR_Init_thread(703)........:
+    MPID_Init(958)...............:
+    MPIDI_OFI_mpi_init_hook(1334):
+    MPIDU_bc_table_create(444)...:
+    ```
+
+    There are two options for compiling and running LDT and LVT:
+
+    1. Compile the executables with the `lisf_7_intel_19_1_3_304` modulefile and *always* run on a compute node (see the [NCCS Slurm guidance](https://www.nccs.nasa.gov/nccs-users/instructional/using-slurm)). *This is the recommended approach.*
+    2. Copy the contents of the `lisf_7_intel_19_1_3_304` modulefile into new modulefile named `lisf_7_intel_19_1_3_304_mpiuni`. Then, edit the definitions (i.e., path) for `def_lis_modesmf` and `def_lis_libesmf` to change `intelmpi` to `mpiuni` as shown here:
+
+        ```sh
+        set   def_lis_modesmf     /discover/nobackup/projects/lis/libs/esmf/7.1.0r_intel-19.1.0.166_impi-20.0.0.166_sles12.3/mod/modO/Linux.intel.64.mpiuni.default
+        set   def_lis_libesmf     /discover/nobackup/projects/lis/libs/esmf/7.1.0r_intel-19.1.0.166_impi-20.0.0.166_sles12.3/lib/libO/Linux.intel.64.mpiuni.default
+        ```
+
+        Load the `lisf_7_intel_19_1_0_166_mpiuni` modulefile whenever compiling and running LDT and LVT on a login node.
+
+    *Be careful when using option 2.* When using option 2, you must remember to load `lisf_7_intel_19_1_3_304_mpiuni` when compiling LDT and LVT, but you must unload this modulefile and load `lisf_7_intel_19_1_3_304` to compile and run LIS. Use `module list` to check which module files are currently loaded and `module unload <modulefile name>` or `module purge` to unload one or all currently loaded modules.
+
+2. Segmentation fault during compilation
+
+    **NOTE: this issue has been resolved. Use the LISF modulefile `lisf_7_intel_19_1_3_304`.**
 
     Users are encountering seemingly random segmentation fault errors during the compilation step. The error message will look similar to this:
 
@@ -449,32 +467,3 @@ This section describes a few known issues you may encounter when working with LI
     ```
 
     We are currently working with NCCS to resolve this issue. For now, we recommend that you re-run the compile step (i.e., `./compile`). This will usually allow compilation to finish.
-
-2. Running LDT and LVT on SLES12 login nodes
-
-    You cannot run MPI-based executables on the SLES12 *login* nodes, even if you are just using a single process. On SLES12, you must run MPI-based executables on a *compute* node, either interactively (i.e., `xalloc`) or via batch (i.e., `sbatch`).
-
-    This is because the `lisf_7_intel_19_1_0_166` modulefile sets environment variables that point to MPI-based compilations of ESMF. So even if you select "serial" at the parallelization prompt, ESMF will bring in MPI which leads to the error below:
-
-    ```sh
-    $ ./LDT ldt.config
-    Abort(2140047) on node 0 (rank 0 in comm 0): Fatal error in PMPI_Init_thread: Other MPI error, error stack:
-    MPIR_Init_thread(703)........:
-    MPID_Init(958)...............:
-    MPIDI_OFI_mpi_init_hook(1334):
-    MPIDU_bc_table_create(444)...:
-    ```
-
-    There are two options for compiling and running LDT and LVT:
-
-    1. Compile the executables with the `lisf_7_intel_19_1_0_166` modulefile and *always* run on a compute node (see the [NCCS Slurm guidance](https://www.nccs.nasa.gov/nccs-users/instructional/using-slurm)). *This is the recommended approach.*
-    2. Copy the contents of the `lisf_7_intel_19_1_0_166` modulefile into new modulefile named `lisf_7_intel_19_1_0_166_mpiuni`. Then, edit the definitions (i.e., path) for `def_lis_modesmf` and `def_lis_libesmf` to change `intelmpi` to `mpiuni` as shown here:
-
-        ```sh
-        set   def_lis_modesmf     /discover/nobackup/projects/lis/libs/esmf/7.1.0r_intel-19.1.0.166_impi-20.0.0.166_sles12.3/mod/modO/Linux.intel.64.mpiuni.default
-        set   def_lis_libesmf     /discover/nobackup/projects/lis/libs/esmf/7.1.0r_intel-19.1.0.166_impi-20.0.0.166_sles12.3/lib/libO/Linux.intel.64.mpiuni.default
-        ```
-
-        Load the `lisf_7_intel_19_1_0_166_mpiuni` modulefile whenever compiling and running LDT and LVT on a login node.
-
-    *Be careful when using option 2.* When using option 2, you must remember to load `lisf_7_intel_19_1_0_166_mpiuni` when compiling LDT and LVT, but you must unload this modulefile and load `lisf_7_intel_19_1_0_166` to compile and run LIS. Use `module list` to check which module files are currently loaded and `module unload <modulefile name>` or `module purge` to unload one or all currently loaded modules.
