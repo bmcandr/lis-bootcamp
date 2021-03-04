@@ -36,8 +36,10 @@ $ ssh-keygen -t ed25519 -f id_ed25519-github
 +
 Where,
 +
+--
 * `-t ed25519` selects the ed25519 encryption algorithm.
 * `-f id_ed25519-github` saves the public and private keys in files named _id_ed25519-github_. *Be sure to use the filename option or you risk overwriting an existing key!*
+--
 +
 Enter the passphrase you created above at the two prompts that appear.
 +
