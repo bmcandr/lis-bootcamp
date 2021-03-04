@@ -60,7 +60,7 @@ From the Settings menu, click on "SSH and GPG Keys":
 +
 image:github-ssh-menu-item.PNG[]
 +
-Click the image:github-new-ssh-key-button.png[width=75%] button in the top right.
+Click the green "New SSH Key" button in the top right.
 +
 In the box labeled "Title", add a descriptive label that indicates what machine uses this key to connect to GitHub (e.g., "discover-ed25519" or "work-laptop").
 +
