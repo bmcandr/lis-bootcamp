@@ -86,7 +86,19 @@ If _~/.ssh/config_ is not empty, add a blank line between the previous section a
 If you used a different filename for your SSH key, modify the path after `IdentityFile` to point to your key file.
 ====
 
-Your new SSH key is ready for use with GitHub. Remember to repeat the steps above on any other machines you use to connect to GitHub.
+. Test your SSH key by running the following command:
++
+```sh
+$ ssh -T github
+```
++
+GitHub should respond with:
++
+```sh
+> Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+If successful, your SSH key is ready for use with GitHub. Remember to repeat the steps above on any other machines you use to connect to GitHub.
 
 === Set Up SSH Agent to Temporarily Store your Passphrase
 
