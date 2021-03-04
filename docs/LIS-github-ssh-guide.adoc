@@ -27,8 +27,6 @@ $ cd ~/.ssh
 +
 For example: `GoddardSpaceFl!ghtCenter1sGr8`
 
-NOTE: In a later step we will add the SSH key to a "keychain" of sorts so you don't have to type this passphrase each time you clone, push, or pull.
-
 [start=3]
 . Generate your unique SSH key:
 +
@@ -68,22 +66,6 @@ In the box labeled "Title", add a descriptive label that indicates what machine 
 +
 Paste the public key in the box labeled "Key" and click "Add SSH Key".
 
-. To avoid having to enter your passphrase any time you connect to GitHub, add your private SSH key to the SSH agent.
-+
-Return to the terminal and start the SSH agent in the background:
-+
-```sh
-$ eval "$(ssh-agent -s)"
-```
-+
-Add your _private_ key to the SSH agent:
-+
-```sh
-$ ssh-add ~/.ssh/id_ed25519-github
-```
-+
-Enter your passphrase at the prompt.
-
 . Tell `ssh` which key to use when connecting to GitHub.
 +
 Open _~/.ssh/config_ with a text editor and add the following:
@@ -103,6 +85,26 @@ If you used a different filename for your SSH key, modify the path after `Identi
 ====
 
 Your new SSH key is ready for use with GitHub. Remember to repeat the steps above on any other machines you use to connect to GitHub.
+
+=== Set Up SSH Agent to Temporarily Store your Passphrase
+
+When using SSH keys, `git` will ask you for your passphrase every time you clone, push, or pull from GitHub. To enter your passphrase just once per session, add your private SSH key to the SSH agent. This is useful for sessions where you anticipate having to run `git pull` and `git push` numerous times.
+
+Return to the terminal and start the SSH agent in the background:
+
+```sh
+$ eval "$(ssh-agent -s)"
+```
+
+Add your _private_ key to the SSH agent:
+
+```sh
+$ ssh-add ~/.ssh/id_ed25519-github
+```
+
+Enter your passphrase at the prompt.
+
+NOTE: Unfortunately, the SSH agent does not store your private key between sessions (i.e., logins to Discover). The two commands above must therefore be run in any session where you want to avoid typing your passphrase over and over.
 
 == Using SSH with Git & GitHub
 
