@@ -25,7 +25,7 @@ $ cd ~/.ssh
 +
 For example: `GoddardSpaceFl!ghtCenter1sGr8`
 
-NOTE: In a later step we will add the SSH key to a "keychain" of sorts so you don't have to use this passphrase each time you push or pull with `git`.
+NOTE: In a later step we will add the SSH key to a "keychain" of sorts so you don't have to type this passphrase each time you clone, push, or pull.
 
 [start=3]
 . Generate your unique SSH key:
