@@ -106,7 +106,7 @@ Enter your passphrase at the prompt.
 
 NOTE: Unfortunately, the SSH agent does not store your private key between sessions (i.e., logins to Discover). The two commands above must therefore be run in any session where you want to avoid typing your passphrase over and over.
 
-== Using SSH with Git & GitHub
+== SSH URLs
 
 Switching to SSH keys requires a small change in the way you use `git` to interact with GitHub.
 
