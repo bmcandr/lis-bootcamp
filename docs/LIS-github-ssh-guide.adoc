@@ -1,4 +1,5 @@
 = Connecting to GitHub using SSH
+:imagesdir: images
 
 [quote, https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/]
 Beginning August 13, 2021, we will no longer accept account passwords when authenticating Git operations on GitHub.com.
