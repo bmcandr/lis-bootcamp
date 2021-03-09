@@ -26,6 +26,8 @@ $ cd ~/.ssh
 * Special characters (e.g., !, @, #, $, etc.)
 +
 For example: `GoddardSpaceFl!ghtCenter1sGr8`
++
+IMPORTANT: Please do not use this example as your actual passphrase.
 
 [start=3]
 . Generate your unique SSH key:
@@ -52,7 +54,7 @@ $ cat id_ed25519-github.pub
 > ssh-ed25519 VQfDM9CRk2SjR+H4BJgcUT31qlmW1GoVnHZmcJMszos= userid@discover##
 ```
 +
-Copy the entire line beginning `ssh-ed25519`. This is your public key. It will be unique from the example shown above.
+Copy the entire line beginning `ssh-ed25519`. This is your public key. _It will be unique from the example shown above._
 
 . Open a browser window and go to link:https://github.com[GitHub]. Log in, if necessary, and navigate to your account Settings by clicking on your user icon in the top right:
 +
