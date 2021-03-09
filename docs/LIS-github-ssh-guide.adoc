@@ -64,11 +64,19 @@ From the Settings menu, click on "SSH and GPG Keys":
 +
 image:github-ssh-menu-item.PNG[]
 +
-Click the green "New SSH Key" button in the top right.
+Click the green "New SSH Key" button in the top right to open the SSH key form.
 +
 In the box labeled "Title", add a descriptive label that indicates what machine uses this key to connect to GitHub (e.g., "discover-ed25519" or "work-laptop").
 +
-Paste the public key in the box labeled "Key" and click "Add SSH Key".
+In the box labeled "Key", paste your public key.
++
+image:github-new-ssh-key.PNG[]
++
+Click "Add SSH key".
++
+The new key should appear in your list of SSH keys:
++
+image:github-ssh-key-list.png[]
 
 . Tell `ssh` which key to use when connecting to GitHub.
 +
