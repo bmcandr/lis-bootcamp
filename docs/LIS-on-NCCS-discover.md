@@ -183,6 +183,8 @@ You are now connected to Discover. In this section, you will set up your environ
     ```
 
     The output will also show the storage quota for any additional disks associated with your account.
+    
+8. Follow **[this guide](https://github.com/bmcandr/lis-bootcamp/blob/master/docs/LIS-github-ssh-guide.adoc)** to set up SSH keys for use with Git and GitHub.
 
 -----
 
@@ -193,6 +195,8 @@ You are now ready to clone the [LISF](https://github.com/NASA-LIS/LISF.git) sour
 -----
 
 *New to Git and GitHub? Need a refresher? Try these links:* *[Intro to Git](https://git-scm.com/book/en/v2)* / *[GitHub Guide (Text)](https://help.github.com/en/github)* / *[GitHub Guide (Videos)](https://www.youtube.com/playlist?list=PLg7s6cbtAD15G8lNyoaYDuKZSKyJrgwB-)*
+
+
 
 -----
 
@@ -207,7 +211,7 @@ You are now ready to clone the [LISF](https://github.com/NASA-LIS/LISF.git) sour
 2. Clone the LISF source code:
 
     ```sh
-    % git clone https://github.com/NASA-LIS/LISF.git
+    % git clone github:NASA-LIS/LISF
     > Cloning into 'LISF'...
     > remote: Enumerating objects: 23, done.
     > remote: Counting objects: 100% (23/23), done.
