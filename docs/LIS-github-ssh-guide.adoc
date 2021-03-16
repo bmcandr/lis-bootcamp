@@ -18,16 +18,18 @@ IMPORTANT: This process must be completed on each computer you use to interact w
 $ cd ~/.ssh
 ```
 
-. Think of a unique link:https://www.ssh.com/ssh/passphrase[passphrase] to pair with this SSH key. This passphrase should be 15-20 characters in length and contain a mix of:
+. Think of a unique link:https://www.ssh.com/ssh/passphrase[passphrase] to pair with this SSH key. This phrase should be 15-20 characters in length and contain a mix of:
 +
 * Lowercase letters
 * Uppercase letters
 * Numbers
-* Special characters (e.g., !, @, #, $, etc.)
+* Special characters (!, @, #, $, etc.)
 +
 For example: `GoddardSpaceFl!ghtCenter1sGr8`
 +
-IMPORTANT: Please do not use this example as your actual passphrase.
+To make a long passphrase easier to remember you can use a favorite book/song/movie title, idiom, or quote as the foundation and then modify a few characters to make it unique.
++
+IMPORTANT: Please do not use the example above as your actual passphrase.
 
 [start=3]
 . Generate your unique SSH key:
