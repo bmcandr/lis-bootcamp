@@ -39,12 +39,12 @@ In the examples that follow, the `%` symbol at the beginning of the line represe
 
     ```text
     Host discover
-    #LogLevel Quiet
-    User <userid>
-    ProxyCommand ssh login.nccs.nasa.gov direct %h
-    ForwardX11 yes
-    ForwardX11Trusted yes
-    Protocol 2
+        #LogLevel Quiet
+        User <userid>
+        ProxyCommand ssh login.nccs.nasa.gov direct %h
+        ForwardX11 yes
+        ForwardX11Trusted yes
+        Protocol 2
     ```
 
     Where `<userid>` is your NASA AUID*. This configuration file makes it easier to connect to Discover.
