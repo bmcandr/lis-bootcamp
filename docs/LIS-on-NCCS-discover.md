@@ -59,9 +59,9 @@ In the examples that follow, the `%` symbol at the beginning of the line represe
 
     This command will use the information you added to `~/.ssh/config`.
 
-3. At the `PASSCODE:` prompt, enter the 8-digit RSA key. If using the RSA app for mobile devices, the key is displayed after entering your PIN. If you are using a RSA hard token (e.g., key-fob), enter your PIN + 8-digit RSA key at this prompt.
+3. At the `PASSCODE:` prompt, enter your 8-digit RSA key. If using the RSA app for mobile devices, the key is displayed after entering your PIN. If you are using a RSA hard token (e.g., key-fob), enter your PIN + 8-digit RSA key.
 
-4. At the `Host:` prompt, enter `discover`.
+4. If a `Host:` prompt appears, enter `discover`.
 
 5. At the `Password:` prompt, enter your NCCS LDAP password.
 
