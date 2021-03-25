@@ -196,8 +196,6 @@ You are now ready to clone the [LISF](https://github.com/NASA-LIS/LISF.git) sour
 
 *New to Git and GitHub? Need a refresher? Try these links:* *[Intro to Git](https://git-scm.com/book/en/v2)* / *[GitHub Guide (Text)](https://help.github.com/en/github)* / *[GitHub Guide (Videos)](https://www.youtube.com/playlist?list=PLg7s6cbtAD15G8lNyoaYDuKZSKyJrgwB-)*
 
-
-
 -----
 
 1. In your `$NOBACKUP` directory, create a new directory to work in and change into it. In this example the working directory is called `lis-test`:
