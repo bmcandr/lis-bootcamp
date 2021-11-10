@@ -1,0 +1,189 @@
+= Connecting to GitHub using SSH
+:imagesdir: images
+
+[quote, https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/]
+Beginning August 13, 2021, we will no longer accept account passwords when authenticating Git operations on GitHub.com.
+
+{empty} +
+
+GitHub will be disabling password authentication in favor of more secure alternatives: SSH keys and Personal Access Tokens. *All users* must transition to one of these options to continue to connect to GitHub using `git` (i.e., to clone, push, and pull). We recommend using link:https://www.ssh.com/ssh/protocol/#how-does-the-ssh-protocol-work[SSH keys] and describe how to set up and use them with `git` below.
+
+IMPORTANT: This process must be completed on each computer you use to interact with GitHub via the command-line (personal computer, Discover, etc.).
+
+== Create a GitHub-specific SSH Key
+
+. In the terminal, change directories into _~/.ssh_:
++
+```sh
+$ cd ~/.ssh
+```
+
+. Think of a unique link:https://www.ssh.com/ssh/passphrase[passphrase] to pair with this SSH key. This phrase should be 15-20 characters in length and contain a mix of:
++
+* Lowercase letters
+* Uppercase letters
+* Numbers
+* Special characters (!, @, #, $, etc.)
++
+For example: `GoddardSpaceFl!ghtCenter1sGr8`
++
+To make a long passphrase easier to remember you can use a favorite book/song/movie title, idiom, or quote as the foundation and then modify a few characters to make it unique.
++
+IMPORTANT: Please do not use the example above as your actual passphrase.
+
+[start=3]
+. Generate your unique SSH key:
++
+```sh
+$ ssh-keygen -t ed25519 -f id_ed25519-github
+```
++
+Where,
++
+--
+* `-t ed25519` selects the ed25519 encryption algorithm.
+* `-f id_ed25519-github` saves the public and private keys in files named _id_ed25519-github_. *Be sure to use the filename option or you risk overwriting an existing key!*
+--
++
+Enter the passphrase you created above at the two prompts that appear.
++
+If the key was successfully created `ls` should show two new files: __id_ed25519-github__ and __id_ed25519-github.pub__. The file ending with _.pub_ contains your public key and the other file contains your private key.
+
+. Print the contents of the _public_ key file:
++
+```sh
+$ cat id_ed25519-github.pub
+> ssh-ed25519 VQfDM9CRk2SjR+H4BJgcUT31qlmW1GoVnHZmcJMszos= userid@discover##
+```
++
+Copy the entire line beginning `ssh-ed25519`. This is your public key. _It will be unique from the example shown above._
+
+. Open a browser window and go to link:https://github.com[GitHub]. Log in, if necessary, and navigate to your account Settings by clicking on your user icon in the top right:
++
+image:github-settings-menu.PNG[]
++
+From the Settings menu, click on "SSH and GPG Keys":
++
+image:github-ssh-menu-item.PNG[]
++
+Click the green "New SSH Key" button in the top right to open the SSH key form.
++
+In the box labeled "Title", add a descriptive label that indicates what machine uses this key to connect to GitHub (e.g., "discover-ed25519" or "work-laptop").
++
+In the box labeled "Key", paste your public key.
++
+image:github-new-ssh-key.PNG[]
++
+Click "Add SSH key".
++
+The new key should appear in your list of SSH keys:
++
+image:github-ssh-key-list.png[]
+
+. Tell `ssh` which key to use when connecting to GitHub.
++
+Open _~/.ssh/config_ with a text editor and add the following:
++
+```text
+Host github
+  Hostname github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519-github
+```
++
+[NOTE]
+====
+If _~/.ssh/config_ is not empty, add a blank line between the previous section and the new text.
+
+If you used a different filename for your SSH key, modify the path after `IdentityFile` to point to your key file.
+====
+
+. Test your SSH key by running the following command:
++
+```sh
+$ ssh -T github
+```
++
+GitHub should respond with:
++
+```sh
+> Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+If successful, your SSH key is ready for use with GitHub. Remember to repeat the steps above on any other machines you use to connect to GitHub.
+
+=== Set Up SSH Agent to Temporarily Store your Passphrase
+
+When using SSH keys, `git` will ask you for your passphrase every time you clone, push, or pull from GitHub. To enter your passphrase just once per session, add your private SSH key to the SSH agent. This is useful for sessions where you anticipate having to run `git pull` and `git push` numerous times.
+
+Return to the terminal and start the SSH agent in the background:
+
+```sh
+$ eval "$(ssh-agent -s)"
+```
+
+Add your _private_ key to the SSH agent:
+
+```sh
+$ ssh-add ~/.ssh/id_ed25519-github
+```
+
+Enter your passphrase at the prompt.
+
+NOTE: Unfortunately, the SSH agent does not store your private key between sessions (i.e., logins to Discover). The two commands above must therefore be run in any session where you want to avoid typing your passphrase over and over.
+
+== SSH URLs
+
+Switching to SSH keys requires a small change in the way you use `git` to interact with GitHub.
+
+Previously, HTTPS URLs were used when cloning or adding remote repositories:
+
+```sh
+$ git clone https://github.com/NASA-LIS/LISF
+```
+
+Now you will have to use SSH URLs. For GitHub, the full SSH URL takes the form `git@github.com:username/repository`. However, the additions made to your _~/.ssh/config_ file allow you to simplify this to `github:username/repository`. For example:
+
+```sh
+$ git clone github:NASA-LIS/LISF
+```
+
+The same goes for adding remote repositories:
+
+```sh
+$ git remote add upstream github:NASA-LIS/LISF
+```
+
+=== Updating Existing Repositories to use SSH URLs
+
+Any existing local repositories must be updated to use SSH URLs before August 13, 2021.
+
+. Change directories into an existing repository.
+
+. View the list of remote repositories being tracked:
++
+```sh
+$ git remote -v
+> origin	https://github.com/bmcandr/LISF (fetch)
+> origin	https://github.com/bmcandr/LISF (push)
+> upstream	https://github.com/NASA-LIS/LISF (fetch)
+> upstream	https://github.com/NASA-LIS/LISF (push)
+```
+
+[start=3]
+. Set the URLs of each remotes to the SSH version:
++
+```sh
+$ git remote set-url origin github:bmcandr/LISF
+$ git remote set-url upstream github:NASA-LIS/LISF
+```
+
+. Verify that the URLs have been correctly updated:
++
+```sh
+$ git remote -v
+> origin	github:bmcandr/LISF (fetch)
+> origin	github:bmcandr/LISF (push)
+> upstream	github:NASA-LIS/LISF (fetch)
+> upstream	github:NASA-LIS/LISF (push)
+```
