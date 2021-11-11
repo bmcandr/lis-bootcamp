@@ -1,4 +1,4 @@
-= LISF on NCCS Discover - Quick Start Guide
+= LISF on NCCS Discover: Quick Start Guide
 Brendan McAndrew <brendan.b.mcandrew@nasa.gov>
 :revnumber: 0.1
 :revdate: 2021-11-11
@@ -9,12 +9,11 @@ Brendan McAndrew <brendan.b.mcandrew@nasa.gov>
 :url-lis-website: https://lis.gsfc.nasa.gov
 :url-lis-testcases-page: {url-lis-website}/tests/lis
 :url-lis-testcases-data: https://portal.nccs.nasa.gov/lisdata_pub/Tutorials/Web_Version/
-:url-lis-bootcamp: https://bmcandr.github.io/lis-bootcamp
 :url-lisf-docs: https://github.com/NASA-LIS/LISF/tree/master/docs
 :url-lisf-github: https://github.com/NASA-LIS/LISF
 :ssh-lisf-github: git@github.com:NASA-LIS/LISF.git
 // module attributes
-:module-dir: privatemodules
+:modulefile-dir: privatemodules
 :intel-modulefile: lisf_7_intel_19_1_3_304
 
 [.normal]
@@ -35,7 +34,7 @@ You will need an application called a link:https://en.wikipedia.org/wiki/Termina
 
 TIP: Need a refresher on terminal/shell basics? link:http://swcarpentry.github.io/shell-novice/[Try this!]
 
-//TODO: MobaXTerm setup instructions
+//TODO: MobaXTerm session setup instructions
 
 === Connecting to Discover
 
@@ -141,7 +140,7 @@ if [ -n "$PS1" ]; then
     echo "" ; echo "sourcing clean .profile" ; echo ""
 fi
 
-module use --append $HOME/{module-dir}
+module use --append $HOME/{modulefile-dir}
 module load {intel-modulefile}
 
 ulimit -s unlimited
@@ -154,21 +153,19 @@ if [ -n "$PS1" ]; then
 fi
 ----
 +
-This file will be executed every time you log onto Discover to set up your environment.
+This file will be executed every time you log onto Discover.
 
-. Next, you'll need a convenient way to load environment variables that LISF components require to compile and run. Discover provides this functionality through the program link:https://www.nccs.nasa.gov/nccs-users/instructional/using-discover/miscellaneous/using-modules[modules].
+. Next, you'll need to load environment variables that LISF components require to compile and run. Discover uses the link:https://www.nccs.nasa.gov/nccs-users/instructional/using-discover/miscellaneous/using-modules[modules] package to make commonly used software available to all users. We have created our own modulefiles that load an environment suitable for compiling and running LIS, LDT, and LVT. These files are available in link:{url-lisf-github}/tree/master/env/discover[the `env/discover` directory of our GitHub repository]. In this step we will download the current Intel LISF modulefile for Discover.
 +
-LISF-specific module files for use on Discover are included alongside the LISF source code in the link:{url-lisf-github}/tree/master/env/discover[`env/discover` directory] of the GitHub repository. In this step we will download the LISF modulefile for the SLES12 environment to Discover.
-+
-First, make a directory called `{module-dir}/` in your `$HOME` directory to store the module files and change into it:
+First, make a directory called `{modulefile-dir}/` in your `$HOME` directory to store the module files and change into it:
 +
 [source,bash,subs="attributes"]
 ----
-% mkdir {module-dir}
-% cd {module-dir}
+% mkdir {modulefile-dir}
+% cd {modulefile-dir}
 ----
 +
-Using `curl`, download the latest LISF modulefile into `{module-dir}/`:
+Using `curl`, download the latest LISF modulefile into `{modulefile-dir}/`:
 +
 [source,bash,subs="attributes"]
 ----
